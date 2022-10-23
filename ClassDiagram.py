@@ -1,4 +1,5 @@
 import graphviz
+import mysql.connector
 
 e = graphviz.Graph('ER', filename='er.gv', engine='neato')
 
