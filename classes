@@ -1,17 +1,6 @@
 digraph {
 	node [shape=egg]
 	rankdir=LR
-	10000 [label="CS120
-Intro to programming" fillcolor="#40e0d0" style=filled]
-	10001 [label="CS121
-C++ Programming"]
-	10002 [label="CS210
-Programming Languages"]
-	10003 [label="CS240
-Hard class i think"]
-	10000 -> 10001
-	10001 -> 10002
-	10001 -> 10003
-	label="\nClass diagram for CARSON SLOAN"
+	label="\nClass diagram for c4ca4238a0b923820dcc509a6f75849b Jane"
 	fontsize=20
 }
