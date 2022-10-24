@@ -1,57 +1,53 @@
 import graphviz
-from mysql.connector import connect, Error
+from mysql.connector import connect
 
-try:
-    with connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="provisoadvising"
-    ) as connection:
-        print(connection)
-        cursor = connection.cursor()
+# Constants for now
+studentID = '1'
+get_classes="SELECT * FROM classes"
+get_prereqs="SELECT * FROM prerequisites"
+get_completed="SELECT * FROM takes WHERE ID=" + studentID
+get_student="SELECT * FROM students WHERE ID=" + studentID
 
-        get_students="SELECT * FROM students"
-        cursor.execute(get_students)
-        for student in cursor:
-            print(student[0])
-except Error as err:
-    print(err)
-    
-e = graphviz.Graph('ER', filename='er.gv', engine='neato')
+# Connect to mySQL
+connection = connect(
+    host = "localhost",
+    user = "root",
+    password = "",
+    database = "provisoadvising"
+)
+cursor = connection.cursor()
 
-e.attr('node', shape='box')
-e.node('course')
-e.node('institute')
-e.node('student')
+# Get student information
+cursor.execute(get_student)
+student = cursor.fetchall()[0]
 
-e.attr('node', shape='ellipse')
-e.node('name0', label='name')
-e.node('name1', label='name')
-e.node('name2', label='name')
-e.node('code')
-e.node('grade')
-e.node('number')
+# Get the CRNs of all completed classes
+cursor.execute(get_completed)
+completed = []
+for c in cursor:
+    completed.append(c[1])
 
-e.attr('node', shape='diamond', style='filled', color='lightgrey')
-e.node('C-I')
-e.node('S-C')
-e.node('S-I')
+# Create directed graph to output as a pdf
+e = graphviz.Digraph(filename='classes', format='pdf')
+e.attr('node', shape='egg')
+e.attr(rankdir='LR')
 
-e.edge('name0', 'course')
-e.edge('code', 'course')
-e.edge('course', 'C-I', label='n', len='1.00')
-e.edge('C-I', 'institute', label='1', len='1.00')
-e.edge('institute', 'name1')
-e.edge('institute', 'S-I', label='1', len='1.00')
-e.edge('S-I', 'student', label='n', len='1.00')
-e.edge('student', 'grade')
-e.edge('student', 'name2')
-e.edge('student', 'number')
-e.edge('student', 'S-C', label='m', len='1.00')
-e.edge('S-C', 'course', label='n', len='1.00')
+# Get the class list and make a node for each class
+cursor.execute(get_classes)
+for row in cursor:
+    # If the class has been taken, color the node
+    if (row[0] in completed):
+        e.node(str(row[0]), row[1] + str(row[2]) + '\n' + row[3], style='filled', fillcolor='#40e0d0')
+    else:
+        e.node(str(row[0]), row[1] + str(row[2]) + '\n' + row[3])
 
-e.attr(label=r'\n\nEntity Relation Diagram\ndrawn by NEATO')
+# Get the prerequisite relationships to know what arrows to draw
+cursor.execute(get_prereqs)
+for row in cursor:
+    e.edge(str(row[1]), str(row[0]))
+
+# Label the graph
+e.attr(label=r'\nClass diagram for ' + student[1] + ' ' + student[2])
 e.attr(fontsize='20')
 
-#e.view()
+e.view()

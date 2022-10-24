@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2022 at 01:56 AM
+-- Generation Time: Oct 24, 2022 at 06:11 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -35,6 +35,16 @@ CREATE TABLE `classes` (
   `Year` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`CRN`, `Subject`, `Course#`, `Title`, `Year`) VALUES
+(10000, 'CS', 120, 'Intro to programming', 1),
+(10001, 'CS', 121, 'C++ Programming', 1),
+(10002, 'CS', 210, 'Programming Languages', 2),
+(10003, 'CS', 240, 'Hard class i think', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +55,15 @@ CREATE TABLE `prerequisites` (
   `CRN` int(11) NOT NULL,
   `Prereq` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `prerequisites`
+--
+
+INSERT INTO `prerequisites` (`CRN`, `Prereq`) VALUES
+(10001, '10000'),
+(10002, '10001'),
+(10003, '10001');
 
 -- --------------------------------------------------------
 
@@ -60,6 +79,14 @@ CREATE TABLE `students` (
   `Year` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`ID`, `First`, `Last`, `Major`, `Year`) VALUES
+(1, 'CARSON', 'SLOAN', 'CS', 1),
+(2, 'CARSON', 'SLOAN', 'CS', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -71,6 +98,13 @@ CREATE TABLE `takes` (
   `CRN` int(11) NOT NULL,
   `Semester` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `takes`
+--
+
+INSERT INTO `takes` (`ID`, `CRN`, `Semester`) VALUES
+(1, 10000, 1);
 
 --
 -- Indexes for dumped tables
