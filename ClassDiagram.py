@@ -1,6 +1,21 @@
 import graphviz
-import mysql.connector
+from mysql.connector import connect, Error
 
+try:
+    with connect(
+        host="localhost",
+        user="root",
+        password="",
+        database="provisoadvising"
+    ) as connection:
+        print(connection)
+        cursor = connection.cursor()
+
+        get_students="SELECT * FROM students"
+        cursor.execute(get_students)
+except Error as err:
+    print(err)
+    
 e = graphviz.Graph('ER', filename='er.gv', engine='neato')
 
 e.attr('node', shape='box')
@@ -37,4 +52,4 @@ e.edge('S-C', 'course', label='n', len='1.00')
 e.attr(label=r'\n\nEntity Relation Diagram\ndrawn by NEATO')
 e.attr(fontsize='20')
 
-e.view()
+#e.view()
