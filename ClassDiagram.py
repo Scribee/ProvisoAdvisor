@@ -13,6 +13,8 @@ try:
 
         get_students="SELECT * FROM students"
         cursor.execute(get_students)
+        for student in cursor:
+            print(student[0])
 except Error as err:
     print(err)
     
