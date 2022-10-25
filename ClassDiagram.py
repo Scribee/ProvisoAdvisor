@@ -38,11 +38,12 @@ for i in range(0, 5):
         # Get the class list and make a node for each class
         cursor.execute(get_classes + str(i))
         for row in cursor:
+            class_name = row[1] + str(row[2])
             # If the class has been taken, color the node
-            if (row[0] in completed):
-                a.node(row[1] + str(row[2]), row[1] + str(row[2]) + '\n' + row[3], style='filled', fillcolor='#40e0d0')
+            if (class_name in completed):
+                a.node(class_name, row[1] + str(row[2]) + '\n' + row[3], style='filled', fillcolor='#40e0d0')
             else:
-                a.node(row[1] + str(row[2]), row[1] + str(row[2]) + '\n' + row[3])
+                a.node(class_name, row[1] + str(row[2]) + '\n' + row[3])
 
 # Get the prerequisite relationships to know what arrows to draw
 cursor.execute(get_prereqs)
