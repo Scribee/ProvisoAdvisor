@@ -4,36 +4,80 @@ digraph {
 	subgraph clusterYear0 {
 	}
 	subgraph clusterYear1 {
-		10000 [label="CS120
-Intro to programming" fillcolor="#40e0d0" style=filled]
-		10001 [label="CS121
-C++ Programming" fillcolor="#40e0d0" style=filled]
-		10004 [label="CS150
-Circuits or something"]
+		CS120 [label="CS120
+Computer Science 1"]
+		CS121 [label="CS121
+Computer Science 2"]
+		CS150 [label="CS150
+Computer Organization and Archit"]
+		MATH176 [label="MATH176
+Discrete Mathematics"]
+		MATH170 [label="MATH170
+Calculus 1"]
+		ENGL102 [label="ENGL102
+College Writing and Rhetoric"]
+		COMM101 [label="COMM101
+Fundamentals of Public Speaking"]
 	}
 	subgraph clusterYear2 {
-		10002 [label="CS210
+		CS210 [label="CS210
 Programming Languages"]
-		10003 [label="CS240
-Hard class i think"]
+		CS240 [label="CS240
+Computer Operating Systems"]
+		MATH175 [label="MATH175
+Calculus 2"]
+		CS270 [label="CS270
+System Software"]
 	}
 	subgraph clusterYear3 {
-		10010 [label="CS383
-Systems Architecture"]
-		10011 [label="CS385
+		CS383 [label="CS383
+Software Engineering"]
+		CS385 [label="CS385
 Theory of Computation"]
+		CS395 [label="CS395
+Analysis of Algorithms"]
+		CS360 [label="CS360
+Database Systems"]
+		MATH330 [label="MATH330
+Linear Algebra"]
+		ENGL317 [label="ENGL317
+Technical Writing"]
 	}
 	subgraph clusterYear4 {
-		10020 [label="CS404
+		CS404 [label="CS404
 Special Projects"]
+		CS480 [label="CS480
+Senior Capstone Design 1"]
+		CS481 [label="CS481
+Senior Capstone Design 2"]
+		CS400 [label="CS400
+Contemporary Issues in Computer "]
+		CS445 [label="CS445
+Compiler Design"]
 	}
-	10000 -> 10001
-	10001 -> 10002
-	10001 -> 10003
-	10003 -> 10010
-	10003 -> 10011
-	10004 -> 10003
-	10010 -> 10020
-	label="\nClass diagram for John Doe"
+	CS120 -> CS121 [label=""]
+	MATH176 -> CS121 [label=""]
+	MATH170 -> MATH175 [label="C or better"]
+	CS121 -> CS270 [label=""]
+	CS270 -> CS240 [label=Corequisite]
+	CS121 -> CS240 [label=""]
+	CS150 -> CS240 [label=""]
+	CS121 -> CS210 [label=""]
+	MATH175 -> STAT301 [label=""]
+	CS210 -> CS383 [label=""]
+	CS240 -> CS383 [label=""]
+	CS270 -> CS383 [label=""]
+	MATH170 -> MATH330 [label="MATH175 recommended"]
+	MATH175 -> CS395 [label=""]
+	CS121 -> CS395 [label=""]
+	CS240 -> CS360 [label=""]
+	CS270 -> CS360 [label=""]
+	ENGL102 -> ENGL317 [label="Junior standing"]
+	CS383 -> CS480 [label="Senior standing"]
+	ENGL317 -> CS480 [label="Senior standing"]
+	CS210 -> CS445 [label=""]
+	CS385 -> CS445 [label=""]
+	CS480 -> CS481 [label=""]
+	label="\nClass diagram for Jane Doe"
 	fontsize=20
 }

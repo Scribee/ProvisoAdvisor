@@ -40,14 +40,14 @@ for i in range(0, 5):
         for row in cursor:
             # If the class has been taken, color the node
             if (row[0] in completed):
-                a.node(str(row[0]), row[1] + str(row[2]) + '\n' + row[3], style='filled', fillcolor='#40e0d0')
+                a.node(row[1] + str(row[2]), row[1] + str(row[2]) + '\n' + row[3], style='filled', fillcolor='#40e0d0')
             else:
-                a.node(str(row[0]), row[1] + str(row[2]) + '\n' + row[3])
+                a.node(row[1] + str(row[2]), row[1] + str(row[2]) + '\n' + row[3])
 
 # Get the prerequisite relationships to know what arrows to draw
 cursor.execute(get_prereqs)
 for row in cursor:
-    e.edge(str(row[1]), str(row[0]))
+    e.edge(row[1], row[0], label=row[2])
 
 # Label the graph
 e.attr(label=r'\nClass diagram for ' + student[2] + ' ' + student[3])
