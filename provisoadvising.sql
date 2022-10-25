@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2022 at 06:11 AM
+-- Generation Time: Oct 25, 2022 at 02:44 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -43,7 +43,11 @@ INSERT INTO `classes` (`CRN`, `Subject`, `Course#`, `Title`, `Year`) VALUES
 (10000, 'CS', 120, 'Intro to programming', 1),
 (10001, 'CS', 121, 'C++ Programming', 1),
 (10002, 'CS', 210, 'Programming Languages', 2),
-(10003, 'CS', 240, 'Hard class i think', 2);
+(10003, 'CS', 240, 'Hard class i think', 2),
+(10004, 'CS', 150, 'Circuits or something', 1),
+(10010, 'CS', 383, 'Systems Architecture', 3),
+(10011, 'CS', 385, 'Theory of Computation', 3),
+(10020, 'CS', 404, 'Special Projects', 4);
 
 -- --------------------------------------------------------
 
@@ -63,7 +67,11 @@ CREATE TABLE `prerequisites` (
 INSERT INTO `prerequisites` (`CRN`, `Prereq`) VALUES
 (10001, '10000'),
 (10002, '10001'),
-(10003, '10001');
+(10003, '10001'),
+(10010, '10003'),
+(10011, '10003'),
+(10003, '10004'),
+(10020, '10010');
 
 -- --------------------------------------------------------
 
@@ -73,6 +81,7 @@ INSERT INTO `prerequisites` (`CRN`, `Prereq`) VALUES
 
 CREATE TABLE `students` (
   `ID` int(11) NOT NULL,
+  `Password` varchar(32) NOT NULL,
   `First` varchar(32) NOT NULL,
   `Last` varchar(32) NOT NULL,
   `Major` varchar(32) NOT NULL,
@@ -83,9 +92,9 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`ID`, `First`, `Last`, `Major`, `Year`) VALUES
-(1, 'CARSON', 'SLOAN', 'CS', 1),
-(2, 'CARSON', 'SLOAN', 'CS', 1);
+INSERT INTO `students` (`ID`, `Password`, `First`, `Last`, `Major`, `Year`) VALUES
+(1, 'c4ca4238a0b923820dcc509a6f75849b', 'Jane', 'Doe', 'Computer Science', 1),
+(1234, 'd41d8cd98f00b204e9800998ecf8427e', 'John', 'Doe', 'Computer Science', 1);
 
 -- --------------------------------------------------------
 
@@ -104,7 +113,9 @@ CREATE TABLE `takes` (
 --
 
 INSERT INTO `takes` (`ID`, `CRN`, `Semester`) VALUES
-(1, 10000, 1);
+(1, 10000, 1),
+(1234, 10000, 1),
+(1234, 10001, 2);
 
 --
 -- Indexes for dumped tables

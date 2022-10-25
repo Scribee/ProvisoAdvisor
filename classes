@@ -1,6 +1,39 @@
 digraph {
 	node [shape=egg]
 	rankdir=LR
-	label="\nClass diagram for c4ca4238a0b923820dcc509a6f75849b Jane"
+	subgraph clusterYear0 {
+	}
+	subgraph clusterYear1 {
+		10000 [label="CS120
+Intro to programming" fillcolor="#40e0d0" style=filled]
+		10001 [label="CS121
+C++ Programming" fillcolor="#40e0d0" style=filled]
+		10004 [label="CS150
+Circuits or something"]
+	}
+	subgraph clusterYear2 {
+		10002 [label="CS210
+Programming Languages"]
+		10003 [label="CS240
+Hard class i think"]
+	}
+	subgraph clusterYear3 {
+		10010 [label="CS383
+Systems Architecture"]
+		10011 [label="CS385
+Theory of Computation"]
+	}
+	subgraph clusterYear4 {
+		10020 [label="CS404
+Special Projects"]
+	}
+	10000 -> 10001
+	10001 -> 10002
+	10001 -> 10003
+	10003 -> 10010
+	10003 -> 10011
+	10004 -> 10003
+	10010 -> 10020
+	label="\nClass diagram for John Doe"
 	fontsize=20
 }
