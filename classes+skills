@@ -119,6 +119,21 @@ graph {
 	MATH176 -- 33 [len=2.0]
 	MATH176 -- 37 [len=2.0]
 	CS270 -- 39 [len=2.0]
+	CS385 -- 46 [len=2.0]
+	CS385 -- 29 [len=2.0]
+	CS240 -- 49 [len=2.0]
+	CS150 -- 47 [len=2.0]
+	CS150 -- 48 [len=2.0]
+	CS480 -- 43 [len=2.0]
+	CS481 -- 43 [len=2.0]
+	ENGL317 -- 43 [len=2.0]
+	CS240 -- 21 [len=2.0]
+	CS270 -- 40 [len=2.0]
+	CS210 -- 38 [len=2.0]
+	CS120 -- 38 [len=2.0]
+	CS400 -- 22 [len=2.0]
+	CS240 -- 20 [len=2.0]
+	CS270 -- 20 [len=2.0]
 	label="\nAll skills taught by U of I classes."
 	fontsize=20
 }

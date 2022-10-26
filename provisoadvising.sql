@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 02:44 AM
+-- Generation Time: Oct 26, 2022 at 11:13 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -127,7 +127,7 @@ INSERT INTO `skills` (`ID`, `Name`, `Description`) VALUES
 (1, 'C', 'Good understanding of low level programming in C.'),
 (2, 'Research', ''),
 (3, 'Java', ''),
-(4, 'Java', ''),
+(4, 'Memory management', ''),
 (5, 'Prolog', ''),
 (6, 'YACC', ''),
 (7, 'Python', ''),
@@ -172,7 +172,8 @@ INSERT INTO `skills` (`ID`, `Name`, `Description`) VALUES
 (46, 'Regular expressions', ''),
 (47, 'Finite state machines', ''),
 (48, 'Turing machines', ''),
-(49, 'Operating systems', '');
+(49, 'Operating systems', ''),
+(50, 'Debugging', '');
 
 -- --------------------------------------------------------
 
@@ -238,7 +239,63 @@ CREATE TABLE `teaches` (
 INSERT INTO `teaches` (`Class`, `SkillID`) VALUES
 ('CS120', 0),
 ('CS121', 0),
-('CS121', 1);
+('CS121', 1),
+('ENGL317', 2),
+('ENGL102', 2),
+('CS480', 2),
+('CS481', 2),
+('CS383', 10),
+('CS383', 11),
+('CS383', 25),
+('CS383', 26),
+('CS383', 30),
+('CS383', 31),
+('CS150', 45),
+('CS150', 35),
+('CS150', 34),
+('CS210', 3),
+('CS210', 5),
+('CS210', 6),
+('CS210', 7),
+('CS210', 8),
+('CS360', 12),
+('CS360', 13),
+('CS360', 14),
+('CS360', 15),
+('CS360', 16),
+('CS360', 17),
+('CS360', 18),
+('ENGL317', 23),
+('COMM101', 32),
+('STAT301', 36),
+('STAT301', 37),
+('MATH170', 28),
+('MATH175', 28),
+('CS121', 45),
+('CS240', 19),
+('CS270', 19),
+('CS121', 27),
+('CS210', 27),
+('CS240', 27),
+('CS270', 27),
+('MATH176', 33),
+('MATH176', 37),
+('CS270', 39),
+('CS385', 46),
+('CS385', 29),
+('CS240', 49),
+('CS150', 47),
+('CS150', 48),
+('CS480', 43),
+('CS481', 43),
+('ENGL317', 43),
+('CS240', 21),
+('CS270', 40),
+('CS210', 38),
+('CS120', 38),
+('CS400', 22),
+('CS240', 20),
+('CS270', 20);
 
 --
 -- Indexes for dumped tables
@@ -276,7 +333,7 @@ ALTER TABLE `classes`
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
