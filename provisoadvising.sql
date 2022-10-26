@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 08:58 PM
+-- Generation Time: Oct 26, 2022 at 02:18 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -31,8 +31,9 @@ CREATE TABLE `classes` (
   `ID` int(11) NOT NULL,
   `Subject` varchar(32) NOT NULL,
   `Course#` int(11) NOT NULL,
-  `Title` varchar(32) NOT NULL,
-  `Year` int(11) NOT NULL
+  `Title` varchar(64) NOT NULL,
+  `Year` int(11) NOT NULL,
+  `Class` varchar(32) GENERATED ALWAYS AS (concat(`Subject`,`Course#`)) VIRTUAL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -44,7 +45,7 @@ INSERT INTO `classes` (`ID`, `Subject`, `Course#`, `Title`, `Year`) VALUES
 (1, 'CS', 121, 'Computer Science 2', 1),
 (2, 'CS', 210, 'Programming Languages', 2),
 (3, 'CS', 240, 'Computer Operating Systems', 2),
-(4, 'CS', 150, 'Computer Organization and Archit', 1),
+(4, 'CS', 150, 'Computer Organization and Architecture', 1),
 (5, 'MATH', 176, 'Discrete Mathematics', 1),
 (6, 'MATH', 170, 'Calculus 1', 1),
 (7, 'MATH', 175, 'Calculus 2', 2),
@@ -56,7 +57,7 @@ INSERT INTO `classes` (`ID`, `Subject`, `Course#`, `Title`, `Year`) VALUES
 (13, 'CS', 360, 'Database Systems', 3),
 (14, 'CS', 480, 'Senior Capstone Design 1', 4),
 (15, 'CS', 481, 'Senior Capstone Design 2', 4),
-(16, 'CS', 400, 'Contemporary Issues in Computer ', 4),
+(16, 'CS', 400, 'Contemporary Issues in Computer Science', 4),
 (17, 'CS', 445, 'Compiler Design', 4),
 (18, 'MATH', 330, 'Linear Algebra', 3),
 (19, 'ENGL', 317, 'Technical Writing', 3),
@@ -108,6 +109,74 @@ INSERT INTO `prerequisites` (`Class`, `Prereq`, `Requirement`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `skills`
+--
+
+CREATE TABLE `skills` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(32) NOT NULL,
+  `Description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `skills`
+--
+
+INSERT INTO `skills` (`ID`, `Name`, `Description`) VALUES
+(0, 'C++', 'Good understanding of C++ design and programming principles.'),
+(1, 'C', 'Good understanding of low level programming in C.'),
+(2, 'Research', ''),
+(3, 'Java', ''),
+(4, 'Java', ''),
+(5, 'Prolog', ''),
+(6, 'YACC', ''),
+(7, 'Python', ''),
+(8, 'SML', ''),
+(9, 'R', ''),
+(10, 'C#', ''),
+(11, 'Unity', ''),
+(12, 'CSS', ''),
+(13, 'HTML', ''),
+(14, 'Bootstrap', ''),
+(15, 'PHP', ''),
+(16, 'Laravel', ''),
+(17, 'SQL', ''),
+(18, 'MySQL', ''),
+(19, 'Bash', ''),
+(20, 'Unix', ''),
+(21, 'Batch', ''),
+(22, 'Ethics', ''),
+(23, 'Technical Writing', ''),
+(24, 'Makefile', ''),
+(25, 'Git', ''),
+(26, 'GitHub', ''),
+(27, 'Command line editors', ''),
+(28, 'Calculus', ''),
+(29, 'Relational algebra', ''),
+(30, 'Design diagrams', ''),
+(31, 'Time management diagrams', ''),
+(32, 'Public speaking', ''),
+(33, 'Formal logic', ''),
+(34, 'Integrated circuits', ''),
+(35, 'Digital logic', ''),
+(36, 'Statistics', ''),
+(37, 'Probability', ''),
+(38, 'Object oriented programming', ''),
+(39, 'Scripting', ''),
+(40, 'Networking', ''),
+(41, 'Graphical IDEs', ''),
+(42, 'JavaScript', ''),
+(43, 'Research papers', ''),
+(44, 'Ruby', ''),
+(45, 'Binary', ''),
+(46, 'Regular expressions', ''),
+(47, 'Finite state machines', ''),
+(48, 'Turing machines', ''),
+(49, 'Operating systems', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
@@ -131,25 +200,45 @@ INSERT INTO `students` (`ID`, `Password`, `First`, `Last`, `Major`, `Year`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `takes`
+-- Table structure for table `taken`
 --
 
-CREATE TABLE `takes` (
+CREATE TABLE `taken` (
   `ID` int(11) NOT NULL,
   `Class` varchar(8) NOT NULL,
   `Semester` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `takes`
+-- Dumping data for table `taken`
 --
 
-INSERT INTO `takes` (`ID`, `Class`, `Semester`) VALUES
+INSERT INTO `taken` (`ID`, `Class`, `Semester`) VALUES
 (1234, 'MATH170', 1),
 (1234, 'MATH176', 1),
 (1234, 'ENGL102', 1),
 (1234, 'COMM101', 1),
 (1234, 'CS120', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teaches`
+--
+
+CREATE TABLE `teaches` (
+  `Class` varchar(32) NOT NULL,
+  `SkillID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `teaches`
+--
+
+INSERT INTO `teaches` (`Class`, `SkillID`) VALUES
+('CS120', 0),
+('CS121', 0),
+('CS121', 1);
 
 --
 -- Indexes for dumped tables
@@ -159,6 +248,12 @@ INSERT INTO `takes` (`ID`, `Class`, `Semester`) VALUES
 -- Indexes for table `classes`
 --
 ALTER TABLE `classes`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `skills`
+--
+ALTER TABLE `skills`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -176,6 +271,12 @@ ALTER TABLE `students`
 --
 ALTER TABLE `classes`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10056;
+
+--
+-- AUTO_INCREMENT for table `skills`
+--
+ALTER TABLE `skills`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

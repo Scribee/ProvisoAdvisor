@@ -1,0 +1,9 @@
+graph {
+	node [shape=square]
+	1234 [label="John Doe"]
+	node [shape=ellipse]
+	0 [label="C++"]
+	1234 -- 0
+	label="\nSkills diagram for John Doe"
+	fontsize=20
+}
