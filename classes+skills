@@ -1,0 +1,124 @@
+graph {
+	node [shape=square]
+	CS120
+	CS121
+	CS210
+	CS240
+	CS150
+	MATH176
+	MATH170
+	MATH175
+	CS383
+	CS385
+	CS404
+	CS270
+	CS395
+	CS360
+	CS480
+	CS481
+	CS400
+	CS445
+	MATH330
+	ENGL317
+	ENGL102
+	COMM101
+	STAT301
+	node [shape=ellipse]
+	0 [label="C++"]
+	1 [label=C]
+	2 [label=Research]
+	3 [label=Java]
+	4 [label="Memory management"]
+	5 [label=Prolog]
+	6 [label=YACC]
+	7 [label=Python]
+	8 [label=SML]
+	9 [label=R]
+	10 [label="C#"]
+	11 [label=Unity]
+	12 [label=CSS]
+	13 [label=HTML]
+	14 [label=Bootstrap]
+	15 [label=PHP]
+	16 [label=Laravel]
+	17 [label=SQL]
+	18 [label=MySQL]
+	19 [label=Bash]
+	20 [label=Unix]
+	21 [label=Batch]
+	22 [label=Ethics]
+	23 [label="Technical Writing"]
+	24 [label=Makefile]
+	25 [label=Git]
+	26 [label=GitHub]
+	27 [label="Command line editors"]
+	28 [label=Calculus]
+	29 [label="Relational algebra"]
+	30 [label="Design diagrams"]
+	31 [label="Time management diagrams"]
+	32 [label="Public speaking"]
+	33 [label="Formal logic"]
+	34 [label="Integrated circuits"]
+	35 [label="Digital logic"]
+	36 [label=Statistics]
+	37 [label=Probability]
+	38 [label="Object oriented programming"]
+	39 [label=Scripting]
+	40 [label=Networking]
+	41 [label="Graphical IDEs"]
+	42 [label=JavaScript]
+	43 [label="Research papers"]
+	44 [label=Ruby]
+	45 [label=Binary]
+	46 [label="Regular expressions"]
+	47 [label="Finite state machines"]
+	48 [label="Turing machines"]
+	49 [label="Operating systems"]
+	50 [label=Debugging]
+	CS120 -- 0 [len=2.0]
+	CS121 -- 0 [len=2.0]
+	CS121 -- 1 [len=2.0]
+	ENGL317 -- 2 [len=2.0]
+	ENGL102 -- 2 [len=2.0]
+	CS480 -- 2 [len=2.0]
+	CS481 -- 2 [len=2.0]
+	CS383 -- 10 [len=2.0]
+	CS383 -- 11 [len=2.0]
+	CS383 -- 25 [len=2.0]
+	CS383 -- 26 [len=2.0]
+	CS383 -- 30 [len=2.0]
+	CS383 -- 31 [len=2.0]
+	CS150 -- 45 [len=2.0]
+	CS150 -- 35 [len=2.0]
+	CS150 -- 34 [len=2.0]
+	CS210 -- 3 [len=2.0]
+	CS210 -- 5 [len=2.0]
+	CS210 -- 6 [len=2.0]
+	CS210 -- 7 [len=2.0]
+	CS210 -- 8 [len=2.0]
+	CS360 -- 12 [len=2.0]
+	CS360 -- 13 [len=2.0]
+	CS360 -- 14 [len=2.0]
+	CS360 -- 15 [len=2.0]
+	CS360 -- 16 [len=2.0]
+	CS360 -- 17 [len=2.0]
+	CS360 -- 18 [len=2.0]
+	ENGL317 -- 23 [len=2.0]
+	COMM101 -- 32 [len=2.0]
+	STAT301 -- 36 [len=2.0]
+	STAT301 -- 37 [len=2.0]
+	MATH170 -- 28 [len=2.0]
+	MATH175 -- 28 [len=2.0]
+	CS121 -- 45 [len=2.0]
+	CS240 -- 19 [len=2.0]
+	CS270 -- 19 [len=2.0]
+	CS121 -- 27 [len=2.0]
+	CS210 -- 27 [len=2.0]
+	CS240 -- 27 [len=2.0]
+	CS270 -- 27 [len=2.0]
+	MATH176 -- 33 [len=2.0]
+	MATH176 -- 37 [len=2.0]
+	CS270 -- 39 [len=2.0]
+	label="\nAll skills taught by U of I classes."
+	fontsize=20
+}

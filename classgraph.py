@@ -1,6 +1,6 @@
 import graphviz
 from dbconnector import cursor
-from queries import GET_CLASSES, GET_PREREQS, GET_TAKEN, GET_STUDENT, GET_SKILLS
+from queries import GET_CLASSES, GET_PREREQS, GET_TAKEN, GET_STUDENT, GET_SKILLS, GET_ALL_SKILLS, GET_TEACHES
 
 ### Function Definitions ###
 
@@ -29,7 +29,7 @@ def print_classes():
             completed = get_taken(i)
             
             # Get the class list and make a node for each class
-            cursor.execute(GET_CLASSES + str(i))
+            cursor.execute(GET_CLASSES + ' WHERE Year=' + str(i))
             for row in cursor:
                 class_name = row[1] + str(row[2])
                 # If the class has been taken, color the node
@@ -71,11 +71,39 @@ def print_skills():
 
     f.view()
     
+def print_all_skills():
+    # Make undirected graph to output as a pdf
+    g = graphviz.Graph(filename='classes+skills', format='pdf', engine='neato')
+
+    # Make the class nodes square
+    g.attr('node', shape='square')
+    cursor.execute(GET_CLASSES)
+    for row in cursor:
+        class_name = row[1] + str(row[2])
+        g.node(class_name)
+        
+    # Make skill nodes elliptical
+    g.attr('node', shape='ellipse')
+    cursor.execute(GET_ALL_SKILLS)
+    for row in cursor:
+        g.node(str(row[0]), row[1])
+    
+    cursor.execute(GET_TEACHES)
+    for row in cursor:
+        g.edge(row[0], str(row[1]), len='2.0')
+        
+    # Label the graph
+    g.attr(label=r'\nAll skills taught by U of I classes.')
+    g.attr(fontsize='20')
+
+    g.view()
+    
 ### Program Start ###    
 
 # Get student information
 cursor.execute(GET_STUDENT)
 student = cursor.fetchall()[0]
 
-print_classes()
-print_skills()
+#print_classes()
+#print_skills()
+print_all_skills()
