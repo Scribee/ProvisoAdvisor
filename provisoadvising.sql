@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 02:18 AM
+-- Generation Time: Oct 26, 2022 at 02:44 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -206,14 +206,14 @@ INSERT INTO `students` (`ID`, `Password`, `First`, `Last`, `Major`, `Year`) VALU
 CREATE TABLE `taken` (
   `ID` int(11) NOT NULL,
   `Class` varchar(8) NOT NULL,
-  `Semester` int(11) NOT NULL
+  `Year` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `taken`
 --
 
-INSERT INTO `taken` (`ID`, `Class`, `Semester`) VALUES
+INSERT INTO `taken` (`ID`, `Class`, `Year`) VALUES
 (1234, 'MATH170', 1),
 (1234, 'MATH176', 1),
 (1234, 'ENGL102', 1),
