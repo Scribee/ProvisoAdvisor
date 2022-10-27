@@ -29,7 +29,7 @@ def get_skills():
 # CREATE GRAPH FOR CLASSES
 def print_classes():
     # Directed graph to be output as a pdf
-    e = graphviz.Digraph(filename='classes', format='pdf')
+    e = graphviz.Digraph(filename='graphs/classes', format='pdf')
     e.attr('node', shape='egg')
     e.attr(rankdir='LR')
 
@@ -65,7 +65,7 @@ def print_classes():
 # CREATE GRAPH FOR SKILLS
 def print_skills():
     # Make undirected graph to output as a pdf
-    f = graphviz.Graph(filename='skills', format='pdf')
+    f = graphviz.Graph(filename='graphs/skills', format='pdf')
 
     # Make a student node in the center
     f.attr('node', shape='square')
@@ -92,7 +92,7 @@ def print_skills():
 # Create a graph of every skill and the class that teaches it
 def print_all_skills():
     # Make undirected graph to output as a pdf
-    g = graphviz.Graph(filename='allskills', format='pdf', engine='neato')
+    g = graphviz.Graph(filename='graphs/allskills', format='pdf', engine='neato')
 
     # Make the class nodes square
     g.attr('node', shape='square')
@@ -120,7 +120,7 @@ def print_all_skills():
 # Create a different graph of the student's skills that includes their classes
 def print_classes_and_skills():
     # Make undirected graph to output as a pdf
-    h = graphviz.Graph(filename='classes+skills', format='pdf', engine='neato')
+    h = graphviz.Graph(filename='graphs/classes+skills', format='pdf', engine='neato')
 
     completed = get_taken('all')
     learned = get_skills()
@@ -157,7 +157,7 @@ def print_classes_and_skills():
     
 def print_jobs():
     # Make undirected graph to output as a pdf
-    i = graphviz.Graph(filename='jobs', format='pdf')
+    i = graphviz.Graph(filename='graphs/jobs', format='pdf')
 
     # Make the company nodes square
     i.attr('node', shape='square')
@@ -195,5 +195,5 @@ student = cursor.fetchall()[0]
 print_classes()
 print_skills()
 print_classes_and_skills()
-#print_all_skills()
+print_all_skills()
 print_jobs()
