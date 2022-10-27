@@ -1,139 +1,154 @@
 graph {
 	node [shape=square]
-	CS120
-	CS121
-	CS210
-	CS240
-	CS150
-	MATH176
-	MATH170
-	MATH175
-	CS383
-	CS385
-	CS404
-	CS270
-	CS395
-	CS360
-	CS480
-	CS481
-	CS400
-	CS445
-	MATH330
-	ENGL317
-	ENGL102
-	COMM101
-	STAT301
+	CS120 [fillcolor="#66ded2" style=filled]
+	CS121 [fillcolor="#EEEEEE" style=filled]
+	CS210 [fillcolor="#EEEEEE" style=filled]
+	CS240 [fillcolor="#EEEEEE" style=filled]
+	CS150 [fillcolor="#EEEEEE" style=filled]
+	MATH176 [fillcolor="#66ded2" style=filled]
+	MATH170 [fillcolor="#66ded2" style=filled]
+	MATH175 [fillcolor="#66ded2" style=filled]
+	CS383 [fillcolor="#EEEEEE" style=filled]
+	CS385 [fillcolor="#EEEEEE" style=filled]
+	CS404 [fillcolor="#EEEEEE" style=filled]
+	CS270 [fillcolor="#EEEEEE" style=filled]
+	CS395 [fillcolor="#EEEEEE" style=filled]
+	CS360 [fillcolor="#EEEEEE" style=filled]
+	CS480 [fillcolor="#EEEEEE" style=filled]
+	CS481 [fillcolor="#EEEEEE" style=filled]
+	CS400 [fillcolor="#EEEEEE" style=filled]
+	CS445 [fillcolor="#EEEEEE" style=filled]
+	MATH330 [fillcolor="#EEEEEE" style=filled]
+	ENGL317 [fillcolor="#EEEEEE" style=filled]
+	ENGL102 [fillcolor="#66ded2" style=filled]
+	COMM101 [fillcolor="#66ded2" style=filled]
+	STAT301 [fillcolor="#EEEEEE" style=filled]
 	node [shape=ellipse]
-	0 [label="C++"]
-	1 [label=C]
-	2 [label=Research]
-	3 [label=Java]
-	4 [label="Memory management"]
-	5 [label=Prolog]
-	6 [label=YACC]
-	7 [label=Python]
-	8 [label=SML]
-	9 [label=R]
-	10 [label="C#"]
-	11 [label=Unity]
-	12 [label=CSS]
-	13 [label=HTML]
-	14 [label=Bootstrap]
-	15 [label=PHP]
-	16 [label=Laravel]
-	17 [label=SQL]
-	18 [label=MySQL]
-	19 [label=Bash]
-	20 [label=Unix]
-	21 [label=Batch]
-	22 [label=Ethics]
-	23 [label="Technical Writing"]
-	24 [label=Makefile]
-	25 [label=Git]
-	26 [label=GitHub]
-	27 [label="Command line editors"]
-	28 [label=Calculus]
-	29 [label="Relational algebra"]
-	30 [label="Design diagrams"]
-	31 [label="Time management diagrams"]
-	32 [label="Public speaking"]
-	33 [label="Formal logic"]
-	34 [label="Integrated circuits"]
-	35 [label="Digital logic"]
-	36 [label=Statistics]
-	37 [label=Probability]
-	38 [label="Object oriented programming"]
-	39 [label=Scripting]
-	40 [label=Networking]
-	41 [label="Graphical IDEs"]
-	42 [label=JavaScript]
-	43 [label="Research papers"]
-	44 [label=Ruby]
-	45 [label=Binary]
-	46 [label="Regular expressions"]
-	47 [label="Finite state machines"]
-	48 [label="Turing machines"]
-	49 [label="Operating systems"]
-	50 [label=Debugging]
-	CS120 -- 0 [len=2.0]
-	CS121 -- 0 [len=2.0]
-	CS121 -- 1 [len=2.0]
-	ENGL317 -- 2 [len=2.0]
-	ENGL102 -- 2 [len=2.0]
-	CS480 -- 2 [len=2.0]
-	CS481 -- 2 [len=2.0]
-	CS383 -- 10 [len=2.0]
-	CS383 -- 11 [len=2.0]
-	CS383 -- 25 [len=2.0]
-	CS383 -- 26 [len=2.0]
-	CS383 -- 30 [len=2.0]
-	CS383 -- 31 [len=2.0]
-	CS150 -- 45 [len=2.0]
-	CS150 -- 35 [len=2.0]
-	CS150 -- 34 [len=2.0]
-	CS210 -- 3 [len=2.0]
-	CS210 -- 5 [len=2.0]
-	CS210 -- 6 [len=2.0]
-	CS210 -- 7 [len=2.0]
-	CS210 -- 8 [len=2.0]
-	CS360 -- 12 [len=2.0]
-	CS360 -- 13 [len=2.0]
-	CS360 -- 14 [len=2.0]
-	CS360 -- 15 [len=2.0]
-	CS360 -- 16 [len=2.0]
-	CS360 -- 17 [len=2.0]
-	CS360 -- 18 [len=2.0]
-	ENGL317 -- 23 [len=2.0]
-	COMM101 -- 32 [len=2.0]
-	STAT301 -- 36 [len=2.0]
-	STAT301 -- 37 [len=2.0]
-	MATH170 -- 28 [len=2.0]
-	MATH175 -- 28 [len=2.0]
-	CS121 -- 45 [len=2.0]
-	CS240 -- 19 [len=2.0]
-	CS270 -- 19 [len=2.0]
-	CS121 -- 27 [len=2.0]
-	CS210 -- 27 [len=2.0]
-	CS240 -- 27 [len=2.0]
-	CS270 -- 27 [len=2.0]
-	MATH176 -- 33 [len=2.0]
-	MATH176 -- 37 [len=2.0]
-	CS270 -- 39 [len=2.0]
-	CS385 -- 46 [len=2.0]
-	CS385 -- 29 [len=2.0]
-	CS240 -- 49 [len=2.0]
-	CS150 -- 47 [len=2.0]
-	CS150 -- 48 [len=2.0]
-	CS480 -- 43 [len=2.0]
-	CS481 -- 43 [len=2.0]
-	ENGL317 -- 43 [len=2.0]
-	CS240 -- 21 [len=2.0]
-	CS270 -- 40 [len=2.0]
-	CS210 -- 38 [len=2.0]
-	CS120 -- 38 [len=2.0]
-	CS400 -- 22 [len=2.0]
-	CS240 -- 20 [len=2.0]
-	CS270 -- 20 [len=2.0]
-	label="\nAll skills taught by U of I classes."
-	fontsize=20
+	0 [label="C++" fillcolor="#81f542" style=filled]
+	1 [label=C fillcolor="#EEEEEE" style=filled]
+	2 [label=Research fillcolor="#81f542" style=filled]
+	3 [label=Java fillcolor="#EEEEEE" style=filled]
+	4 [label="Memory management" fillcolor="#EEEEEE" style=filled]
+	5 [label=Prolog fillcolor="#EEEEEE" style=filled]
+	6 [label=YACC fillcolor="#EEEEEE" style=filled]
+	7 [label=Python fillcolor="#EEEEEE" style=filled]
+	8 [label=SML fillcolor="#EEEEEE" style=filled]
+	9 [label=R fillcolor="#EEEEEE" style=filled]
+	10 [label="C#" fillcolor="#EEEEEE" style=filled]
+	11 [label=Unity fillcolor="#EEEEEE" style=filled]
+	12 [label=CSS fillcolor="#EEEEEE" style=filled]
+	13 [label=HTML fillcolor="#EEEEEE" style=filled]
+	14 [label=Bootstrap fillcolor="#EEEEEE" style=filled]
+	15 [label=PHP fillcolor="#EEEEEE" style=filled]
+	16 [label=Laravel fillcolor="#EEEEEE" style=filled]
+	17 [label=SQL fillcolor="#EEEEEE" style=filled]
+	18 [label=MySQL fillcolor="#EEEEEE" style=filled]
+	19 [label=Bash fillcolor="#EEEEEE" style=filled]
+	20 [label=Unix fillcolor="#EEEEEE" style=filled]
+	21 [label=Batch fillcolor="#EEEEEE" style=filled]
+	22 [label=Ethics fillcolor="#EEEEEE" style=filled]
+	23 [label="Technical Writing" fillcolor="#EEEEEE" style=filled]
+	24 [label=Makefile fillcolor="#EEEEEE" style=filled]
+	25 [label=Git fillcolor="#EEEEEE" style=filled]
+	26 [label=GitHub fillcolor="#EEEEEE" style=filled]
+	27 [label="Command line editors" fillcolor="#EEEEEE" style=filled]
+	28 [label=Calculus fillcolor="#81f542" style=filled]
+	29 [label="Relational algebra" fillcolor="#EEEEEE" style=filled]
+	30 [label="Design diagrams" fillcolor="#EEEEEE" style=filled]
+	31 [label="Time management diagrams" fillcolor="#EEEEEE" style=filled]
+	32 [label="Public speaking" fillcolor="#81f542" style=filled]
+	33 [label="Formal logic" fillcolor="#81f542" style=filled]
+	34 [label="Integrated circuits" fillcolor="#EEEEEE" style=filled]
+	35 [label="Digital logic" fillcolor="#EEEEEE" style=filled]
+	36 [label=Statistics fillcolor="#EEEEEE" style=filled]
+	37 [label=Probability fillcolor="#81f542" style=filled]
+	38 [label="Object oriented programming" fillcolor="#81f542" style=filled]
+	39 [label=Scripting fillcolor="#EEEEEE" style=filled]
+	40 [label=Networking fillcolor="#EEEEEE" style=filled]
+	41 [label="Graphical IDEs" fillcolor="#EEEEEE" style=filled]
+	42 [label=JavaScript fillcolor="#EEEEEE" style=filled]
+	43 [label="Research papers" fillcolor="#EEEEEE" style=filled]
+	44 [label=Ruby fillcolor="#EEEEEE" style=filled]
+	45 [label=Binary fillcolor="#EEEEEE" style=filled]
+	46 [label="Regular expressions" fillcolor="#EEEEEE" style=filled]
+	47 [label="Finite state machines" fillcolor="#EEEEEE" style=filled]
+	48 [label="Turing machines" fillcolor="#EEEEEE" style=filled]
+	49 [label="Operating systems" fillcolor="#EEEEEE" style=filled]
+	50 [label=Debugging fillcolor="#EEEEEE" style=filled]
+	51 [label="Assembly language" fillcolor="#EEEEEE" style=filled]
+	52 [label="Compiler design" fillcolor="#EEEEEE" style=filled]
+	CS120 -- 0
+	CS121 -- 0
+	CS121 -- 1
+	ENGL317 -- 2
+	ENGL102 -- 2
+	CS480 -- 2
+	CS481 -- 2
+	CS383 -- 10
+	CS383 -- 11
+	CS383 -- 25
+	CS383 -- 26
+	CS383 -- 30
+	CS383 -- 31
+	CS150 -- 45
+	CS150 -- 35
+	CS150 -- 34
+	CS210 -- 3
+	CS210 -- 5
+	CS210 -- 6
+	CS210 -- 7
+	CS210 -- 8
+	CS360 -- 12
+	CS360 -- 13
+	CS360 -- 14
+	CS360 -- 15
+	CS360 -- 16
+	CS360 -- 17
+	CS360 -- 18
+	ENGL317 -- 23
+	COMM101 -- 32
+	STAT301 -- 36
+	STAT301 -- 37
+	MATH170 -- 28
+	MATH175 -- 28
+	CS121 -- 45
+	CS240 -- 19
+	CS270 -- 19
+	CS121 -- 27
+	CS210 -- 27
+	CS240 -- 27
+	CS270 -- 27
+	MATH176 -- 33
+	MATH176 -- 37
+	CS270 -- 39
+	CS385 -- 46
+	CS385 -- 29
+	CS240 -- 49
+	CS150 -- 47
+	CS150 -- 48
+	CS480 -- 43
+	CS481 -- 43
+	ENGL317 -- 43
+	CS240 -- 21
+	CS270 -- 40
+	CS210 -- 38
+	CS120 -- 38
+	CS400 -- 22
+	CS240 -- 20
+	CS270 -- 20
+	CS270 -- 24
+	CS210 -- 50
+	CS270 -- 50
+	CS240 -- 4
+	CS360 -- 42
+	STAT301 -- 9
+	CS404 -- 35
+	CS404 -- 34
+	CS445 -- 51
+	CS150 -- 51
+	CS445 -- 49
+	CS445 -- 52
+	CS240 -- 52
+	label="\nAll skills that John Doe has learned."
+	fontsize=20 overlap=scale
 }

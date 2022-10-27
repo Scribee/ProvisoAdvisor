@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 11:13 PM
+-- Generation Time: Oct 27, 2022 at 07:37 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -173,7 +173,9 @@ INSERT INTO `skills` (`ID`, `Name`, `Description`) VALUES
 (47, 'Finite state machines', ''),
 (48, 'Turing machines', ''),
 (49, 'Operating systems', ''),
-(50, 'Debugging', '');
+(50, 'Debugging', ''),
+(51, 'Assembly language', ''),
+(52, 'Compiler design', '');
 
 -- --------------------------------------------------------
 
@@ -219,7 +221,8 @@ INSERT INTO `taken` (`ID`, `Class`, `Year`) VALUES
 (1234, 'MATH176', 1),
 (1234, 'ENGL102', 1),
 (1234, 'COMM101', 1),
-(1234, 'CS120', 1);
+(1234, 'CS120', 1),
+(1234, 'MATH175', 1);
 
 -- --------------------------------------------------------
 
@@ -228,6 +231,7 @@ INSERT INTO `taken` (`ID`, `Class`, `Year`) VALUES
 --
 
 CREATE TABLE `teaches` (
+  `id` int(11) NOT NULL,
   `Class` varchar(32) NOT NULL,
   `SkillID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -236,66 +240,79 @@ CREATE TABLE `teaches` (
 -- Dumping data for table `teaches`
 --
 
-INSERT INTO `teaches` (`Class`, `SkillID`) VALUES
-('CS120', 0),
-('CS121', 0),
-('CS121', 1),
-('ENGL317', 2),
-('ENGL102', 2),
-('CS480', 2),
-('CS481', 2),
-('CS383', 10),
-('CS383', 11),
-('CS383', 25),
-('CS383', 26),
-('CS383', 30),
-('CS383', 31),
-('CS150', 45),
-('CS150', 35),
-('CS150', 34),
-('CS210', 3),
-('CS210', 5),
-('CS210', 6),
-('CS210', 7),
-('CS210', 8),
-('CS360', 12),
-('CS360', 13),
-('CS360', 14),
-('CS360', 15),
-('CS360', 16),
-('CS360', 17),
-('CS360', 18),
-('ENGL317', 23),
-('COMM101', 32),
-('STAT301', 36),
-('STAT301', 37),
-('MATH170', 28),
-('MATH175', 28),
-('CS121', 45),
-('CS240', 19),
-('CS270', 19),
-('CS121', 27),
-('CS210', 27),
-('CS240', 27),
-('CS270', 27),
-('MATH176', 33),
-('MATH176', 37),
-('CS270', 39),
-('CS385', 46),
-('CS385', 29),
-('CS240', 49),
-('CS150', 47),
-('CS150', 48),
-('CS480', 43),
-('CS481', 43),
-('ENGL317', 43),
-('CS240', 21),
-('CS270', 40),
-('CS210', 38),
-('CS120', 38),
-('CS400', 22),
-('CS240', 20),
-('CS270', 20);
+INSERT INTO `teaches` (`id`, `Class`, `SkillID`) VALUES
+(1, 'CS120', 0),
+(2, 'CS121', 0),
+(3, 'CS121', 1),
+(4, 'ENGL317', 2),
+(5, 'ENGL102', 2),
+(6, 'CS480', 2),
+(7, 'CS481', 2),
+(8, 'CS383', 10),
+(9, 'CS383', 11),
+(10, 'CS383', 25),
+(11, 'CS383', 26),
+(12, 'CS383', 30),
+(13, 'CS383', 31),
+(14, 'CS150', 45),
+(15, 'CS150', 35),
+(16, 'CS150', 34),
+(17, 'CS210', 3),
+(18, 'CS210', 5),
+(19, 'CS210', 6),
+(20, 'CS210', 7),
+(21, 'CS210', 8),
+(22, 'CS360', 12),
+(23, 'CS360', 13),
+(24, 'CS360', 14),
+(25, 'CS360', 15),
+(26, 'CS360', 16),
+(27, 'CS360', 17),
+(28, 'CS360', 18),
+(29, 'ENGL317', 23),
+(30, 'COMM101', 32),
+(31, 'STAT301', 36),
+(32, 'STAT301', 37),
+(33, 'MATH170', 28),
+(34, 'MATH175', 28),
+(35, 'CS121', 45),
+(36, 'CS240', 19),
+(37, 'CS270', 19),
+(38, 'CS121', 27),
+(39, 'CS210', 27),
+(40, 'CS240', 27),
+(41, 'CS270', 27),
+(42, 'MATH176', 33),
+(43, 'MATH176', 37),
+(44, 'CS270', 39),
+(45, 'CS385', 46),
+(46, 'CS385', 29),
+(47, 'CS240', 49),
+(48, 'CS150', 47),
+(49, 'CS150', 48),
+(50, 'CS480', 43),
+(51, 'CS481', 43),
+(52, 'ENGL317', 43),
+(53, 'CS240', 21),
+(54, 'CS270', 40),
+(55, 'CS210', 38),
+(56, 'CS120', 38),
+(57, 'CS400', 22),
+(58, 'CS240', 20),
+(59, 'CS270', 20),
+(60, 'CS270', 24),
+(61, 'CS210', 50),
+(62, 'CS270', 50),
+(63, 'CS240', 4),
+(64, 'CS360', 42),
+(65, 'STAT301', 9),
+(66, 'CS404', 35),
+(67, 'CS404', 34),
+(68, 'CS445', 51),
+(69, 'CS150', 51),
+(70, 'CS445', 49),
+(71, 'CS445', 52),
+(73, 'CS240', 52);
 
 --
 -- Indexes for dumped tables
@@ -320,6 +337,12 @@ ALTER TABLE `students`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `teaches`
+--
+ALTER TABLE `teaches`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -333,7 +356,13 @@ ALTER TABLE `classes`
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `teaches`
+--
+ALTER TABLE `teaches`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
