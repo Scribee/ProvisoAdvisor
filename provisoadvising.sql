@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2022 at 07:37 PM
+-- Generation Time: Oct 27, 2022 at 10:35 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -68,6 +68,26 @@ INSERT INTO `classes` (`ID`, `Subject`, `Course#`, `Title`, `Year`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `company` varchar(32) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `name`, `company`, `description`) VALUES
+(0, 'Software Engineer', 'Amazon', 'Backend or frontend development on the mobile Amazon Shopping app.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prerequisites`
 --
 
@@ -105,6 +125,26 @@ INSERT INTO `prerequisites` (`Class`, `Prereq`, `Requirement`) VALUES
 ('CS445', 'CS210', ''),
 ('CS445', 'CS385', ''),
 ('CS481', 'CS480', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requires`
+--
+
+CREATE TABLE `requires` (
+  `id` int(11) NOT NULL,
+  `jobID` int(11) NOT NULL,
+  `skillID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `requires`
+--
+
+INSERT INTO `requires` (`id`, `jobID`, `skillID`) VALUES
+(1, 0, 0),
+(2, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -325,6 +365,18 @@ ALTER TABLE `classes`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `requires`
+--
+ALTER TABLE `requires`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `skills`
 --
 ALTER TABLE `skills`
@@ -351,6 +403,18 @@ ALTER TABLE `teaches`
 --
 ALTER TABLE `classes`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10056;
+
+--
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `requires`
+--
+ALTER TABLE `requires`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `skills`

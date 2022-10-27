@@ -1,6 +1,6 @@
 import graphviz
 from dbconnector import cursor
-from queries import GET_CLASSES, GET_PREREQS, GET_TAKEN, GET_STUDENT, GET_SKILLS, GET_ALL_SKILLS, GET_TEACHES
+from queries import GET_CLASSES, GET_PREREQS, GET_TAKEN, GET_STUDENT, GET_SKILLS, GET_ALL_SKILLS, GET_TEACHES, GET_JOBS, GET_COMPANIES, GET_REQUIRES
 import colors
 
 ### Function Definitions ###
@@ -155,7 +155,38 @@ def print_classes_and_skills():
 
     h.view()
     
-### Program Start ###    
+def print_jobs():
+    # Make undirected graph to output as a pdf
+    i = graphviz.Graph(filename='jobs', format='pdf')
+
+    # Make the company nodes square
+    i.attr('node', shape='square')
+    cursor.execute(GET_COMPANIES)
+    for row in cursor:
+        i.node(row[0], style='filled', fillcolor=colors.LIGHT)
+        
+    # Make skill nodes elliptical
+    i.attr('node', shape='ellipse')
+    cursor.execute(GET_JOBS)
+    for row in cursor:
+        i.node('j' + str(row[0]), row[1], style='filled', fillcolor=colors.SECONDARY)
+        i.edge(row[2], 'j' + str(row[0]))
+        
+    cursor.execute(GET_ALL_SKILLS)
+    for row in cursor:
+        i.node(str(row[0]), row[1], style='filled', fillcolor=colors.TERTIARY)
+        
+    cursor.execute(GET_REQUIRES)
+    for row in cursor:
+        i.edge('j' + str(row[0]), str(row[1]), len='1.0')
+        
+    # Label the graph
+    i.attr(label=r'\nAll skills and the jobs that require them.')
+    i.attr(fontsize='20')
+
+    i.view()
+    
+### Program Start ###
 
 # Get student information
 cursor.execute(GET_STUDENT)
@@ -164,4 +195,5 @@ student = cursor.fetchall()[0]
 print_classes()
 print_skills()
 print_classes_and_skills()
-#print_all_skills()
+print_all_skills()
+print_jobs()
