@@ -104,6 +104,6 @@ def print_all_skills():
 cursor.execute(GET_STUDENT)
 student = cursor.fetchall()[0]
 
-#print_classes()
-#print_skills()
+print_classes()
+print_skills()
 print_all_skills()

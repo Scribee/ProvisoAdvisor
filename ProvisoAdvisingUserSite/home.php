@@ -17,7 +17,7 @@ require('db.php');
         <h1>Welcome to Proviso Advising</h1>
     </div>
     <div class="form">
-        <h1>To Login click <a href="login.php">here!</a> </h1>
+        <h1>To login click <a href="login.php">here!</a> </h1>
         <h1>To register as a new user click <a href="registration.php">here!</a> </h1>
     </div>
 </body>

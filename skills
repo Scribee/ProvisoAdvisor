@@ -1,9 +1,15 @@
 graph {
 	node [shape=square]
-	1234 [label="John Doe"]
+	4 [label="Bob Joe"]
 	node [shape=ellipse]
 	0 [label="C++"]
-	1234 -- 0
-	label="\nSkills diagram for John Doe"
+	4 -- 0
+	2 [label=Research]
+	4 -- 2
+	43 [label="Research papers"]
+	4 -- 43
+	38 [label="Object oriented programming"]
+	4 -- 38
+	label="\nSkills diagram for Bob Joe"
 	fontsize=20
 }
