@@ -195,5 +195,5 @@ student = cursor.fetchall()[0]
 print_classes()
 print_skills()
 print_classes_and_skills()
-print_all_skills()
+#print_all_skills()
 print_jobs()

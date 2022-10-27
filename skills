@@ -1,21 +1,23 @@
 graph {
 	node [shape=square]
-	1234 [label="John Doe" fillcolor="#66ded2" style=filled]
+	1829491 [label="t t" fillcolor="#66ded2" style=filled]
 	node [shape=ellipse]
-	0 [label="C++" fillcolor="#ddf542" style=filled]
-	1234 -- 0
-	28 [label=Calculus fillcolor="#81f542" style=filled]
-	1234 -- 28
-	33 [label="Formal logic" fillcolor="#ddf542" style=filled]
-	1234 -- 33
-	38 [label="Object oriented programming" fillcolor="#ddf542" style=filled]
-	1234 -- 38
-	37 [label=Probability fillcolor="#ddf542" style=filled]
-	1234 -- 37
-	32 [label="Public speaking" fillcolor="#ddf542" style=filled]
-	1234 -- 32
-	2 [label=Research fillcolor="#ddf542" style=filled]
-	1234 -- 2
-	label="\nSkills diagram for John Doe."
+	14 [label=Bootstrap fillcolor="#ddf542" style=filled]
+	1829491 -- 14
+	12 [label=CSS fillcolor="#ddf542" style=filled]
+	1829491 -- 12
+	13 [label=HTML fillcolor="#ddf542" style=filled]
+	1829491 -- 13
+	42 [label=JavaScript fillcolor="#ddf542" style=filled]
+	1829491 -- 42
+	16 [label=Laravel fillcolor="#ddf542" style=filled]
+	1829491 -- 16
+	18 [label=MySQL fillcolor="#ddf542" style=filled]
+	1829491 -- 18
+	15 [label=PHP fillcolor="#ddf542" style=filled]
+	1829491 -- 15
+	17 [label=SQL fillcolor="#ddf542" style=filled]
+	1829491 -- 17
+	label="\nSkills diagram for t t."
 	fontsize=20
 }
