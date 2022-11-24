@@ -7,7 +7,8 @@
 </head>
 <body>
 <?php
-    require('db.php');
+/*
+    //require('db.php');
     session_start();
     // When form submitted, check and create user session.
     if (isset($_POST['ID'])) {
@@ -31,16 +32,29 @@
                   </div>";
         }
     } else {
+ * 
+ */
 ?>
-    <form class="form" method="post" name="login">
+    <form class="form" action="{{ route('login.post') }}" method="POST" name="login">
+        @csrf
         <h1 class="login-title">Login</h1>
-        <input type="text" class="login-input" name="ID" placeholder="ID" autofocus="true"/>
-        <input type="password" class="login-input" name="password" placeholder="Password"/>
+        <input type="text" class="login-input form-control" name="email" placeholder="Email" id="email" required/>
+        <input type="password" class="login-input form-control" name="password" placeholder="Password" id="Password" required/>
         <input type="submit" value="Login" name="submit" class="login-button"/>
-        <p class="link"><a href="registration.php">New Registration</a></p>
-  </form>
+   </form>
+   
+   @if (session('success'))
+
+                        <div class="alert alert-success" role="alert">
+
+                            {{ session('success') }}
+
+                        </div>
+
+                    @endif
+  <p class="link"><a href="{{ route('register') }}">New Registration</a></p>
 <?php
-    }
+    //}
 ?>
 </body>
 </html>

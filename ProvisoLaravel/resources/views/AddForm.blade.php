@@ -22,7 +22,7 @@
             </div>
 </nav>
 <?php
-    require('db.php');
+    //require('db.php');
     // When form submitted, insert values into the database.
     if (isset($_REQUEST['ID'])) {
         // removes backslashes

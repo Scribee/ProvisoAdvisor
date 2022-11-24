@@ -1,7 +1,7 @@
 <?php
 //include auth_session.php file on all user panel pages
 //include("auth_session.php");
-require('db.php');
+//require('db.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,9 +27,18 @@ require('db.php');
             </div>
 </nav>
     <div class="form">
-        <p>Hey, <?php echo $_SESSION['ID']; ?>!</p>
-        <h2>You are now on the user dashboard page.</h2>   
+        <p>Hey!</p>
+        <h2>You are now on the students dashboard page.</h2>   
     </div>
+    @if (session('success'))
+
+                        <div class="alert alert-success" role="alert">
+
+                            {{ session('success') }}
+
+                        </div>
+
+                    @endif
     <div class="form">
         <p><a href="logout.php">Logout</a></p>
     </div>
