@@ -450,11 +450,24 @@ ul.search li a:hover {
      background: grey;
 }
 
+.build_box .signIn_btn {
+     font-size: 20px;
+     padding: 15px 0;
+     text-transform: uppercase;
+     font-weight: normal;
+     max-width: 278px;
+     background: goldenrod;
+}
+
+.build_box .signIn_btn:hover {
+     background: grey;
+}
+
 #myCarousel .carousel-control-prev,
 #myCarousel .carousel-control-next {
      width: 75px;
      height: 75px;
-     background: #161825;
+     background: goldenrod;
      opacity: 1;
      font-size: 42px;
      color: black;
@@ -466,7 +479,7 @@ ul.search li a:hover {
 #myCarousel .carousel-control-next:hover,
 #myCarousel .carousel-control-prev:focus,
 #myCarousel .carousel-control-next:focus {
-     background: #fd9801;
+     background: goldenrod;
      color: #fff;
 }
 
@@ -562,7 +575,7 @@ ul.search li a:hover {
 }
 
 #text_hover:hover.const {
-     background-color: #f89501;
+     background-color: goldenrod;
      transition: ease-in all 0.5s;
      cursor: pointer;
 }

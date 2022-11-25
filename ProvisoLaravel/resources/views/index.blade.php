@@ -49,9 +49,6 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-3">
-                        <ul class="contat_infoma">
-                           <li><i class="fa fa-phone" aria-hidden="true"></i> Call : +01 12345678909</li>
-                        </ul>
                      </div>
                      <div class="col-md-6">
                         <ul class="social_icon_top text_align_center  ">
@@ -62,8 +59,9 @@
                         </ul>
                      </div>
                      <div class="col-md-3">
-                        <ul class="contat_infoma text_align_right">
-                           <li><a href="Javascript:void(0)"> <i class="fa fa-phone" aria-hidden="true"></i> provisoadvising@gmail.com</a></li>
+                        <ul class = "text_align_right">
+                            <li><a href='{{route('login')}}'>Sign in</a></li>
+                            <li><a href='{{route('register')}}'>Register</a></li>
                         </ul>
                      </div>
                   </div>
@@ -107,9 +105,6 @@
                                        </li>
                                     </ul>
                                  </div>
-                                 <ul class="search">
-                                    <li><a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                                 </ul>
                               </nav>
                            </div>
                         </div>
@@ -137,7 +132,7 @@
                                  <div class="build_box">
                                     <h1>Welcome to Proviso Advising!</h1>
                                     <p>Advising made easy!</p>
-                                    <a class="read_more conatct_btn" href="contact.html" role="button">Contact Us</a>
+                                    <a class="read_more signIn_btn" href="{{route('login')}}" role="button">Sign In</a>
                                  </div>
                               </div>
                            </div>
@@ -151,8 +146,8 @@
                               <div class="col-md-9">
                                  <div class="build_box">
                                     <h1>Welcome to Proviso Advising!</h1>
-                                    <p>Advising made easy!</p>
-                                    <a class="read_more conatct_btn" href="contact.html" role="button">Contact Us</a>
+                                    <p>Sign in or register as a new user to get started!</p>
+                                    <a class="read_more signIn_btn" href="{{route('register')}}" role="button">Register</a>
                                  </div>
                               </div>
                            </div>
@@ -179,20 +174,20 @@
             <div class="row">
                <div class="col-md-3">
                   <div id="text_hover" class="const text_align_center">
-                     <i><img src="images/ser1.png" alt="#"/></i>
-                     <span>construction services</span>
+                     <i><img src="images/signIn.png" alt="#"/></i>
+                     <span>Sign Up or Sign In</span>
                   </div>
                </div>
                <div class="col-md-3">
                   <div id="text_hover" class="const text_align_center">
-                     <i><img src="images/ser2.png" alt="#"/></i>
-                     <span>RECONSTRUCTION</span>
+                     <i><img src="images/add.png" alt="#"/></i>
+                     <span>Add your classes</span>
                   </div>
                </div>
                <div class="col-md-3">
                   <div id="text_hover" class="const text_align_center">
-                     <i><img src="images/ser3.png" alt="#"/></i>
-                     <span>ELECTRICAL services</span>
+                     <i><img src="images/select.png" alt="#"/></i>
+                     <span>Select a company or position</span>
                   </div>
                </div>
             </div>
@@ -685,14 +680,6 @@
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
-
-    <div class="form">
-        <h1>Welcome to Proviso Advising</h1>
-    </div>
-    <div class="form">
-        <h1>To login click <a href="{{ route('login') }}">here!</a> </h1>
-        <h1>To register as a new student click <a href="{{ route('register')}}">here!</a> </h1>
-    </div>
 </body>
 
 </html>
