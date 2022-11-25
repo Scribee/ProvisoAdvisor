@@ -69,7 +69,7 @@ def print_skills():
 
     # Make a student node in the center
     f.attr('node', shape='square')
-    f.node(str(student[0]), student[2] + ' ' + student[3], style='filled', fillcolor=colors.PRIMARY)
+    f.node('s' + str(student[0]), student[2] + ' ' + student[3], style='filled', fillcolor=colors.PRIMARY)
 
     # Add skills around the student
     f.attr('node', shape='ellipse')
@@ -81,7 +81,7 @@ def print_skills():
             f.node(str(row[0]), row[1], style='filled', fillcolor=colors.TERTIARY)
         else:
             f.node(str(row[0]), row[1], style='filled', fillcolor=colors.LIGHT)
-        f.edge(str(student[0]), str(row[0]))
+        f.edge('s' + str(student[0]), str(row[0]))
         
     # Label the graph
     f.attr(label=r'\nSkills diagram for ' + student[2] + ' ' + student[3] + '.')

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2022 at 10:35 PM
+-- Generation Time: Nov 26, 2022 at 12:29 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -68,22 +68,14 @@ INSERT INTO `classes` (`ID`, `Subject`, `Course#`, `Title`, `Year`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jobs`
+-- Table structure for table `companies`
 --
 
-CREATE TABLE `jobs` (
-  `id` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL,
-  `company` varchar(32) NOT NULL,
-  `description` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `jobs`
---
-
-INSERT INTO `jobs` (`id`, `name`, `company`, `description`) VALUES
-(0, 'Software Engineer', 'Amazon', 'Backend or frontend development on the mobile Amazon Shopping app.');
+CREATE TABLE `companies` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(32) NOT NULL,
+  `Description` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -133,18 +125,9 @@ INSERT INTO `prerequisites` (`Class`, `Prereq`, `Requirement`) VALUES
 --
 
 CREATE TABLE `requires` (
-  `id` int(11) NOT NULL,
-  `jobID` int(11) NOT NULL,
-  `skillID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `requires`
---
-
-INSERT INTO `requires` (`id`, `jobID`, `skillID`) VALUES
-(1, 0, 0),
-(2, 0, 1);
+  `CompanyID` int(11) NOT NULL,
+  `SkillID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -213,9 +196,7 @@ INSERT INTO `skills` (`ID`, `Name`, `Description`) VALUES
 (47, 'Finite state machines', ''),
 (48, 'Turing machines', ''),
 (49, 'Operating systems', ''),
-(50, 'Debugging', ''),
-(51, 'Assembly language', ''),
-(52, 'Compiler design', '');
+(50, 'Debugging', '');
 
 -- --------------------------------------------------------
 
@@ -225,7 +206,7 @@ INSERT INTO `skills` (`ID`, `Name`, `Description`) VALUES
 
 CREATE TABLE `students` (
   `ID` int(11) NOT NULL,
-  `Password` varchar(32) NOT NULL,
+  `Password` varchar(64) NOT NULL,
   `First` varchar(32) NOT NULL,
   `Last` varchar(32) NOT NULL,
   `Major` varchar(32) NOT NULL,
@@ -238,6 +219,18 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`ID`, `Password`, `First`, `Last`, `Major`, `Year`) VALUES
 (1, 'c4ca4238a0b923820dcc509a6f75849b', 'Jane', 'Doe', 'Computer Science', 1),
+(2, 'daeccf0ad3c1fc8c8015205c332f5b42', 'Molly', 'Meadows', 'Computer Science', 3),
+(3, 'eccbc87e4b5ce2fe28308fd9f2a7baf3', 'Carson', 'Sus', 'CS', 1),
+(4, 'a87ff679a2f3e71d9181a67b7542122c', 'Bob', 'Joe', 'Computer Science', 2),
+(5, 'p', 'Billy', 'Bob', 'Computer Science', 2),
+(6, '6', '6', '6', 'Computer Science', 2),
+(7, '$2y$10$a2nrNGYkDAKroNxm6WM23eGPSiPFTPXCm7aPZX0/wvmqkdul53zea', '7', '7', 'CS', 2),
+(8, '$2y$10$i5nd7Jgb4jmXhZcI8wY4AOjqLymSeeQmlQgO2qZtXAinnQdhDFKWS', '8', '8', 'CS', 3),
+(9, '$2y$10$kxknGERlFFXmc0Y0yIqgEecd8jiafhmpLl86MLM78y2i9qqvXw2Fu', '9', '9', '9', 9),
+(10, '$2y$10$662bmVRhNUi.nRyR5oVNk.WNBkD7Rz8cqCpo8ZIFM8mMJ5EIvMs7O', '10', '10', '10', 10),
+(11, '$2y$10$v2AVgCDo30piBQdZqaBJD.xu.gJe9RzdeuR0z073slcFrIZ5BIRtW', '11', '11', '11', 11),
+(12, '$2y$10$/xe9tv5OJ9L5sgKaGqWcxudPDUsXM0tx19i99ioxRCG/YgL8COQ5u', '12', '12', '12', 12),
+(13, '$2y$10$2YvuIFfujz1nnuYGpQ.B4.45LckFiFktHrj5dQKMgl6Zu51h.8Hde', '13', '13', '13', 13),
 (1234, 'd41d8cd98f00b204e9800998ecf8427e', 'John', 'Doe', 'Computer Science', 1);
 
 -- --------------------------------------------------------
@@ -262,7 +255,10 @@ INSERT INTO `taken` (`ID`, `Class`, `Year`) VALUES
 (1234, 'ENGL102', 1),
 (1234, 'COMM101', 1),
 (1234, 'CS120', 1),
-(1234, 'MATH175', 1);
+(2, 'CS120', 1),
+(2, 'CS120', 1),
+(4, 'CS120', 1),
+(4, 'CS480', 4);
 
 -- --------------------------------------------------------
 
@@ -271,7 +267,6 @@ INSERT INTO `taken` (`ID`, `Class`, `Year`) VALUES
 --
 
 CREATE TABLE `teaches` (
-  `id` int(11) NOT NULL,
   `Class` varchar(32) NOT NULL,
   `SkillID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -280,79 +275,90 @@ CREATE TABLE `teaches` (
 -- Dumping data for table `teaches`
 --
 
-INSERT INTO `teaches` (`id`, `Class`, `SkillID`) VALUES
-(1, 'CS120', 0),
-(2, 'CS121', 0),
-(3, 'CS121', 1),
-(4, 'ENGL317', 2),
-(5, 'ENGL102', 2),
-(6, 'CS480', 2),
-(7, 'CS481', 2),
-(8, 'CS383', 10),
-(9, 'CS383', 11),
-(10, 'CS383', 25),
-(11, 'CS383', 26),
-(12, 'CS383', 30),
-(13, 'CS383', 31),
-(14, 'CS150', 45),
-(15, 'CS150', 35),
-(16, 'CS150', 34),
-(17, 'CS210', 3),
-(18, 'CS210', 5),
-(19, 'CS210', 6),
-(20, 'CS210', 7),
-(21, 'CS210', 8),
-(22, 'CS360', 12),
-(23, 'CS360', 13),
-(24, 'CS360', 14),
-(25, 'CS360', 15),
-(26, 'CS360', 16),
-(27, 'CS360', 17),
-(28, 'CS360', 18),
-(29, 'ENGL317', 23),
-(30, 'COMM101', 32),
-(31, 'STAT301', 36),
-(32, 'STAT301', 37),
-(33, 'MATH170', 28),
-(34, 'MATH175', 28),
-(35, 'CS121', 45),
-(36, 'CS240', 19),
-(37, 'CS270', 19),
-(38, 'CS121', 27),
-(39, 'CS210', 27),
-(40, 'CS240', 27),
-(41, 'CS270', 27),
-(42, 'MATH176', 33),
-(43, 'MATH176', 37),
-(44, 'CS270', 39),
-(45, 'CS385', 46),
-(46, 'CS385', 29),
-(47, 'CS240', 49),
-(48, 'CS150', 47),
-(49, 'CS150', 48),
-(50, 'CS480', 43),
-(51, 'CS481', 43),
-(52, 'ENGL317', 43),
-(53, 'CS240', 21),
-(54, 'CS270', 40),
-(55, 'CS210', 38),
-(56, 'CS120', 38),
-(57, 'CS400', 22),
-(58, 'CS240', 20),
-(59, 'CS270', 20),
-(60, 'CS270', 24),
-(61, 'CS210', 50),
-(62, 'CS270', 50),
-(63, 'CS240', 4),
-(64, 'CS360', 42),
-(65, 'STAT301', 9),
-(66, 'CS404', 35),
-(67, 'CS404', 34),
-(68, 'CS445', 51),
-(69, 'CS150', 51),
-(70, 'CS445', 49),
-(71, 'CS445', 52),
-(73, 'CS240', 52);
+INSERT INTO `teaches` (`Class`, `SkillID`) VALUES
+('CS120', 0),
+('CS121', 0),
+('CS121', 1),
+('ENGL317', 2),
+('ENGL102', 2),
+('CS480', 2),
+('CS481', 2),
+('CS383', 10),
+('CS383', 11),
+('CS383', 25),
+('CS383', 26),
+('CS383', 30),
+('CS383', 31),
+('CS150', 45),
+('CS150', 35),
+('CS150', 34),
+('CS210', 3),
+('CS210', 5),
+('CS210', 6),
+('CS210', 7),
+('CS210', 8),
+('CS360', 12),
+('CS360', 13),
+('CS360', 14),
+('CS360', 15),
+('CS360', 16),
+('CS360', 17),
+('CS360', 18),
+('ENGL317', 23),
+('COMM101', 32),
+('STAT301', 36),
+('STAT301', 37),
+('MATH170', 28),
+('MATH175', 28),
+('CS121', 45),
+('CS240', 19),
+('CS270', 19),
+('CS121', 27),
+('CS210', 27),
+('CS240', 27),
+('CS270', 27),
+('MATH176', 33),
+('MATH176', 37),
+('CS270', 39),
+('CS385', 46),
+('CS385', 29),
+('CS240', 49),
+('CS150', 47),
+('CS150', 48),
+('CS480', 43),
+('CS481', 43),
+('ENGL317', 43),
+('CS240', 21),
+('CS270', 40),
+('CS210', 38),
+('CS120', 38),
+('CS400', 22),
+('CS240', 20),
+('CS270', 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `created_at` timestamp NULL DEFAULT NULL,
+  `email` varchar(64) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `id` bigint(20) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  `remember_token` varchar(64) DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`created_at`, `email`, `email_verified_at`, `id`, `name`, `password`, `remember_token`, `updated_at`) VALUES
+('2022-11-24 08:27:52', '13', NULL, 1, '13 13', '$2y$10$HAlv.ZdzTbtVfPU.SqQLO.F3HhwfWA27UcAnHsCi68bR5vSPmtmL6', NULL, '2022-11-24 08:27:52');
 
 --
 -- Indexes for dumped tables
@@ -363,18 +369,6 @@ INSERT INTO `teaches` (`id`, `Class`, `SkillID`) VALUES
 --
 ALTER TABLE `classes`
   ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `jobs`
---
-ALTER TABLE `jobs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `requires`
---
-ALTER TABLE `requires`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `skills`
@@ -389,10 +383,11 @@ ALTER TABLE `students`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `teaches`
+-- Indexes for table `users`
 --
-ALTER TABLE `teaches`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -405,28 +400,16 @@ ALTER TABLE `classes`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10056;
 
 --
--- AUTO_INCREMENT for table `jobs`
---
-ALTER TABLE `jobs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `requires`
---
-ALTER TABLE `requires`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT for table `teaches`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `teaches`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

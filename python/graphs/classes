@@ -7,24 +7,24 @@ digraph {
 	subgraph clusterYear1 {
 		fillcolor="#DDDDDD:#EEEEEE" label="Year 1" style=filled
 		CS120 [label="CS120
-Computer Science 1" fillcolor="#66ded2" style=filled]
+Computer Science 1"]
 		CS121 [label="CS121
 Computer Science 2"]
 		CS150 [label="CS150
 Computer Organization and Architecture"]
 		MATH176 [label="MATH176
-Discrete Mathematics" fillcolor="#66ded2" style=filled]
+Discrete Mathematics"]
 		MATH170 [label="MATH170
-Calculus 1" fillcolor="#66ded2" style=filled]
+Calculus 1"]
 		ENGL102 [label="ENGL102
-College Writing and Rhetoric" fillcolor="#66ded2" style=filled]
+College Writing and Rhetoric"]
 		COMM101 [label="COMM101
-Fundamentals of Public Speaking" fillcolor="#66ded2" style=filled]
+Fundamentals of Public Speaking"]
 	}
 	subgraph clusterYear2 {
 		fillcolor="#DDDDDD:#EEEEEE" label="Year 2" style=filled
 		CS210 [label="CS210
-Programming Languages"]
+Programming Languages" fillcolor="#66ded2" style=filled]
 		CS240 [label="CS240
 Computer Operating Systems"]
 		MATH175 [label="MATH175
@@ -41,7 +41,7 @@ Theory of Computation"]
 		CS395 [label="CS395
 Analysis of Algorithms"]
 		CS360 [label="CS360
-Database Systems"]
+Database Systems" fillcolor="#66ded2" style=filled]
 		MATH330 [label="MATH330
 Linear Algebra"]
 		ENGL317 [label="ENGL317
@@ -85,6 +85,6 @@ Compiler Design"]
 	CS210 -> CS445 [label=""]
 	CS385 -> CS445 [label=""]
 	CS480 -> CS481 [label=""]
-	label="\nClass diagram for John Doe."
+	label="\nClass diagram for Molly Meadows."
 	fontsize=20
 }
