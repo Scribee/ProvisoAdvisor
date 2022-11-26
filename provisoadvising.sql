@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2022 at 12:29 AM
+-- Generation Time: Nov 26, 2022 at 09:55 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -74,8 +74,21 @@ INSERT INTO `classes` (`ID`, `Subject`, `Course#`, `Title`, `Year`) VALUES
 CREATE TABLE `companies` (
   `ID` int(11) NOT NULL,
   `Name` varchar(32) NOT NULL,
-  `Description` varchar(256) NOT NULL
+  `Description` varchar(2048) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`ID`, `Name`, `Description`) VALUES
+(0, 'Amazon', '• Collaborate with experienced cross-disciplinary Amazonians to conceive, design, and bring innovative products and services to market.\r\n• Design and build innovative technologies in a large distributed computing environment and help lead fundamental changes in the industry.\r\n• Create solutions to run predictions on distributed systems with exposure to innovative technologies at incredible scale and speed.\r\n• Build distributed storage, index, and query systems that are scalable, fault-tolerant, low cost, and easy to manage/use.\r\n• Design and code the right solutions starting with broadly defined problems.\r\n• Work in an agile environment to deliver high-quality software.'),
+(1, 'Cisco', '• Designing and implementing (usually in C/C++) features to improve the reliability, simplicity, and performance of our devices, as well as make them more flexible and powerful\r\n• Bringing up our Linux-based system on new hardware platforms\r\n• Collaborating with our hardware engineers on the design of new platforms'),
+(2, 'Siemens', '• Developing a proof-of-concept system for automation customers\r\n• Upgrading demo equipment for the marketing team, or creating a new demo as new products and features are released\r\n• Debugging, improving, or documenting both customer programs and internal demos\r\n• Assisting experienced Siemens Applications Engineers with their ongoing projects, which can include any of the above and more'),
+(3, 'Citrix', '• Plans, designs, develops and tests software systems and/or applications for software enhancements and new products.\r\n• Apps--Uses Agile development methodology to develop user-level applications on a variety of platforms including desktop operating systems (Windows, Linux, Mac) and/or mobile operating systems (iOS, Android).\r\n• Works at any level of the application stack for different users of the product (IT vs corporate user).\r\n• Systems software--Uses virtualization technologies and techniques to develop operating systems, device drivers, utilities, and software; development tools (e.g., assemblers, compilers, etc.) for different operating system architectures (Windows, Linux, Mac OS), driver development, experience with inserting (\"\"hooking\"\") custom code into normal operating path in order to modify operation of platform.'),
+(4, 'Epic Games', '• Debugging CPU, GPU, and/or peripherals of modern game consoles\r\n• Performance analysis and optimization on game consoles\r\n• Development of workflow tools for game console targets\r\n• Assist in various improvements to the EOS Client SDK.\r\n• This work could cover direct feature implementation or support (such as voice, lobbies, new features), or assist with the integration effort of the SDK into Fortnite. \r\n• Get exposure to first party platform SDK work while hooking up our crossplay features backed by Switch/XBL/PSN platform APIs. \r\n• Implement and address external team feedback and quality of life feature requests\r\n• Leverage Data from Infrastructure metrics and other resources to understand where best to implement automation\r\n• Work with the Global Infrastructure team to build requirements for automation / project for deliverable\r\n• Create documentation and presentation for what they want to implement\r\n• Working with Senior Developers/Mentor to submit code to central repository for peer reviews and feedback'),
+(5, 'Climate', '• Front-end/Web Applications - JavaScript and CSS development for our web applications. We leverage several leading edge JS frameworks (including React, D3, and more). You will work primarily on the Web Interfaces for these applications, which are used by farmers to manage and insure their farms and crops. \r\n• Back-end/Platform Services - Large-scale distributed services for applications and data management. We use a mix of Java, Ruby on Rails, Python and Clojure code. You will work primarily on the back-end services that power our web and mobile applications. These cloud based services are built on AWS infrastructure and are designed for 7x24 operation, with manageability, availability, reliability and scalability in mind. \r\n• Mobile - Phone and Tablet application development for both the iOS and Android platforms. The applications complement our Web Applications by providing unique mobile device specific capabilities and core functionality to improve farming and insurance operations. \r\n• Science - Large-scale distributed data services for scientific computing (we use Clojure) \r\n• Data Analytics- we work with big-data, and invest considerably in our analytics capabilities. You will work with Hadoop/Map Reduce, RDBMS and data visualization tools '),
+(6, 'Microsoft', '• Applies engineering principles to solve complex problems through sound and creative engineering. \r\n• Quickly learns new engineering methods and incorporates them into his or her work processes. \r\n• Seeks feedback and applies internal or industry best practices to improve his or her technical solutions. \r\n• Demonstrates skill in time management and completing software projects in a cooperative team environment. ');
 
 -- --------------------------------------------------------
 
@@ -126,8 +139,108 @@ INSERT INTO `prerequisites` (`Class`, `Prereq`, `Requirement`) VALUES
 
 CREATE TABLE `requires` (
   `CompanyID` int(11) NOT NULL,
-  `SkillID` int(11) NOT NULL
+  `SkillID` int(11) NOT NULL,
+  `priority` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `requires`
+--
+
+INSERT INTO `requires` (`CompanyID`, `SkillID`, `priority`) VALUES
+(0, 51, 0),
+(0, 52, 1),
+(0, 53, 2),
+(0, 54, 1),
+(0, 55, 1),
+(0, 56, 1),
+(0, 58, 1),
+(0, 59, 0),
+(0, 0, -1),
+(0, 1, -1),
+(0, 3, -1),
+(0, 7, -1),
+(0, 10, -1),
+(0, 15, -1),
+(0, 42, -1),
+(1, 52, 0),
+(1, 1, -1),
+(1, 0, -1),
+(1, 49, -1),
+(1, 60, 1),
+(1, 40, 0),
+(1, 61, 0),
+(1, 62, 0),
+(1, 63, 0),
+(1, 20, 0),
+(1, 64, 1),
+(1, 58, 0),
+(2, 52, 0),
+(2, 65, 0),
+(2, 66, -1),
+(2, 10, -1),
+(2, 1, -1),
+(2, 0, -1),
+(2, 3, -1),
+(2, 7, -1),
+(2, 67, -1),
+(2, 68, -1),
+(2, 42, -1),
+(2, 15, -1),
+(2, 40, 1),
+(2, 69, 1),
+(2, 70, 2),
+(2, 71, 2),
+(2, 72, 1),
+(3, 73, 0),
+(3, 57, 1),
+(3, 51, 0),
+(3, 34, 0),
+(3, 1, -1),
+(3, 0, -1),
+(3, 3, -1),
+(3, 74, 0),
+(3, 75, 0),
+(3, 76, 0),
+(3, 78, 1),
+(3, 49, 1),
+(4, 73, 0),
+(4, 0, 0),
+(4, 79, 0),
+(4, 80, 0),
+(4, 81, 0),
+(4, 82, 1),
+(4, 26, 1),
+(4, 10, 1),
+(4, 40, 0),
+(4, 54, 0),
+(4, 64, 1),
+(4, 83, 1),
+(4, 7, 1),
+(4, 39, 1),
+(4, 84, 2),
+(4, 19, 2),
+(4, 85, 1),
+(4, 38, 0),
+(5, 73, 0),
+(5, 38, 0),
+(5, 40, 0),
+(5, 51, 0),
+(5, 86, 0),
+(5, 50, 1),
+(5, 59, 1),
+(5, 20, 1),
+(5, 27, 1),
+(5, 62, 1),
+(5, 42, 1),
+(5, 12, 2),
+(5, 87, 2),
+(5, 88, 2),
+(5, 3, 1),
+(5, 7, 1),
+(5, 44, 2),
+(5, 67, 2),
+(5, 68, 2);
 
 -- --------------------------------------------------------
 
@@ -190,13 +303,51 @@ INSERT INTO `skills` (`ID`, `Name`, `Description`) VALUES
 (41, 'Graphical IDEs', ''),
 (42, 'JavaScript', ''),
 (43, 'Research papers', ''),
-(44, 'Ruby', ''),
+(44, 'Ruby on Rails', ''),
 (45, 'Binary', ''),
 (46, 'Regular expressions', ''),
 (47, 'Finite state machines', ''),
 (48, 'Turing machines', ''),
 (49, 'Operating systems', ''),
-(50, 'Debugging', '');
+(50, 'Debugging', ''),
+(51, 'Software development experience', ''),
+(52, 'Completed BS CS', ''),
+(53, 'Full stack development', ''),
+(54, 'Distributed systems', ''),
+(55, 'AWS platform', ''),
+(56, 'Client communication', ''),
+(57, 'Agile development', ''),
+(58, 'Coding on a team', ''),
+(59, '1 year of experience', ''),
+(60, 'OS design', ''),
+(61, 'Embedded platforms', ''),
+(62, 'Linux', ''),
+(63, 'Working in kernel space', ''),
+(64, 'Internship experience', ''),
+(65, 'Microsoft office suite', ''),
+(66, 'Ladder logic', ''),
+(67, 'iOS development', ''),
+(68, 'Android development', ''),
+(69, 'Windows app development', ''),
+(70, 'Engineering statics/dynamics', ''),
+(71, 'Power electronics', ''),
+(72, 'Control systems', ''),
+(73, 'Seeking BS CS', ''),
+(74, 'Hardware architecture', ''),
+(75, 'Reverse engineering', ''),
+(76, 'Low level debugging', ''),
+(77, 'Compiler design', ''),
+(78, 'Device drivers', ''),
+(79, 'Basic game design', ''),
+(80, 'Data structures', ''),
+(81, 'Algorithm design', ''),
+(82, 'Performance optimization', ''),
+(83, 'REST architectural style', ''),
+(84, 'Node.js', ''),
+(85, 'MongoDB', ''),
+(86, 'Server design', ''),
+(87, 'React', ''),
+(88, 'Clojure', '');
 
 -- --------------------------------------------------------
 
@@ -371,6 +522,12 @@ ALTER TABLE `classes`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `companies`
+--
+ALTER TABLE `companies`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `skills`
 --
 ALTER TABLE `skills`
@@ -400,10 +557,16 @@ ALTER TABLE `classes`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10056;
 
 --
+-- AUTO_INCREMENT for table `companies`
+--
+ALTER TABLE `companies`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `users`
