@@ -30,8 +30,8 @@
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #fff;
+form.login_form input.login-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ffffff;
   opacity: 1; /* Firefox */
 }
 
