@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2022 at 09:55 PM
+-- Generation Time: Nov 27, 2022 at 02:14 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -88,7 +88,10 @@ INSERT INTO `companies` (`ID`, `Name`, `Description`) VALUES
 (3, 'Citrix', '• Plans, designs, develops and tests software systems and/or applications for software enhancements and new products.\r\n• Apps--Uses Agile development methodology to develop user-level applications on a variety of platforms including desktop operating systems (Windows, Linux, Mac) and/or mobile operating systems (iOS, Android).\r\n• Works at any level of the application stack for different users of the product (IT vs corporate user).\r\n• Systems software--Uses virtualization technologies and techniques to develop operating systems, device drivers, utilities, and software; development tools (e.g., assemblers, compilers, etc.) for different operating system architectures (Windows, Linux, Mac OS), driver development, experience with inserting (\"\"hooking\"\") custom code into normal operating path in order to modify operation of platform.'),
 (4, 'Epic Games', '• Debugging CPU, GPU, and/or peripherals of modern game consoles\r\n• Performance analysis and optimization on game consoles\r\n• Development of workflow tools for game console targets\r\n• Assist in various improvements to the EOS Client SDK.\r\n• This work could cover direct feature implementation or support (such as voice, lobbies, new features), or assist with the integration effort of the SDK into Fortnite. \r\n• Get exposure to first party platform SDK work while hooking up our crossplay features backed by Switch/XBL/PSN platform APIs. \r\n• Implement and address external team feedback and quality of life feature requests\r\n• Leverage Data from Infrastructure metrics and other resources to understand where best to implement automation\r\n• Work with the Global Infrastructure team to build requirements for automation / project for deliverable\r\n• Create documentation and presentation for what they want to implement\r\n• Working with Senior Developers/Mentor to submit code to central repository for peer reviews and feedback'),
 (5, 'Climate', '• Front-end/Web Applications - JavaScript and CSS development for our web applications. We leverage several leading edge JS frameworks (including React, D3, and more). You will work primarily on the Web Interfaces for these applications, which are used by farmers to manage and insure their farms and crops. \r\n• Back-end/Platform Services - Large-scale distributed services for applications and data management. We use a mix of Java, Ruby on Rails, Python and Clojure code. You will work primarily on the back-end services that power our web and mobile applications. These cloud based services are built on AWS infrastructure and are designed for 7x24 operation, with manageability, availability, reliability and scalability in mind. \r\n• Mobile - Phone and Tablet application development for both the iOS and Android platforms. The applications complement our Web Applications by providing unique mobile device specific capabilities and core functionality to improve farming and insurance operations. \r\n• Science - Large-scale distributed data services for scientific computing (we use Clojure) \r\n• Data Analytics- we work with big-data, and invest considerably in our analytics capabilities. You will work with Hadoop/Map Reduce, RDBMS and data visualization tools '),
-(6, 'Microsoft', '• Applies engineering principles to solve complex problems through sound and creative engineering. \r\n• Quickly learns new engineering methods and incorporates them into his or her work processes. \r\n• Seeks feedback and applies internal or industry best practices to improve his or her technical solutions. \r\n• Demonstrates skill in time management and completing software projects in a cooperative team environment. ');
+(6, 'Microsoft', '• Applies engineering principles to solve complex problems through sound and creative engineering. \r\n• Quickly learns new engineering methods and incorporates them into his or her work processes. \r\n• Seeks feedback and applies internal or industry best practices to improve his or her technical solutions. \r\n• Demonstrates skill in time management and completing software projects in a cooperative team environment. '),
+(7, 'TuSimple', '• Research and prototype development using deep learning and machine learning algorithms for the most challenging problems in multi-sensor perception and fusion, including camera, LiDAR, RADAR, etc. \r\n• Deliver high-quality, robust, and reliable codes for the perception system on the L4 autonomous driving trucks. \r\n• Collaborate with other engineers on cross-functional efforts.'),
+(8, 'Addepar', '• Manage individual project priorities, deadlines, and deliverables.\r\n• Collaborate effectively with product managers, engineers and team members on your project.\r\n• Document software functionality, system design, and project plans; this includes clean, readable code with comments.\r\n• Learn and demonstrate engineering standard processes and principles.\r\n• Produce a retrospective and demonstrate your summer project to an internal audience.'),
+(9, 'Coda', '• Work with our product, design and growth teams to enhance Coda, while working with new product features, APIs, performance, quality, and scale—we will match you to a project based on your interests\r\n• Learn and deepen your experience with React, TypeScript, NodeJS, Kubernetes, and AWS\r\n• Work in a collaborative environment across multiple geo-located offices (locations in Seattle, San Francisco, and Mountain View). Like many of our engineers, you can also work remotely\r\n• Help ensure our customers have an excellent experience using Coda');
 
 -- --------------------------------------------------------
 
@@ -240,7 +243,48 @@ INSERT INTO `requires` (`CompanyID`, `SkillID`, `priority`) VALUES
 (5, 7, 1),
 (5, 44, 2),
 (5, 67, 2),
-(5, 68, 2);
+(5, 68, 2),
+(7, 52, 0),
+(7, 64, 0),
+(7, 7, -1),
+(7, 0, -1),
+(7, 42, 0),
+(7, 87, 0),
+(7, 84, 0),
+(7, 89, 1),
+(7, 90, 1),
+(7, 55, 1),
+(8, 73, 0),
+(8, 38, 0),
+(8, 51, 0),
+(8, 23, 0),
+(8, 58, 0),
+(8, 33, 1),
+(8, 40, 0),
+(8, 83, 0),
+(8, 7, 0),
+(8, 3, 0),
+(8, 55, 0),
+(8, 42, 0),
+(8, 17, 0),
+(8, 91, 0),
+(8, 62, 0),
+(8, 39, 0),
+(9, 58, 0),
+(9, 73, 0),
+(9, 0, -1),
+(9, 1, -1),
+(9, 3, -1),
+(9, 7, -1),
+(9, 10, -1),
+(9, 42, -1),
+(9, 44, -1),
+(9, 92, 1),
+(9, 87, 1),
+(9, 84, 1),
+(9, 55, 1),
+(9, 93, 1),
+(9, 56, 1);
 
 -- --------------------------------------------------------
 
@@ -347,7 +391,12 @@ INSERT INTO `skills` (`ID`, `Name`, `Description`) VALUES
 (85, 'MongoDB', ''),
 (86, 'Server design', ''),
 (87, 'React', ''),
-(88, 'Clojure', '');
+(88, 'Clojure', ''),
+(89, '3D graphics', ''),
+(90, 'Flask', ''),
+(91, 'Database transaction logging', ''),
+(92, 'TypeScript', ''),
+(93, 'Kubernetes', '');
 
 -- --------------------------------------------------------
 
@@ -560,13 +609,13 @@ ALTER TABLE `classes`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `users`
