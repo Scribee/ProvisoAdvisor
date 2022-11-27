@@ -30,6 +30,11 @@
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff;
+  opacity: 1; /* Firefox */
+}
+
 * {
      box-sizing: border-box !important;
 }
@@ -1085,11 +1090,68 @@ ul.social_icon_staff li a:hover {
 
 /** end clients section **/
 
+/** login section **/
+.login {
+     background: grey;
+     padding-top: 50px;
+     text-align: center;
+     align-content: center;
+}
+
+.login h3 {
+     font-family: 'Open Sans', sans-serif;
+     font-weight: bold;
+     font-size: 17px;
+     line-height: 24px;
+     border-bottom: #fff solid 1px;
+     text-align: center;
+     color: #fff;
+     margin-bottom: 15px;
+     display: table;
+    
+}
+
+.login a {
+    color: white;
+}
+
+.login_container {
+     max-width: 1340px;
+     width: 100%;
+     height: 100%;
+     padding-right: 15px;
+     padding-left: 15px;
+     margin-right: auto;
+     margin-left: auto;
+     align-content: center;
+}
+
+.login_form {
+     margin-top: 23px;
+     width: 100%;
+     height: 100%;
+     align-content: center;
+}
+
+.login_form .enter {
+     border: inherit;
+     padding: 0px 19px;
+     width: 100%;
+     height: 40px;
+     background-color: transparent;
+     color: #fff;
+     font-size: 15px;
+     font-weight: 300;
+     float: left;
+     margin-bottom: 20px;
+     border: #fff solid 1px;
+     align-content: center;
+}
 
 /** footer **/
 
 .footer {
-     background: #161825;
+     background: grey;
      padding-top: 90px;
      text-align: center;
 }
@@ -1158,7 +1220,7 @@ ul.link_menu li a {
 }
 
 ul.link_menu li a:hover {
-     color: #f4a111;
+     color: goldenrod;
 }
 
 ul.insta {
@@ -1172,6 +1234,8 @@ ul.insta li {
 
 .bottom_form {
      margin-top: 23px;
+     width: 100%;
+     height: 100%;
 }
 
 .bottom_form .enter {
@@ -1186,6 +1250,7 @@ ul.insta li {
      float: left;
      margin-bottom: 20px;
      border: #fff solid 1px;
+     align-content: center
 }
 
 .sub_btn {
@@ -1201,7 +1266,7 @@ ul.insta li {
 }
 
 .sub_btn:hover {
-     background-color: #f4a111;
+     background-color: goldenrod;
      transition: ease-in all 0.5s;
      color: #fff;
 }

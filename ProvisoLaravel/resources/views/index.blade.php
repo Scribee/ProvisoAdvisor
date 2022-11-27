@@ -6,7 +6,6 @@
 <head>
     <!DOCTYPE html>
 <html lang="en">
-   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <!-- mobile metas -->
@@ -33,7 +32,7 @@
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-   </head>
+
 </head>
 <body class="main-layout">
       <!-- loader  -->
@@ -59,9 +58,9 @@
                         </ul>
                      </div>
                      <div class="col-md-3">
-                        <ul class = "text_align_right">
-                            <li><a href='{{route('login')}}'>Sign in</a></li>
-                            <li><a href='{{route('register')}}'>Register</a></li>
+                        <ul class = "">
+                            <li style='display:inline; padding:15px'><a href='{{route('login')}}'>Sign in</a></li>
+                            <li style='display:inline; padding:15px'><a href='{{route('register')}}'>Register</a></li>
                         </ul>
                      </div>
                   </div>
@@ -168,7 +167,7 @@
          </section>
       </header>
       <!-- end banner -->
-      <!-- three_box -->
+       <!-- three_box -->
       <div class="three_box">
          <div class="container">
             <div class="row">
@@ -200,9 +199,11 @@
             <div class="row d_flex">
                <div class="col-md-7">
                   <div class="titlepage">
-                     <h2>About Our Company</h2>
-                     <span>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomisedThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</span>
-                     <a class="read_more" href="Javascript:void(0)"> Read More</a>
+                     <h2>About Our Website</h2>
+                     <span>Proviso Advising is a dedicated advising site that eliminates the need to schedule an appointment with a professional. 
+                     Here at Proviso you can generate your schedule in just a few easy steps. 
+                     First register or sign in as a user. Then add the classes that you've already taken. Lastly, select a company or position you'd like to explore.
+                     Proviso will then generate a chart of classes that we recommend to set you up for those career goals!</span>
                   </div>
                </div>
                <div class="col-md-5">
@@ -214,14 +215,15 @@
          </div>
       </div>
       <!-- end about -->
+     
       <!-- projects -->
       <div class="projects">
          <div class="container-fluid">
             <div class="row">
                <div class="col-md-12">
                   <div class="titlepage">
-                     <h2>Our Features Projects</h2>
-                     <span>It is a long established fact that a reader will be distracted by the readable</span>
+                     <h2>Example chart!</h2>
+                     <span>Graph coming soon</span>
                   </div>
                </div>
             </div>
@@ -244,8 +246,7 @@
                                              <figure><img src="images/project_img.png" alt="#"/></figure>
                                           </div>
                                           <div id="pro_ho" class="project_text">
-                                             <h3>Reader will be<br> distracted by the readable</h3>
-                                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
+                                            <p>This is what the dashboard page will look like when you register with our services!</p>
                                           </div>
                                        </div>
                                     </div>
@@ -316,47 +317,7 @@
                               </div>
                            </div>
                         </div>
-                        <div class="carousel-item">
-                           <div class="container-fluid">
-                              <div class="carousel-caption relative3">
-                                 <div class="row">
-                                    <div class="col-md-4">
-                                       <div class="project">
-                                          <div class="project_img">
-                                             <figure><img src="images/project_img2.png" alt="#"/></figure>
-                                          </div>
-                                          <div id="pro_ho" class="project_text">
-                                             <h3>Reader will be<br> distracted by the readable</h3>
-                                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <div class="project">
-                                          <div class="project_img">
-                                             <figure><img src="images/project_img.png" alt="#"/></figure>
-                                          </div>
-                                          <div id="pro_ho" class="project_text">
-                                             <h3>Reader will be<br> distracted by the readable</h3>
-                                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <div class="project">
-                                          <div class="project_img">
-                                             <figure><img src="images/project_img1.png" alt="#"/></figure>
-                                          </div>
-                                          <div id="pro_ho" class="project_text">
-                                             <h3>Reader will be<br> distracted by the readable</h3>
-                                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+                        
                         <a class="carousel-control-prev" href="#proj" role="button" data-slide="prev">
                         <i class="fa fa-arrow-left" aria-hidden="true"></i>
                         <span class="sr-only">Previous</span>
@@ -401,87 +362,6 @@
          </div>
       </div>
       <!-- end choose -->
-      <!-- staff -->
-      <div class="staff_main">
-         <div class="container_staff">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Our Expert Staff</h2>
-                     <span>There are many variations of passages of Lorem Ipsum available, but the </span>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="staff">
-                     <div class="man">
-                        <i><img src="images/man.png" alt="#"/></i>
-                     </div>
-                     <div class="social_icon_main">
-                        <h4>Available</h4>
-                        <ul class="social_icon_staff text_align_center  ">
-                           <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="staff">
-                     <div class="man">
-                        <i><img src="images/man.png" alt="#"/></i>
-                     </div>
-                     <div class="social_icon_main">
-                        <h4>Available</h4>
-                        <ul class="social_icon_staff text_align_center  ">
-                           <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="staff">
-                     <div class="man">
-                        <i><img src="images/man.png" alt="#"/></i>
-                     </div>
-                     <div class="social_icon_main">
-                        <h4>Available</h4>
-                        <ul class="social_icon_staff text_align_center  ">
-                           <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="staff">
-                     <div class="man">
-                        <i><img src="images/man.png" alt="#"/></i>
-                     </div>
-                     <div class="social_icon_main">
-                        <h4>Available</h4>
-                        <ul class="social_icon_staff text_align_center  ">
-                           <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                           <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-12">
-                  <a class="read_more" href="Javascript:void(0)"> See More</a>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end staff -->
       <!--  contact -->
       <div class="contact">
          <div class="container">
