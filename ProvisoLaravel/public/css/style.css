@@ -277,6 +277,7 @@ button {
      background-color: goldenrod;
      padding: 12px 0;
      padding: 13px 0;
+    
 }
 
 ul.contat_infoma {
@@ -409,6 +410,7 @@ ul.search li a:hover {
      background-size: 100% 100%;
      background-position: center;
      background-repeat: no-repeat;
+     padding-bottom: 50px;
 }
 
 .banner_main {
@@ -982,8 +984,9 @@ ul.social_icon_staff li a:hover {
 
 .clients {
      padding-top: 90px;
-     background: #161825;
+     background: goldenrod;
      position: relative;
+     padding-bottom: 90px;
 }
 
 .clients .titlepage h2 {
@@ -1003,7 +1006,7 @@ ul.social_icon_staff li a:hover {
      position: inherit;
      padding: 0px 50px 80px 50px;
      text-align: left;
-     border-top: #fe9901 solid 111px;
+     //border-top: #fe9901 solid 111px;
      border-radius: 10px;
 }
 
@@ -1031,7 +1034,7 @@ ul.social_icon_staff li a:hover {
 
 .testimo_ban_bg {
      background: #fff;
-     box-shadow: 0 0px 237px rgba(22, 22, 23, 0.11);
+     //box-shadow: 0 0px 237px rgba(22, 22, 23, 0.11);
      border-radius: 10px;
 }
 

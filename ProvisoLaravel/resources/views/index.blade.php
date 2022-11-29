@@ -91,16 +91,17 @@
                                           <a class="nav-link" href="{{route('home')}}">Home</a>
                                        </li>
                                        <li class="nav-item">
-                                          <a class="nav-link" href="about.html">About</a>
+                                          <a class="nav-link" href="#how-to">How To</a>
                                        </li>
                                        <li class="nav-item">
-                                          <a class="nav-link" href="project.html">Companies</a>
+                                          <a class="nav-link" href="#about">About</a>
                                        </li>
                                        <li class="nav-item">
-                                          <a class="nav-link" href="staff.html">Skill Trees</a>
+                                          <a class="nav-link" href="#examples">Examples</a>
                                        </li>
                                        <li class="nav-item">
-                                          <a class="nav-link" href="contact.html">Contact Us</a>
+                                          <a class="nav-link" href="#contact">Contact</a>
+                                     
                                        </li>
                                     </ul>
                                  </div>
@@ -168,7 +169,7 @@
       </header>
       <!-- end banner -->
        <!-- three_box -->
-      <div class="three_box">
+      <div class="three_box" id="how-to">
          <div class="container">
             <div class="row">
                <div class="col-md-3">
@@ -194,7 +195,7 @@
       </div>
       <!-- end three_box -->
       <!-- about -->
-      <div class="about">
+      <div class="about" id="about">
          <div class="container-fluid">
             <div class="row d_flex">
                <div class="col-md-7">
@@ -217,7 +218,7 @@
       <!-- end about -->
      
       <!-- projects -->
-      <div class="projects">
+      <div class="projects" id='examples'>
          <div class="container-fluid">
             <div class="row">
                <div class="col-md-12">
@@ -333,37 +334,9 @@
          </div>
       </div>
       <!-- end projects -->
-      <!-- choose -->
-      <div class="choose">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-6 col-md-7 ">
-                  <div class="titlepage">
-                     <h2>Why Choose Us</h2>
-                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomisedThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomisedThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
-                     <div class="award">
-                        <div id="awa_ho" class="award_icon text_align_center">
-                           <i><img src="images/ch1.png" alt="#"/>
-                           </i>
-                           <strong>client satisfaction</strong>
-                        </div>
-                        <div id="awa_ho" class="award_icon text_align_center">
-                           <i><img src="images/ch2.png" alt="#"/></i>
-                           <strong>award</strong>
-                        </div>
-                        <div id="awa_ho" class="award_icon text_align_center">
-                           <i><img src="images/ch3.png" alt="#"/></i>
-                           <strong>Trustable</strong>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end choose -->
+      
       <!--  contact -->
-      <div class="contact">
+      <div class="contact" id="contact">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
@@ -405,104 +378,7 @@
          </div>
       </div>
       <!-- end contact -->
-      <div class="truck">
-         <div class="container-fluid">
-            <div class="row">
-               <div class="col-md-6 jkhgkj">
-                  <div class="truck_img1">
-                     <img src="images/truck.png" alt="#"/>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="truck_img1">
-                     <img src="images/jcb.png" alt="#"/>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- clients -->
-      <div class="clients">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Clients Words</h2>
-                     <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </span>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-8 offset-md-2">
-                  <div class="testimo_ban_bg">
-                     <div id="testimo" class="carousel slide testimo_ban" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                           <li data-target="#testimo" data-slide-to="0" class="active"></li>
-                           <li data-target="#testimo" data-slide-to="1"></li>
-                           <li data-target="#testimo" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                           <div class="carousel-item active">
-                              <div class="container parile0">
-                                 <div class="carousel-caption relative2">
-                                    <div class="row d_flex">
-                                       <div class="col-md-12">
-                                          <i><img class="qusright" src="images/t.png" alt="#"/><img src="images/tes.png" alt="#"/><img class="qusleft" src="images/t.png" alt="#"/></i>
-                                          <div class="consect">
-                                             <span>consectetur</span>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniamLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="carousel-item">
-                              <div class="container parile0">
-                                 <div class="carousel-caption relative2">
-                                    <div class="row d_flex">
-                                       <div class="col-md-12">
-                                          <i><img class="qusright" src="images/t.png" alt="#"/><img src="images/tes.png" alt="#"/><img class="qusleft" src="images/t.png" alt="#"/></i>
-                                          <div class="consect">
-                                             <span>consectetur</span>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniamLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="carousel-item">
-                              <div class="container parile0">
-                                 <div class="carousel-caption relative2">
-                                    <div class="row d_flex">
-                                       <div class="col-md-12">
-                                          <i><img class="qusright" src="images/t.png" alt="#"/><img src="images/tes.png" alt="#"/><img class="qusleft" src="images/t.png" alt="#"/></i>
-                                          <div class="consect">
-                                             <span>consectetur</span>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna consectua. Ut enim ad minim veniamLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <a class="carousel-control-prev" href="#testimo" role="button" data-slide="prev">
-                           <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                           <span class="sr-only">Previous</span>
-                           </a>
-                           <a class="carousel-control-next" href="#testimo" role="button" data-slide="next">
-                           <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                           <span class="sr-only">Next</span>
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end clients -->
+     
       <!--  footer -->
       <footer>
          <div class="footer">
