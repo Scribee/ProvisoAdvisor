@@ -56,8 +56,8 @@
                      </div>
                      <div class="col-md-3">
                         <ul class = "">
-                            <li style='display:inline; padding:15px'><img src="images/profile.png" style='width: 20px; height: 20px' alt="#"/></li>
-                            <li style='display:inline; padding:15px'><a href='{{route('profile')}}'>Profile</a></li>
+                            <li style='display:inline;'><img src="images/profile.png" style='width: 20px; height: 20px' alt="#"/></li>
+                            <li style='display:inline; padding:15px'><a href='{{route('profile')}}'>Name Here</a></li>
                             <li style='display:inline; padding:15px'><a href='{{route('login')}}'>Logout</a></li>
                         </ul>
                      </div>
@@ -290,9 +290,9 @@
             <div class="container">
                <div class="row">
                   <div class=" col-lg-3 col-md-6">
-                     <a class="logo_bottom"><img src="images/logo_bottom.png" alt="#"/></a>
+                     
                      <p class="many">
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humou
+                        
                      </p>
                   </div>
                   <div class="col-lg-2 offset-lg-1 col-md-6">
@@ -305,22 +305,8 @@
                         <li><a href="contact.html">Contact Us</a></li>
                      </ul>
                   </div>
-                  <div class=" col-lg-3 col-md-6">
-                     <h3>INSTAGRAM FEEDS</h3>
-                     <ul class="insta text_align_left">
-                        <li><img src="images/inst1.png" alt="#"/></li>
-                        <li><img src="images/inst2.png" alt="#"/></li>
-                        <li><img src="images/inst3.png" alt="#"/></li>
-                        <li><img src="images/inst4.png" alt="#"/></li>
-                     </ul>
-                  </div>
-                  <div class=" col-lg-3 col-md-6 ">
-                     <h3>SIGN UP TO OUR NEWSLETTER </h3>
-                     <form class="bottom_form">
-                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
-                        <button class="sub_btn">Sign Up</button>
-                     </form>
-                  </div>
+                  
+                  
                </div>
             </div>
             <div class="copyright">
