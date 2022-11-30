@@ -150,7 +150,7 @@
                                                 <!-- add drop down menus-->
                                                 <select name="Classes">
                                                     <option value=''>--Classes--</option>
-                                                    @foreach($class as $row)
+                                                    @foreach($aval as $row)
                                                         <option value="{{$row->ID}}">{{$row->Class}}
                                                         </option>
                                                     @endforeach
@@ -204,10 +204,10 @@
                                             <div class="consect">
                                                 <!--Show positions they've already added-->  
                                                 <!-- add drop down menus-->
-                                                <select name="Classes">
+                                                <select name="Companies">
                                                     <option value=''>--Companies/Positions--</option>
-                                                    @foreach($class as $row)
-                                                        <option value="{{$row->ID}}">{{$row->Class}}
+                                                    @foreach($comp as $c)
+                                                        <option value="{{$c->ID}}">{{$c->Name}}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -260,7 +260,7 @@
                                             <div class="consect">
                                                 <!--Show positions they've already added-->  
                                                 <!-- add drop down menus-->
-                                                <select name="Classes">
+                                                <select name="skills">
                                                     <option value=''>--Skill--</option>
                                                     @foreach($skill as $row)
                                                         <option value="{{$row->ID}}">{{$row->Name}}

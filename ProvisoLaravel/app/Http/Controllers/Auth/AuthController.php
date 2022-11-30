@@ -10,6 +10,8 @@ use App\Models\Student;
 use App\Models\User;
 use App\Models\Classes;
 use App\Models\Skill;
+use App\Models\Company;
+use App\Models\Taken;
 use Hash;
   
 class AuthController extends Controller
@@ -54,7 +56,7 @@ class AuthController extends Controller
         
         $credentials = $request->only('email', 'password');
         if (Auth::guard('user')->attempt($credentials)) {
-            return redirect()->intended('dashboard',['userInfo'=>$request])
+            return redirect()->intended('dashboard')
 
                         ->withSuccess('You have successfully logged in');
         }
@@ -95,9 +97,19 @@ class AuthController extends Controller
     {
         if(Auth::guard('user')->check()){
             
+            $taken = Taken::all();
             $class = Classes::all();
+            $aval = array();
+            foreach($class as $c){
+                foreach($taken as $t){
+                    if($t["Class"] != $c["Class"]){
+                        array_push($aval, $c);
+                    }
+                }  
+            }
             $skill = Skill::all(); 
-            return view('dashboard',['class'=>$class],['skill'=>$skill]);
+            $comp = Company::all();
+            return view('dashboard',['aval'=>$aval],['skill'=>$skill],['comp'=>$comp],['taken'=>$taken]);
         }
         
         

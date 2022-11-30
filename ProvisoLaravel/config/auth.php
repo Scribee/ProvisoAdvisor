@@ -82,6 +82,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Skill::class,
         ],
+        'companies' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Company::class,
+        ],
+        'taken' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Taken::class,
+        ],
 
         
     ],
