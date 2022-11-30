@@ -45,6 +45,10 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-3">
+                         <ul class = "">
+                            <li style='display:inline;'><img src="images/profile.png" style='width: 20px; height: 20px' alt="#"/></li>
+                            <li style='display:inline; padding:15px'><a href='{{route('profile')}}'>Name Here</a></li>
+                         </ul>
                      </div>
                      <div class="col-md-6">
                         <ul class="social_icon_top text_align_center  ">
@@ -56,9 +60,7 @@
                      </div>
                      <div class="col-md-3">
                         <ul class = "">
-                            <li style='display:inline;'><img src="images/profile.png" style='width: 20px; height: 20px' alt="#"/></li>
-                            <li style='display:inline; padding:15px'><a href='{{route('profile')}}'>Name Here</a></li>
-                            <li style='display:inline; padding:15px'><a href='{{route('login')}}'>Logout</a></li>
+                            <li style='align-content: end; display:inline; padding:15px'><a href='{{route('logout')}}'>Logout</a></li>
                         </ul>
                      </div>
                   </div>
@@ -146,6 +148,13 @@
                                             <div class="consect">
                                                 <!--Show classes they've already added-->  
                                                 <!-- add drop down menus-->
+                                                <select name="Classes">
+                                                    <option value=''>--Classes--</option>
+                                                    @foreach($class as $row)
+                                                        <option value="{{$row->ID}}">{{$row->Class}}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                           </div>
                                        </div>
                                     </div>
@@ -195,6 +204,13 @@
                                             <div class="consect">
                                                 <!--Show positions they've already added-->  
                                                 <!-- add drop down menus-->
+                                                <select name="Classes">
+                                                    <option value=''>--Companies/Positions--</option>
+                                                    @foreach($class as $row)
+                                                        <option value="{{$row->ID}}">{{$row->Class}}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                           </div>
                                        </div>
                                     </div>
@@ -244,6 +260,13 @@
                                             <div class="consect">
                                                 <!--Show positions they've already added-->  
                                                 <!-- add drop down menus-->
+                                                <select name="Classes">
+                                                    <option value=''>--Skill--</option>
+                                                    @foreach($skill as $row)
+                                                        <option value="{{$row->ID}}">{{$row->Name}}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                           </div>
                                        </div>
                                     </div>

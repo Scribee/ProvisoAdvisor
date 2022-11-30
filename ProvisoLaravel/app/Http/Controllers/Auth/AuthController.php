@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\Student;
 use App\Models\User;
+use App\Models\Classes;
+use App\Models\Skill;
 use Hash;
   
 class AuthController extends Controller
@@ -52,7 +54,7 @@ class AuthController extends Controller
         
         $credentials = $request->only('email', 'password');
         if (Auth::guard('user')->attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return redirect()->intended('dashboard',['userInfo'=>$request])
 
                         ->withSuccess('You have successfully logged in');
         }
@@ -92,8 +94,14 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::guard('user')->check()){
-            return view('dashboard');
+            
+            $class = Classes::all();
+            $skill = Skill::all(); 
+            return view('dashboard',['class'=>$class],['skill'=>$skill]);
         }
+        
+        
+        
   
         return redirect("login")->withSuccess('Oops! You do not have access');
     }
