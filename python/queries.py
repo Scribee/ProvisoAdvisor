@@ -1,6 +1,6 @@
 # File to define queries as constants
 
-studentID = input('Please enter your student ID: ')
+studentID = ''
 
 GET_CLASSES = 'SELECT * FROM classes'
 GET_PREREQS = 'SELECT * FROM prerequisites'

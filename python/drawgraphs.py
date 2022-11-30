@@ -1,6 +1,6 @@
 import graphviz
 from dbconnector import cursor
-from queries import GET_CLASSES, GET_PREREQS, GET_TAKEN, GET_STUDENT, GET_SKILLS, GET_ALL_SKILLS, GET_TEACHES, GET_JOBS, GET_COMPANIES, GET_REQUIRES
+from queries import studentID, GET_CLASSES, GET_PREREQS, GET_TAKEN, GET_STUDENT, GET_SKILLS, GET_ALL_SKILLS, GET_TEACHES, GET_JOBS, GET_COMPANIES, GET_REQUIRES
 import colors
 
 ### Function Definitions ###
@@ -26,10 +26,10 @@ def get_skills():
         
     return learned
 
-# CREATE GRAPH FOR CLASSES
+# Create graph with all classes, grouped by year and connected where prerequisites exist
 def print_classes():
     # Directed graph to be output as a pdf
-    e = graphviz.Digraph(filename='graphs/classes', format='pdf')
+    e = graphviz.Digraph(filename='graphs/classes', format='png')
     e.attr('node', shape='egg')
     e.attr(rankdir='LR')
 
@@ -62,7 +62,7 @@ def print_classes():
 
     e.view()
 
-# CREATE GRAPH FOR SKILLS
+# Creates a graph of all skills a student has
 def print_skills():
     # Make undirected graph to output as a pdf
     f = graphviz.Graph(filename='graphs/skills', format='pdf')
@@ -155,6 +155,7 @@ def print_classes_and_skills():
 
     h.view()
     
+# Prints all companies and their required skills
 def print_jobs():
     # Make undirected graph to output as a pdf
     i = graphviz.Graph(filename='graphs/jobs', format='pdf')
@@ -186,14 +187,15 @@ def print_jobs():
 
     i.view()
     
-### Program Start ###
+# Sets the provided value as the student id in the queries, and creates all graphs
+def create_graphs(user):
+    # Get student information
+    studentID = user
+    cursor.execute(GET_STUDENT)
+    student = cursor.fetchall()[0]
 
-# Get student information
-cursor.execute(GET_STUDENT)
-student = cursor.fetchall()[0]
-
-print_classes()
-print_skills()
-print_classes_and_skills()
-print_all_skills()
-print_jobs()
+    print_classes()
+    #print_skills()
+    #print_classes_and_skills()
+    #print_all_skills()
+    #print_jobs()
