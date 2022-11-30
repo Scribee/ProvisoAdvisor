@@ -337,7 +337,7 @@
         <!--generate schedule -->
         <div class = "clients" style="background-color: goldenrod; width: none !important" id="schedule">
             <div class="container">
-                <div class='row' style="width:100%; height:400px; padding:0px !important" >
+                <div class='row' style="width:100%; height:500px; padding:0px !important" >
                     <div class="col-md-12">
                         <div class="titlepage">
                             <h2>Your Schedule</h2>
