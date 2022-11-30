@@ -64,7 +64,8 @@ def print_classes():
     e.attr(label=r'\nClass diagram for ' + student[2] + ' ' + student[3] + '.')
     e.attr(fontsize='20')
 
-    e.view()
+    #e.view()
+    #return e
 
 # Creates a graph of all skills a student has
 def print_skills():
