@@ -74,7 +74,7 @@ class AuthController extends Controller
         $request->validate([
             'ID' => 'required|unique:students',
             'Password' => 'required',
-            'email' =>'required',
+            'email' =>'required|unique:users',
             'First' => 'required',
             'Last' => 'required',
             'Major' => 'required',
@@ -177,6 +177,28 @@ class AuthController extends Controller
      *
      * @return response()
      */
+    public function addClass(Request $request){
+        
+        $request->validate([   
+            'Class' => 'required',
+            'Grade' => 'required',
+            'Year' => 'required'
+        ]);
+        
+        //check that they have selected from each drop down
+        $check = $this->createClass($request);
+        
+        return redirect("dashboard")->withSuccess('Great! You have successfully added a class!');
+    }
+    
+    public function createClass(Request $data){
+        return Taken::create([
+        'Class' => $data['Class'],
+        'Grade' => $data['Grade'],
+        'Year' => $data['Year']   
+      ]);
+    }
+    
     public function logout() {
         Session::flush();
         Auth::logout();

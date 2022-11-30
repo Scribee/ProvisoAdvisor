@@ -146,8 +146,33 @@
                                     <div class="row d_flex">
                                         <div class="col-md-12">
                                             <div class="consect">
-                                                <!--Show classes they've already added-->  
+                                                <!--Show classes they've already added-->
+    
+    
+    <table>
+        <tr>
+            <td>Class</td>
+            <td>Grade</td>
+            <td>Year</td>
+            <td>Delete</td>
+        </tr>
+        @foreach ($taken as $class)
+        <tr>
+            <form action="{{ route('dashboard.post') }}" method="POST" role="form">
+                @csrf
+            <td>{{ $class->Class }}</td>
+            <td>{{ $class->Grade }}</td>
+            <td>{{ $class->Year }}</td>
+            <td>
+            <input type="checkbox" name="KeyToDelete" value="{{ $class->ID }}" required>
+            </td>
+            <td><input type="submit" name="submitDeleteBtn"></td>
+            </form>
+        </tr>
+        @endforeach
+    </table>
                                                 <!-- add drop down menus-->
+                                                <form action='{{route('addClass')}}' method='POST'>
                                                 <select name="Classes">
                                                     <option value=''>--Classes--</option>
                                                     @foreach($aval as $row)
@@ -155,6 +180,23 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
+                                                <select name='Grade'>
+                                                    <option value=''>--Grade--</option>
+                                                    <option value='A'>A</option>
+                                                    <option value='B'>B</option>
+                                                    <option value='C'>C</option>
+                                                    <option value='D'>D</option>
+                                                    <option value='F'>F</option>
+                                                </select>
+                                                <select name='Year'>
+                                                    <option value=''>--Year--</option>
+                                                    <option value='1'>1</option>
+                                                    <option value='2'>2</option>
+                                                    <option value='3'>3</option>
+                                                    <option value='4'>4</option>
+                                                </select>
+                                                    <input type="submit" name="submit" value="Add" class="login-button"/>
+                                                </form>
                                           </div>
                                        </div>
                                     </div>
