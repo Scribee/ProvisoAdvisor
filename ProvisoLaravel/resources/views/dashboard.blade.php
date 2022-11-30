@@ -206,7 +206,7 @@
                                                 <!-- add drop down menus-->
                                                 <select name="Companies">
                                                     <option value=''>--Companies/Positions--</option>
-                                                    @foreach($comp as $c)
+                                                    @foreach($company as $c)
                                                         <option value="{{$c->ID}}">{{$c->Name}}
                                                         </option>
                                                     @endforeach

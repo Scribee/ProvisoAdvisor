@@ -97,19 +97,25 @@ class AuthController extends Controller
     {
         if(Auth::guard('user')->check()){
             
+            $flag = false;
             $taken = Taken::all();
             $class = Classes::all();
             $aval = array();
+            $skill = Skill::all(); 
+            $company = Company::all();
             foreach($class as $c){
                 foreach($taken as $t){
-                    if($t["Class"] != $c["Class"]){
-                        array_push($aval, $c);
+                    if($t["Class"] == $c["Class"]){
+                        $flag = true;
                     }
-                }  
+                }
+                if(!$flag){
+                    array_push($aval, $c);
+                }
+                $flag = false;
             }
-            $skill = Skill::all(); 
-            $comp = Company::all();
-            return view('dashboard',['aval'=>$aval],['skill'=>$skill],['comp'=>$comp],['taken'=>$taken]);
+            
+            return view(view: 'dashboard', data: ['company'=>$company, 'aval'=>$aval, 'skill'=>$skill, 'taken'=>$taken]);
         }
         
         
