@@ -35,6 +35,15 @@ form.login_form input.login-input::placeholder { /* Chrome, Firefox, Opera, Safa
   opacity: 1; /* Firefox */
 }
 
+div.class_graph,
+div.skill_graph {
+	margin-top: 30px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	border-radius: 6px;
+	background-color: #ffffff;
+}
+
 * {
      box-sizing: border-box !important;
 }
