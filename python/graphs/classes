@@ -7,7 +7,7 @@ digraph {
 	subgraph clusterYear1 {
 		fillcolor="#DDDDDD:#EEEEEE" label="Year 1" style=filled
 		CS120 [label="CS120
-Computer Science 1"]
+Computer Science 1" fillcolor="#66ded2" style=filled]
 		CS121 [label="CS121
 Computer Science 2"]
 		CS150 [label="CS150
@@ -24,7 +24,7 @@ Fundamentals of Public Speaking"]
 	subgraph clusterYear2 {
 		fillcolor="#DDDDDD:#EEEEEE" label="Year 2" style=filled
 		CS210 [label="CS210
-Programming Languages" fillcolor="#66ded2" style=filled]
+Programming Languages"]
 		CS240 [label="CS240
 Computer Operating Systems"]
 		MATH175 [label="MATH175
@@ -41,7 +41,7 @@ Theory of Computation"]
 		CS395 [label="CS395
 Analysis of Algorithms"]
 		CS360 [label="CS360
-Database Systems" fillcolor="#66ded2" style=filled]
+Database Systems"]
 		MATH330 [label="MATH330
 Linear Algebra"]
 		ENGL317 [label="ENGL317

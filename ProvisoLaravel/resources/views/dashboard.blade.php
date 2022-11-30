@@ -342,6 +342,10 @@
                         <div class="titlepage">
                             <h2>Your Schedule</h2>
                             <br>
+							
+							 <button type="button" class="btn btn-secondary class_graph">Show graph of classes</button>
+							 <div class="class_graph">
+							 </div>
                         </div>
                     </div>
                 </div>
@@ -353,44 +357,6 @@
                 <br>
             </div>
         </div>
-
-
-        <!--  footer -->
-        <footer>
-            <div class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class=" col-lg-3 col-md-6">
-
-                            <p class="many">
-
-                            </p>
-                        </div>
-                        <div class="col-lg-2 offset-lg-1 col-md-6">
-                            <h3>QUICK LINKS</h3>
-                            <ul class="link_menu">
-                                <li><a href="indexTemp.blade.php.html">Home</a></li>
-                                <li><a href="about.html"> About</a></li>
-                                <li><a href="project.html">Projects</a></li>
-                                <li><a href="staff.html">Staff</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                            </ul>
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="copyright">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 offset-md-2">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- end footer -->
         <!-- Javascript files-->
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
@@ -398,7 +364,50 @@
         <!-- sidebar -->
         <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="js/custom.js"></script>
+		<script type='text/javascript'>
+			$('button.class_graph').click(function() {
+				$('div.class_graph').html('<img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}"/>')
+			});
+		</script>
     </body>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+
+	<!--  footer -->
+	<footer>
+		<div class="footer">
+			<div class="container">
+				<div class="row">
+					<div class=" col-lg-3 col-md-6">
+
+						<p class="many">
+
+						</p>
+					</div>
+					<div class="col-lg-2 offset-lg-1 col-md-6">
+						<h3>QUICK LINKS</h3>
+						<ul class="link_menu">
+							<li><a href="indexTemp.blade.php.html">Home</a></li>
+							<li><a href="about.html"> About</a></li>
+							<li><a href="project.html">Projects</a></li>
+							<li><a href="staff.html">Staff</a></li>
+							<li><a href="contact.html">Contact Us</a></li>
+						</ul>
+					</div>
+
+
+				</div>
+			</div>
+			<div class="copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- end footer -->
 
 </html>
 

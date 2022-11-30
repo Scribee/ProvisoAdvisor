@@ -1,4 +1,4 @@
-# File to define color pallette for the project
+# File to define constants and color pallette for the project
 
 PRIMARY = '#66ded2'
 SECONDARY = '#81f542'
