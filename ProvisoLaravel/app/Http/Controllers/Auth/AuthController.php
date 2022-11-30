@@ -96,25 +96,21 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::guard('user')->check()){
-            
             $flag = false;
-            $taken = Taken::all();
+            $taken = Taken::select('*')->where('ID', Auth::id());
             $class = Classes::all();
             $aval = array();
             $skill = Skill::all(); 
             $company = Company::all();
             foreach($class as $c){
                 foreach($taken as $t){
-                    if($t["Class"] == $c["Class"]){
-                        $flag = true;
-                    }
+                    if($t["Class"] == $c["Class"]){$flag = true;}
                 }
                 if(!$flag){
                     array_push($aval, $c);
                 }
                 $flag = false;
-            }
-            
+            }  
             return view(view: 'dashboard', data: ['company'=>$company, 'aval'=>$aval, 'skill'=>$skill, 'taken'=>$taken]);
         }
         
@@ -156,6 +152,8 @@ class AuthController extends Controller
        return User::create([
 
         'name' => $data['First'] . " " . $data['Last'],
+           
+        'id' => $data['ID'],
 
         'email' => $data['email'],
 
@@ -186,13 +184,14 @@ class AuthController extends Controller
         ]);
         
         //check that they have selected from each drop down
-        $check = $this->createClass($request);
+        $this->createClass($request);
         
         return redirect("dashboard")->withSuccess('Great! You have successfully added a class!');
     }
     
     public function createClass(Request $data){
         return Taken::create([
+        'ID' => Auth::guard('user')->user()->id,
         'Class' => $data['Class'],
         'Grade' => $data['Grade'],
         'Year' => $data['Year']   
@@ -203,7 +202,7 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
   
-        return redirect('login');
+        return redirect('index');
     }
 }
 

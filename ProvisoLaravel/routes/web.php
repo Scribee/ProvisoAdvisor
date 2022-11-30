@@ -28,3 +28,4 @@ Route::post('post-dashboard', [AuthController::class, 'postDashboard'])->name('d
 Route::get('index', [AuthController::class, 'index'])->name('home');
 Route::get('profile', [AuthController::class, 'profile'])->name('profile');
 Route::post('addClass',[AuthController::class, 'addClass'])->name('addClass');
+

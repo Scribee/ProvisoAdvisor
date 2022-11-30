@@ -23,7 +23,10 @@ class Taken extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'Name',
+        'ID',
+        'Class',
+        'Grade',
+        'Year'
         
     ];
 
