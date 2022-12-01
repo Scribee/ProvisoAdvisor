@@ -156,10 +156,10 @@
                                                                 @csrf
                                                                 <table>
                                                                     <tr>
-                                                                        <td>Class</td>
-                                                                        <td>Grade</td>
-                                                                        <td>Year</td>
-                                                                        <td>Delete</td>
+                                                                        <td style="padding-right: 15px">Class</td>
+                                                                        <td style="padding-right: 15px">Grade</td>
+                                                                        <td style="padding-right: 15px">Year</td>
+                                                                        <td style="padding-right: 15px">Delete</td>
                                                                     </tr>
                                                                     @foreach ($taken->get() as $take)
                                                                     <tr>                                             
@@ -167,7 +167,7 @@
                                                                         <td>{{ $take->Grade }}</td>
                                                                         <td>{{ $take->Year }}</td>
                                                                         <td>
-                                                                            <input type="checkbox" name="KeyToDelete" value="{{ $take->ID }}" required>
+                                                                            <input type="checkbox" name="KeyToDelete" value="{{ $take->Class }}">
                                                                         </td>
                                                                         <td><input type="submit" name="submitDeleteBtn"></td>
                                                                     </tr>                                                                   

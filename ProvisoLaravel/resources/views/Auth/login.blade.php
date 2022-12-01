@@ -43,7 +43,7 @@
 								@csrf
 								
 								<input class="login-input form-control enter" placeholder="Enter your email" type="text" name="email" required />
-								<input class="login-input form-control enter" placeholder="Enter your password" type="text" name="password" required />
+								<input class="login-input form-control enter" placeholder="Enter your password" type="password" name="password" required />
 								<button class="sub_btn">Sign In</button>
 							</form>
 						</div>
