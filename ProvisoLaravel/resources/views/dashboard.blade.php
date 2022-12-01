@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-md-3">
                                 <ul class = "">
-                                    <li style='align-content: end; display:inline; padding:15px'><a href='{{route('logout')}}'>Logout</a></li>
+                                    <li style='align-content: end; display:inline; padding-left:200px'><a href='{{route('logout')}}'>Logout</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                                             </button>
                                             <div class="collapse navbar-collapse" id="navbarsExample04">
                                                 <ul class="navbar-nav mr-auto">
-                                                    <li class="nav-item active">
+                                                    <li class="nav-item">
                                                         <a class="nav-link" href="{{route('dashboard')}}">Home</a>
                                                     </li>
                                                     <li class="nav-item">
@@ -119,10 +119,10 @@
 
         </header>
         @if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-@endif
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+        @endif
         <!-- classes -->
         <div class="clients" id="addClass">
             <div class="container">
@@ -152,31 +152,30 @@
                                                     <div class="col-md-12">
                                                         <div class="consect">
                                                             <!--Show classes they've already added-->
-
-
-                                                            <table>
-                                                                <tr>
-                                                                    <td>Class</td>
-                                                                    <td>Grade</td>
-                                                                    <td>Year</td>
-                                                                    <td>Delete</td>
-                                                                </tr>
-                                                                @foreach ($taken as $class)
-                                                                <tr>
-                                                                <form action="{{ route('dashboard.post') }}" method="POST" role="form">
-                                                                    @csrf
-                                                                    <td>{{ $class->Class }}</td>
-                                                                    <td>{{ $class->Grade }}</td>
-                                                                    <td>{{ $class->Year }}</td>
-                                                                    <td>
-                                                                        <input type="checkbox" name="KeyToDelete" value="{{ $class->ID }}" required>
-                                                                    </td>
-                                                                    <td><input type="submit" name="submitDeleteBtn"></td>
-                                                                </form>
-                                                                </tr>
-                                                                @endforeach
-                                                            </table>
+                                                            <form action="{{ route('dashboard.post') }}" method="POST" role="form">
+                                                                @csrf
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>Class</td>
+                                                                        <td>Grade</td>
+                                                                        <td>Year</td>
+                                                                        <td>Delete</td>
+                                                                    </tr>
+                                                                    @foreach ($taken->get() as $take)
+                                                                    <tr>                                             
+                                                                        <td>{{ $take->Class }}</td>
+                                                                        <td>{{ $take->Grade }}</td>
+                                                                        <td>{{ $take->Year }}</td>
+                                                                        <td>
+                                                                            <input type="checkbox" name="KeyToDelete" value="{{ $take->ID }}" required>
+                                                                        </td>
+                                                                        <td><input type="submit" name="submitDeleteBtn"></td>
+                                                                    </tr>                                                                   
+                                                                    @endforeach
+                                                                </table>
+                                                            </form>
                                                             <!-- add drop down menus-->
+                                                            <br>
                                                             <form action='{{route('addClass')}}' method='POST'>
                                                                 @csrf
                                                                 <select name="Class">
@@ -342,10 +341,10 @@
                         <div class="titlepage">
                             <h2>Your Schedule</h2>
                             <br/>
-							
-							 <button type="button" class="btn btn-secondary class_graph">Show graph of classes</button>
-							 <div class="container w-100 class_graph">
-							 </div>
+
+                            <button type="button" class="btn btn-secondary class_graph">Show graph of classes</button>
+                            <div class="container w-100 class_graph">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -364,50 +363,50 @@
         <!-- sidebar -->
         <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="js/custom.js"></script>
-		<script type='text/javascript'>
-			$('button.class_graph').click(function() {
-				$('div.class_graph').html('<img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}"/>')
-			});
-		</script>
+        <script type='text/javascript'>
+$('button.class_graph').click(function () {
+    $('div.class_graph').html('<img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}"/>')
+});
+        </script>
     </body>
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
-	<!--  footer -->
-	<footer>
-		<div class="footer">
-			<div class="container">
-				<div class="row">
-					<div class=" col-lg-3 col-md-6">
+    <!--  footer -->
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class=" col-lg-3 col-md-6">
 
-						<p class="many">
+                        <p class="many">
 
-						</p>
-					</div>
-					<div class="col-lg-2 offset-lg-1 col-md-6">
-						<h3>QUICK LINKS</h3>
-						<ul class="link_menu">
-							<li><a href="indexTemp.blade.php.html">Home</a></li>
-							<li><a href="about.html"> About</a></li>
-							<li><a href="project.html">Projects</a></li>
-							<li><a href="staff.html">Staff</a></li>
-							<li><a href="contact.html">Contact Us</a></li>
-						</ul>
-					</div>
+                        </p>
+                    </div>
+                    <div class="col-lg-2 offset-lg-1 col-md-6">
+                        <h3>QUICK LINKS</h3>
+                        <ul class="link_menu">
+                            <li><a href="indexTemp.blade.php.html">Home</a></li>
+                            <li><a href="about.html"> About</a></li>
+                            <li><a href="project.html">Projects</a></li>
+                            <li><a href="staff.html">Staff</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
 
 
-				</div>
-			</div>
-			<div class="copyright">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-8 offset-md-2">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- end footer -->
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end footer -->
 
 </html>
 

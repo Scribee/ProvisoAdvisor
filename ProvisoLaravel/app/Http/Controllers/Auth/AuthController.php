@@ -97,7 +97,7 @@ class AuthController extends Controller
     {
         if(Auth::guard('user')->check()){
             $flag = false;
-            $taken = Taken::select('*')->where('ID', Auth::id());
+            $taken = Taken::select('*')->where('ID', Auth::guard('user')->user()->id);
             $class = Classes::all();
             $aval = array();
             $skill = Skill::all(); 
@@ -111,7 +111,7 @@ class AuthController extends Controller
                 }
                 $flag = false;
             }  
-            return view(view: 'dashboard', data: ['company'=>$company, 'aval'=>$aval, 'skill'=>$skill, 'taken'=>$taken]);
+            return view(view: 'dashboard', data: ['taken'=>$taken, 'company'=>$company, 'aval'=>$aval, 'skill'=>$skill]);
         }
         
         
@@ -119,17 +119,17 @@ class AuthController extends Controller
   
         return redirect("login")->withSuccess('Oops! You do not have access');
     }
-    /*public function postDashboard(Request $result)
+    public function postDashboard(Request $result)
     {
         $id = $result->input('KeyToDelete');
         $userid = Auth::id();
         if($userid != $id){
-            Student::where('ID', $id)->firstorfail()->delete();
-            echo ("Student Record deleted successfully.");
-            return view ('dashboard');
+            Taken::where('ID', $id)->delete();
+            echo ("Class Record deleted successfully.");
+            return redirect ('dashboard');
         }
         return redirect("dashboard")->withSuccess('Cannot delete logged in student');
-    }*/
+    }
     
     /**
      * Write code on Method
