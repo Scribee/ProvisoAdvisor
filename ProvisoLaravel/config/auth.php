@@ -90,6 +90,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Taken::class,
         ],
+        'selections' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Selection::class,
+        ],
 
         
     ],

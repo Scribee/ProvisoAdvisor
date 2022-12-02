@@ -248,16 +248,39 @@
                                             <div class="carousel-caption relative2">
                                                 <div class="row d_flex">
                                                     <div class="col-md-12">
-                                                        <div class="consect">
-                                                            <!--Show positions they've already added-->  
+                                                        <div class="consect" >
+                                                           @if(!is_null($comp))
+                                                           <!--Show positions they've already added-->  
+                                                            <form action="{{ route('company.post') }}" method="POST" role="form">
+                                                                @csrf
+                                                                <table>
+                                                                    <th>
+                                                                        <td style="padding-right: 15px; padding-left:0px">Company</td>
+                                                                        <td style="padding-right: 15px">Delete</td>
+                                                                    </th>
+                                                                    <tr>                                             
+                                                                        <td style ="padding-left:20px; padding-right:15px">{{ $comp->Name }}</td>
+                                                                     
+                                                                        <td>
+                                                                            <input type="checkbox" name="KeyToDelete" value="{{ $comp->CompanyID }}"/>
+                                                                        </td>
+                                                                        <td><input type="submit" name="submitDeleteBtn"/></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </form>
+                                                            @endif
                                                             <!-- add drop down menus-->
-                                                            <select name="Companies">
+                                                            <form action='{{route('addCompany')}}' method='POST'>
+                                                                @csrf
+                                                            <select name="CompanyID">
                                                                 <option value=''>--Companies/Positions--</option>
                                                                 @foreach($company as $c)
                                                                 <option value="{{$c->ID}}">{{$c->Name}}
                                                                 </option>
                                                                 @endforeach
                                                             </select>
+                                                            <input type="submit" name="submit" value="Add"/>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>

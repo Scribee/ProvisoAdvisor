@@ -12,6 +12,7 @@ use App\Models\Classes;
 use App\Models\Skill;
 use App\Models\Company;
 use App\Models\Taken;
+use App\Models\Selection;
 use Hash;
 
 class AuthController extends Controller {
@@ -77,7 +78,7 @@ class AuthController extends Controller {
         ]);
 
         //$data = $request->all();
-        $check = $this->create($request);
+        $this->create($request);
 
         return redirect("login")->withSuccess('Great! You have successfully registered!');
     }
@@ -95,6 +96,7 @@ class AuthController extends Controller {
             $aval = array();
             $skill = Skill::all();
             $company = Company::all();
+            $selection = Selection::select('*')->where('ID', Auth::guard('user')->user()->id);
             foreach ($class as $c) {
                 foreach ($taken->get() as $t) {
                     if ($t["Class"] == $c["Class"]) {
@@ -106,7 +108,16 @@ class AuthController extends Controller {
                 }
                 $flag = false;
             }
-            return view(view: 'dashboard', data: ['taken' => $taken, 'company' => $company, 'aval' => $aval, 'skill' => $skill]);
+            //if a company has been selected i.e. selection is not null for their id, update dropdown menu of company to not have any values
+      
+            $compID = Selection::select('*')->where('ID', Auth::guard('user')->user()->id)->first();
+            $comp = null;
+            if (!is_null($compID)) {
+                $comp = Company::select('Name')->where('ID', $compID->CompanyID)->first();
+                $company = Company::select('Name')->where('ID', $compID->CompanyID)->get();
+            }
+            
+            return view(view: 'dashboard', data: ['taken' => $taken, 'company' => $company, 'aval' => $aval, 'skill' => $skill, 'selection' => $selection, 'comp' => $comp]);
         }
 
         return redirect("login")->withSuccess('Oops! You do not have access');
@@ -157,9 +168,9 @@ class AuthController extends Controller {
     }
 
     /**
-     * Write code on Method
+     * adds classes to the taken table 
      *
-     * @return response()
+     * @return redirect to the dashboard
      */
     public function addClass(Request $request) {
 
@@ -174,13 +185,64 @@ class AuthController extends Controller {
 
         return redirect("dashboard")->withSuccess('Great! You have successfully added a class!');
     }
-
+    //adds the class to the taken table using the model Taken
     public function createClass(Request $data) {
         return Taken::create([
                     'ID' => Auth::guard('user')->user()->id,
                     'Class' => $data['Class'],
                     'Grade' => $data['Grade'],
                     'Year' => $data['Year']
+        ]);
+    }
+    
+    public function addCompany(Request $request) {
+
+        $request->validate([
+            'CompanyID'=>'required',
+        ]);
+
+        //check that they have selected from each drop down
+        $this->createSelection($request);
+
+        return redirect("dashboard")->withSuccess('Great! You have successfully added a class!');
+    }
+    //adds the class to the taken table using the model Taken
+    public function createSelection(Request $data) {
+        return Selection::create([
+                    'ID' => Auth::guard('user')->user()->id,
+                    'CompanyID' => $data['CompanyID']
+        ]);
+    }
+    
+    
+    //deleting an entry from the selections table
+    public function postCompany(Request $result){
+        $comp = $result->input('KeyToDelete');
+        $userid = Auth::guard('user')->user()->id;
+        //where the ID and the class that they input are equal
+        Selection::where('ID', $userid)->delete();
+        //return redirect('dashboard');
+
+        return redirect("dashboard")->withSuccess('Cannot delete selection');
+    }
+    
+    //add user as a company, so that they could add skills individually
+    public function addSkill(Request $request) {
+
+        $request->validate([
+            '' => 'required',  
+        ]);
+
+        //check that they have selected from each drop down
+        $this->createSkill($request);
+
+        return redirect("dashboard")->withSuccess('Great! You have successfully added a class!');
+    }
+    //adds the class to the taken table using the model Taken
+    public function createSkill(Request $data) {
+        return Company::create([
+                    'ID' => Auth::guard('user')->user()->id,
+                    'Name' => Auth::guard('user')->user()->name,           
         ]);
     }
 
