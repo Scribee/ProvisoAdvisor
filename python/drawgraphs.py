@@ -30,8 +30,8 @@ def get_skills():
 
 # Create graph with all classes, grouped by year and connected where prerequisites exist
 def print_classes():
-    if (os.path.exists(GRAPH_DIR + '/classes.png)):
-        os.remove(GRAPH_DIR + '/classes.png)
+    if (os.path.exists(GRAPH_DIR + '/classes.png')):
+        os.remove(GRAPH_DIR + '/classes.png')
         
     # Directed graph to be output as a png
     e = graphviz.Digraph(filename=GRAPH_DIR + '/classes', format='png')
@@ -73,8 +73,8 @@ def print_classes():
 
 # Creates a graph with the recommended classes and the skills they fulfil
 def print_recommendations():
-    if (os.path.exists(GRAPH_DIR + '/recommendations.png)):
-        os.remove(GRAPH_DIR + '/recommendations.png)
+    if (os.path.exists(GRAPH_DIR + '/recommendations.png')):
+        os.remove(GRAPH_DIR + '/recommendations.png')
         
     # Undrected graph to be output as a png
     e = graphviz.Graph(filename=GRAPH_DIR + '/recommendations', format='png')
