@@ -79,14 +79,25 @@ def print_recommendations():
         cursor.execute(q.get_recommended_classes(id))
         for row in cursor:
             if (completed != None or row[0] not in completed):
-                b.node('r' + row[0], row[0], style='filled', fillcolor=colors.TERTIARY)
+                b.node(row[0], row[0], style='filled', fillcolor=colors.TERTIARY)
                 
     with e.subgraph(name='clusterSkills') as c:
         c.attr(style='filled', label='Desired skills')
         
         cursor.execute(q.get_selected_skills(id))
         for row in cursor:
-            b.node('r' + row[0], row[0], style='filled', fillcolor=colors.TERTIARY)
+            b.node(str(row[0]), row[1], style='filled', fillcolor=colors.SECONDARY)
+            
+    cursor.execute(q.get_selection(id))
+    comp = cursor.fetchall()[0]
+    e.node(str(comp[0]), comp[1], style='filled', fillcolor=colors.PRIMARY)
+    
+    # Label the graph
+    global student
+    e.attr(label=r'\nRecommended classes for ' + student[2] + ' ' + student[3] + '.')
+    e.attr(fontsize='20')
+
+    return open(e.render(), 'rb').read()
 
 # Creates a graph of all skills a student has
 def print_skills():
@@ -223,7 +234,7 @@ def create_class_graph(user):
 # Creates the student's skills graph
 def create_skill_graph(user):
     update_student(user)
-    return print_skills()
+    return print_recommendations()
 
 # Sets the provided value as the student id for the queries
 def update_student(user):
@@ -240,4 +251,4 @@ GRAPH_DIR = 'C:/xampp/graphs'
 id = '2'
 cursor.execute(q.get_student_query(id))
 student = cursor.fetchall()[0]
-print(create_class_graph('2'))
+create_skill_graph('19')

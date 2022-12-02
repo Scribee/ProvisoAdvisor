@@ -8,11 +8,11 @@ def get_student_query(studentID):
 def get_skills_query(studentID):
     return 'SELECT skills.ID, skills.Name, COUNT(skills.ID) AS Count FROM students, taken, classes, teaches, skills WHERE students.ID=' + studentID + ' AND students.ID=taken.ID AND taken.Class=classes.Class AND classes.Class=teaches.Class AND teaches.SkillID=skills.ID GROUP BY skills.Name'
 def get_recommended_classes(studentID):
-    return 'SELECT DISTINCT C.Class FROM classes AS C, teaches AS T, (' + get_selected_skills(studentID) + ') AS A WHERE A.SkillID=T.SkillID AND C.Class=T.Class'
+    return 'SELECT DISTINCT C.Class FROM classes AS C, teaches AS T, (' + get_selected_skills(studentID) + ') AS A WHERE A.ID=T.SkillID AND C.Class=T.Class'
 def get_selected_skills(studentID):
-    return 'SELECT DISTINCT skills.SkillID, skills.Name FROM requires, selections, skills WHERE selections.CompanyID=requires.CompanyID AND skills.ID=requires.SkillID AND selections.ID=' + studentID
+    return 'SELECT DISTINCT skills.ID, skills.Name FROM requires, selections, skills WHERE selections.CompanyID=requires.CompanyID AND skills.ID=requires.SkillID AND selections.ID=' + studentID
 def get_selection(studentID):
-    return 'SELECT companies.Name FROM companies, selections WHERE companies.ID=selections.CompanyID AND selections.ID=' + studentID
+    return 'SELECT companies.ID, companies.Name FROM companies, selections WHERE companies.ID=selections.CompanyID AND selections.ID=' + studentID
 
 # Constant queries
 #'SELECT skills.ID, skills.Name FROM students, taken, classes, teaches, skills WHERE students.ID=' + studentID + ' AND students.ID=taken.ID AND taken.Class=classes.Class AND classes.Class=teaches.Class AND teaches.SkillID=skills.ID'
