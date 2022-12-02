@@ -70,7 +70,9 @@
 							@if ($errors->has('Year'))
 								<span class="text-danger">{{ $errors->first('Year') }}</span>
 							@endif
+                                                        <div style="background: grey">
 							<button class="sub_btn">Register</button>
+                                                        </div>
 						 </form>
 					  </div>
 					   
