@@ -44,6 +44,10 @@ div.skill_graph {
 	background-color: #ffffff;
 }
 
+div.divider {
+	height: 30px;
+}
+
 * {
      box-sizing: border-box !important;
 }
