@@ -161,6 +161,7 @@
                                                                         <td style="padding-right: 15px">Grade</td>
                                                                         <td style="padding-right: 15px">Year</td>
                                                                         <td style="padding-right: 15px">Delete</td>
+                                                                        <td></td>
                                                                     </tr>
                                                                     @foreach ($taken->get() as $take)
                                                                     <tr>                                             
@@ -256,12 +257,13 @@
                                                             <form action="{{ route('company.post') }}" method="POST" role="form">
                                                                 @csrf
                                                                 <table>
-                                                                    <th>
-                                                                        <td style="padding-right: 15px; padding-left:0px">Company</td>
+                                                                    <tr>
+                                                                        <td style="padding-right: 15px">Company</td>
                                                                         <td style="padding-right: 15px">Delete</td>
-                                                                    </th>
+                                                                        <td></td>
+                                                                    </tr>
                                                                     <tr>                                             
-                                                                        <td style ="padding-left:20px; padding-right:15px">{{ $comp->Name }}</td>
+                                                                        <td style ="padding-right:15px">{{ $comp->Name }}</td>
                                                                      
                                                                         <td>
                                                                             <input type="checkbox" name="KeyToDelete" value="{{ $comp->CompanyID }}"/>
@@ -271,6 +273,7 @@
                                                                 </table>
                                                             </form>
                                                             @endif
+                                                            <br>
                                                             <!-- add drop down menus-->
                                                             <form action='{{route('addCompany')}}' method='POST'>
                                                                 @csrf
@@ -335,14 +338,15 @@
                                                             <form action="{{ route('skills.post') }}" method="POST" role="form">
                                                                 @csrf
                                                                 <table>
-                                                                    <th>
-                                                                        <td style="padding-right: 15px; padding-left:0px">Skill</td>
+                                                                    <tr>
+                                                                        <td style="padding-right: 15px">Skill</td>
                                                                         <td style="padding-right: 15px">Delete</td>
-                                                                    </th>
+                                                                        <td></td>
+                                                                    </tr>
                                                                     @foreach ($skills as $s)
                                                                     <tr> 
                                                                       
-                                                                        <td style ="padding-left:20px; padding-right:15px">{{ App\Models\Skill::select('Name')->where('ID', $s->SkillID)->first()->Name }}</td>
+                                                                        <td style ="padding-right:15px">{{ App\Models\Skill::select('Name')->where('ID', $s->SkillID)->first()->Name }}</td>
                                                                      
                                                                         <td>
                                                                             <input type="checkbox" name="KeyToDelete" value="{{ $s->SkillID }}"/>
@@ -353,6 +357,7 @@
                                                                 </table>
                                                             </form>
                                                             @endif
+                                                            <br>
                                                             <!-- add drop down menus-->
                                                             <form action='{{route('addSkill')}}' method='POST'>
                                                                 @csrf

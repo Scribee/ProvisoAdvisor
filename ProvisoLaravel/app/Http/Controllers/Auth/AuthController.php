@@ -259,7 +259,7 @@ class AuthController extends Controller {
         $skill = $result->input('KeyToDelete');
         $userid = Company::select('ID')->where('Name', Auth::guard('user')->user()->name)->first()->ID;
         //where the ID and the class that they input are equal
-        Requires::where('ID', $userid)->delete();
+        Requires::where('CompanyID', $userid)->where('SkillID', $skill)->delete();
         //return redirect('dashboard');
 
         return redirect("dashboard")->withSuccess('Cannot delete selection');
