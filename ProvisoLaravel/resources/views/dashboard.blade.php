@@ -151,6 +151,7 @@
                                                 <div class="row d_flex">
                                                     <div class="col-md-12">
                                                         <div class="consect">
+                                                            @if(!empty($taken))
                                                             <!--Show classes they've already added-->
                                                             <form action="{{ route('dashboard.post') }}" method="POST" role="form">
                                                                 @csrf
@@ -174,6 +175,7 @@
                                                                     @endforeach
                                                                 </table>
                                                             </form>
+                                                            @endif
                                                             <!-- add drop down menus-->
                                                             <br>
                                                             <form action='{{route('addClass')}}' method='POST'>
@@ -328,6 +330,7 @@
                                                 <div class="row d_flex">
                                                     <div class="col-md-12">
                                                         <div class="consect">
+                                                            @if(!empty($skills))
                                                             <!--Show positions they've already added-->
                                                             <form action="{{ route('skills.post') }}" method="POST" role="form">
                                                                 @csrf
@@ -349,6 +352,7 @@
                                                                     @endforeach
                                                                 </table>
                                                             </form>
+                                                            @endif
                                                             <!-- add drop down menus-->
                                                             <form action='{{route('addSkill')}}' method='POST'>
                                                                 @csrf
@@ -359,6 +363,7 @@
                                                                 </option>
                                                                 @endforeach
                                                             </select>
+                                                            <input type="submit" name="submit" value="Add"/>
                                                             </form>
                                                         </div>
                                                     </div>

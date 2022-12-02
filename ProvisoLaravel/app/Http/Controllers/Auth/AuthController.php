@@ -96,7 +96,7 @@ class AuthController extends Controller {
             $class = Classes::all();
             $aval = array();
             $skill = Skill::all();
-            $userid = Company::select('ID')->where('Name', Auth::guard('user')->user())->first();
+            $userid = Company::select('ID')->where('Name', Auth::guard('user')->user()->name)->first();
             $requires = array();
             if (!is_null($userid)) {
                 $requires = Requires::select('*')->where('CompanyID', $userid->ID)->get();
@@ -242,9 +242,9 @@ class AuthController extends Controller {
     }
     //adds the class to the taken table using the model Taken
     public function createSkill(Request $data) {
-        if (is_null(Company::select('ID')->where('Name', Auth::guard('user')->user()->name))) {
+        if (is_null(Company::select('ID')->where('Name', Auth::guard('user')->user()->name)->first())) {
             Company::create([
-                        'Name' => Auth::guard('user')->user()->name        
+                'Name' => Auth::guard('user')->user()->name        
             ]);
         }
         
