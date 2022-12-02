@@ -28,7 +28,7 @@ def get_skills():
 
 # Create graph with all classes, grouped by year and connected where prerequisites exist
 def print_classes():
-    # Directed graph to be output as a pdf
+    # Directed graph to be output as a png
     e = graphviz.Digraph(filename=GRAPH_DIR + '/classes', format='png')
     e.attr('node', shape='egg')
     e.attr(rankdir='LR')
@@ -50,9 +50,9 @@ def print_classes():
                 class_name = row[1] + str(row[2])
                 # If the class has been taken, color the node
                 if (completed != None and class_name in completed):
-                    a.node(class_name, row[1] + str(row[2]) + '\n' + row[3], style='filled', fillcolor=colors.PRIMARY)
+                    a.node(class_name, class_name + '\n' + row[3], style='filled', fillcolor=colors.PRIMARY)
                 else:
-                    a.node(class_name, row[1] + str(row[2]) + '\n' + row[3])
+                    a.node(class_name, class_name + '\n' + row[3])        
 
     # Get the prerequisite relationships to know what arrows to draw
     cursor.execute(q.GET_PREREQS)
@@ -66,9 +66,31 @@ def print_classes():
 
     return open(e.render(), 'rb').read()
 
+# Creates a graph with the recommended classes and the skills they fulfil
+def print_recommendations():
+    # Undrected graph to be output as a png
+    e = graphviz.Graph(filename=GRAPH_DIR + '/classes', format='png')
+    e.attr('node', shape='egg')
+    # Make a subgraph for the recommended classes
+    with e.subgraph(name='clusterElectives') as b:
+        b.attr(style='filled', label='Recommended electives')
+        
+        completed = get_taken('all')
+        cursor.execute(q.get_recommended_classes(id))
+        for row in cursor:
+            if (completed != None or row[0] not in completed):
+                b.node('r' + row[0], row[0], style='filled', fillcolor=colors.TERTIARY)
+                
+    with e.subgraph(name='clusterSkills') as c:
+        c.attr(style='filled', label='Desired skills')
+        
+        cursor.execute(q.get_selected_skills(id))
+        for row in cursor:
+            b.node('r' + row[0], row[0], style='filled', fillcolor=colors.TERTIARY)
+
 # Creates a graph of all skills a student has
 def print_skills():
-    # Make undirected graph to output as a pdf
+    # Make undirected graph to output as a png
     f = graphviz.Graph(filename=GRAPH_DIR + '/skills', format='png')
 
     # Make a student node in the center
@@ -201,7 +223,6 @@ def create_class_graph(user):
 # Creates the student's skills graph
 def create_skill_graph(user):
     update_student(user)
-
     return print_skills()
 
 # Sets the provided value as the student id for the queries
@@ -219,4 +240,4 @@ GRAPH_DIR = 'C:/xampp/graphs'
 id = '2'
 cursor.execute(q.get_student_query(id))
 student = cursor.fetchall()[0]
-#print(create_class_graph('2'))
+print(create_class_graph('2'))
