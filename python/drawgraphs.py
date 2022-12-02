@@ -29,7 +29,7 @@ def get_skills():
 # Create graph with all classes, grouped by year and connected where prerequisites exist
 def print_classes():
     # Directed graph to be output as a pdf
-    e = graphviz.Digraph(filename='graphs/classes', format='png')
+    e = graphviz.Digraph(filename=GRAPH_DIR + '/classes', format='png')
     e.attr('node', shape='egg')
     e.attr(rankdir='LR')
 
@@ -64,13 +64,12 @@ def print_classes():
     e.attr(label=r'\nClass diagram for ' + student[2] + ' ' + student[3] + '.')
     e.attr(fontsize='20')
 
-    #e.view()
-    #return e
+    return open(e.render(), 'rb').read()
 
 # Creates a graph of all skills a student has
 def print_skills():
     # Make undirected graph to output as a pdf
-    f = graphviz.Graph(filename='graphs/skills', format='pdf')
+    f = graphviz.Graph(filename=GRAPH_DIR + '/skills', format='png')
 
     # Make a student node in the center
     f.attr('node', shape='square')
@@ -93,7 +92,7 @@ def print_skills():
     f.attr(label=r'\nSkills diagram for ' + student[2] + ' ' + student[3] + '.')
     f.attr(fontsize='20')
 
-    f.view()
+    return open(f.render(), 'rb').read()
 
 # Create a graph of every skill and the class that teaches it
 def print_all_skills():
@@ -194,23 +193,30 @@ def print_jobs():
 
     i.view()
     
-# Sets the provided value as the student id in the queries, and creates all graphs
-def create_graphs(user):
+# Creates the student's class graph
+def create_class_graph(user):
+    update_student(user)
+    return print_classes()
+    
+# Creates the student's skills graph
+def create_skill_graph(user):
+    update_student(user)
+
+    return print_skills()
+
+# Sets the provided value as the student id for the queries
+def update_student(user):
     # Get student information
     global id
     global student
     id = user
     cursor.execute(q.get_student_query(id))
     student = cursor.fetchall()[0]
-
-    print_classes()
-    #print_skills()
-    #print_classes_and_skills()
-    #print_all_skills()
-    #print_jobs()
     
+GRAPH_DIR = 'C:/xampp/graphs'
+
 # Initialize id and student
 id = '2'
 cursor.execute(q.get_student_query(id))
 student = cursor.fetchall()[0]
-create_graphs('2')
+#print(create_class_graph('2'))

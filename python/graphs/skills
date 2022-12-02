@@ -1,39 +1,11 @@
 graph {
 	node [shape=square]
-	s6 [label="Molly Meadows" fillcolor="#66ded2" style=filled]
+	s2 [label="Molly Meadows" fillcolor="#66ded2" style=filled]
 	node [shape=ellipse]
-	14 [label=Bootstrap fillcolor="#ddf542" style=filled]
-	s6 -- 14
-	27 [label="Command line editors" fillcolor="#ddf542" style=filled]
-	s6 -- 27
-	12 [label=CSS fillcolor="#ddf542" style=filled]
-	s6 -- 12
-	50 [label=Debugging fillcolor="#ddf542" style=filled]
-	s6 -- 50
-	13 [label=HTML fillcolor="#ddf542" style=filled]
-	s6 -- 13
-	3 [label=Java fillcolor="#ddf542" style=filled]
-	s6 -- 3
-	42 [label=JavaScript fillcolor="#ddf542" style=filled]
-	s6 -- 42
-	16 [label=Laravel fillcolor="#ddf542" style=filled]
-	s6 -- 16
-	18 [label=MySQL fillcolor="#ddf542" style=filled]
-	s6 -- 18
-	38 [label="Object oriented programming" fillcolor="#ddf542" style=filled]
-	s6 -- 38
-	15 [label=PHP fillcolor="#ddf542" style=filled]
-	s6 -- 15
-	5 [label=Prolog fillcolor="#ddf542" style=filled]
-	s6 -- 5
-	7 [label=Python fillcolor="#ddf542" style=filled]
-	s6 -- 7
-	8 [label=SML fillcolor="#ddf542" style=filled]
-	s6 -- 8
-	17 [label=SQL fillcolor="#ddf542" style=filled]
-	s6 -- 17
-	6 [label=YACC fillcolor="#ddf542" style=filled]
-	s6 -- 6
+	0 [label="C++" fillcolor="#81f542" style=filled]
+	s2 -- 0
+	38 [label="Object oriented programming" fillcolor="#81f542" style=filled]
+	s2 -- 38
 	label="\nSkills diagram for Molly Meadows."
 	fontsize=20
 }
