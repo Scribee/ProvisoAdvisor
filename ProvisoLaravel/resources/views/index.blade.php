@@ -75,7 +75,7 @@
                               <div class="full">
                                  <div class="center-desk">
                                     <div class="logo">
-                                       <a href="{{route('home')}}">Proviso</a>
+                                       <a href="#">Proviso</a>
                                     </div>
                                  </div>
                               </div>
@@ -87,8 +87,8 @@
                                  </button>
                                  <div class="collapse navbar-collapse" id="navbarsExample04">
                                     <ul class="navbar-nav mr-auto">
-                                       <li class="nav-item active">
-                                          <a class="nav-link" href="{{route('home')}}">Home</a>
+                                       <li class="nav-item">
+                                          <a class="nav-link" href="#top">Home</a>
                                        </li>
                                        <li class="nav-item">
                                           <a class="nav-link" href="#how-to">How To</a>
@@ -205,11 +205,14 @@
                      Here at Proviso you can generate your schedule in just a few easy steps. 
                      First register or sign in as a user. Then add the classes that you've already taken. Lastly, select a company or position you'd like to explore.
                      Proviso will then generate a chart of classes that we recommend to set you up for those career goals!</span>
+                     <span> If you cannot find a company or position you are looking for, research the skills it would require and add your own custom
+                         skills to create the schedule for you.
+                     </span>
                   </div>
                </div>
                <div class="col-md-5">
                   <div class="about_img">
-                     <figure><img src="images/about.png" alt="#"/></figure>
+                     <figure><img src="images/aboutPage.jpg" alt="#"/></figure>
                   </div>
                </div>
             </div>
@@ -223,8 +226,8 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="titlepage">
-                     <h2>Example chart!</h2>
-                     <span>Graph coming soon</span>
+                     <h2>Tutorial</h2>
+                     <span>This is what the dashboard page will look like when you register with our services!</span>
                   </div>
                </div>
             </div>
@@ -244,33 +247,25 @@
                                     <div class="col-md-4">
                                        <div class="project">
                                           <div class="project_img">
-                                             <figure><img src="images/project_img.png" alt="#"/></figure>
+                                             <figure><img src="images/Login.png" alt="#"/></figure>
                                           </div>
-                                          <div id="pro_ho" class="project_text">
-                                            <p>This is what the dashboard page will look like when you register with our services!</p>
-                                          </div>
+                                          
                                        </div>
                                     </div>
                                     <div class="col-md-4">
                                        <div class="project">
                                           <div class="project_img">
-                                             <figure><img src="images/project_img1.png" alt="#"/></figure>
+                                             <figure><img src="images/register.png" alt="#"/></figure>
                                           </div>
-                                          <div id="pro_ho" class="project_text">
-                                             <h3>Reader will be<br> distracted by the readable</h3>
-                                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
-                                          </div>
+                                          
                                        </div>
                                     </div>
                                     <div class="col-md-4">
                                        <div class="project">
                                           <div class="project_img">
-                                             <figure><img src="images/project_img2.png" alt="#"/></figure>
+                                             <figure><img src="images/addClass.png" alt="#"/></figure>
                                           </div>
-                                          <div id="pro_ho" class="project_text">
-                                             <h3>Reader will be<br> distracted by the readable</h3>
-                                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
-                                          </div>
+                                          
                                        </div>
                                     </div>
                                  </div>
@@ -284,34 +279,25 @@
                                     <div class="col-md-4">
                                        <div class="project">
                                           <div class="project_img">
-                                             <figure><img src="images/project_img.png" alt="#"/></figure>
+                                             <figure><img src="images/addComp.png" alt="#"/></figure>
                                           </div>
-                                          <div id="pro_ho" class="project_text">
-                                             <h3>Reader will be<br> distracted by the readable</h3>
-                                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
-                                          </div>
+                                          
                                        </div>
                                     </div>
                                     <div class="col-md-4">
                                        <div class="project">
                                           <div class="project_img">
-                                             <figure><img src="images/project_img2.png" alt="#"/></figure>
+                                             <figure><img src="images/Skills.png" alt="#"/></figure>
                                           </div>
-                                          <div id="pro_ho" class="project_text">
-                                             <h3>Reader will be<br> distracted by the readable</h3>
-                                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
-                                          </div>
+                                         
                                        </div>
                                     </div>
                                     <div class="col-md-4">
                                        <div class="project">
                                           <div class="project_img">
-                                             <figure><img src="images/project_img1.png" alt="#"/></figure>
+                                             <figure><img src="images/Schedule.png" alt="#"/></figure>
                                           </div>
-                                          <div id="pro_ho" class="project_text">
-                                             <h3>Reader will be<br> distracted by the readable</h3>
-                                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised</p>
-                                          </div>
+                                          
                                        </div>
                                     </div>
                                  </div>
@@ -370,7 +356,7 @@
                <div class="col-md-6 padding_left0">
                   <div class="map_main">
                      <div class="map-responsive">
-                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Eiffel+Tower+Paris+France" width="600" height="463" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d32312.52530804035!2d-117.03772982874584!3d46.72617841937173!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8f65411bd98fcd6c!2sUniversity%20of%20Idaho!5e0!3m2!1sen!2sus!4v1669971676925!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                      </div>
                   </div>
                </div>
@@ -379,56 +365,6 @@
       </div>
       <!-- end contact -->
      
-      <!--  footer -->
-      <footer>
-         <div class="footer">
-            <div class="container">
-               <div class="row">
-                  <div class=" col-lg-3 col-md-6">
-                     <a class="logo_bottom"><img src="images/logo_bottom.png" alt="#"/></a>
-                     <p class="many">
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humou
-                     </p>
-                  </div>
-                  <div class="col-lg-2 offset-lg-1 col-md-6">
-                     <h3>QUICK LINKS</h3>
-                     <ul class="link_menu">
-                        <li><a href="indexTemp.blade.php.html">Home</a></li>
-                        <li><a href="about.html"> About</a></li>
-                        <li><a href="project.html">Projects</a></li>
-                        <li><a href="staff.html">Staff</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                     </ul>
-                  </div>
-                  <div class=" col-lg-3 col-md-6">
-                     <h3>INSTAGRAM FEEDS</h3>
-                     <ul class="insta text_align_left">
-                        <li><img src="images/inst1.png" alt="#"/></li>
-                        <li><img src="images/inst2.png" alt="#"/></li>
-                        <li><img src="images/inst3.png" alt="#"/></li>
-                        <li><img src="images/inst4.png" alt="#"/></li>
-                     </ul>
-                  </div>
-                  <div class=" col-lg-3 col-md-6 ">
-                     <h3>SIGN UP TO OUR NEWSLETTER </h3>
-                     <form class="bottom_form">
-                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
-                        <button class="sub_btn">Sign Up</button>
-                     </form>
-                  </div>
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-8 offset-md-2">
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </footer>
-      <!-- end footer -->
       <!-- Javascript files-->
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
