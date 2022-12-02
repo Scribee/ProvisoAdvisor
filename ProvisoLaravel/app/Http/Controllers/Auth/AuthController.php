@@ -245,7 +245,7 @@ class AuthController extends Controller {
 	
     //adds the class to the taken table using the model Taken
     public function createSkill(Request $data) {
-        if (is_null(Company::select('ID')->where('Name', $this->company_name())->first())) {
+        if (is_null(Selection::select('*')->where('CompanyID', Company::select('ID')->where('Name', $this->company_name())->first()->ID)->first())) {
             Company::create([
                 'Name' => $this->company_name()
             ]);

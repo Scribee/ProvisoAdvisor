@@ -2,6 +2,8 @@ import graphviz
 from dbconnector import cursor
 import queries as q
 import colors
+from datetime import datetime
+import os
 
 ### Function Definitions ###
 
@@ -28,6 +30,9 @@ def get_skills():
 
 # Create graph with all classes, grouped by year and connected where prerequisites exist
 def print_classes():
+    if (os.path.exists(GRAPH_DIR + '/classes.png)):
+        os.remove(GRAPH_DIR + '/classes.png)
+        
     # Directed graph to be output as a png
     e = graphviz.Digraph(filename=GRAPH_DIR + '/classes', format='png')
     e.attr('node', shape='egg')
@@ -68,29 +73,34 @@ def print_classes():
 
 # Creates a graph with the recommended classes and the skills they fulfil
 def print_recommendations():
+    if (os.path.exists(GRAPH_DIR + '/recommendations.png)):
+        os.remove(GRAPH_DIR + '/recommendations.png)
+        
     # Undrected graph to be output as a png
-    e = graphviz.Graph(filename=GRAPH_DIR + '/classes', format='png')
+    e = graphviz.Graph(filename=GRAPH_DIR + '/recommendations', format='png')
     e.attr('node', shape='egg')
-    # Make a subgraph for the recommended classes
-    with e.subgraph(name='clusterElectives') as b:
-        b.attr(style='filled', label='Recommended electives')
-        
-        completed = get_taken('all')
-        cursor.execute(q.get_recommended_classes(id))
-        for row in cursor:
-            if (completed != None or row[0] not in completed):
-                b.node(row[0], row[0], style='filled', fillcolor=colors.TERTIARY)
-                
-    with e.subgraph(name='clusterSkills') as c:
-        c.attr(style='filled', label='Desired skills')
-        
-        cursor.execute(q.get_selected_skills(id))
-        for row in cursor:
-            b.node(str(row[0]), row[1], style='filled', fillcolor=colors.SECONDARY)
-            
+    
     cursor.execute(q.get_selection(id))
-    comp = cursor.fetchall()[0]
-    e.node(str(comp[0]), comp[1], style='filled', fillcolor=colors.PRIMARY)
+    if (cursor != None):
+        comp = cursor.fetchall()[0]
+        e.node('c' + str(comp[0]), comp[1], style='filled', fillcolor=colors.PRIMARY)
+        
+        # Make a subgraph for the recommended classes
+        with e.subgraph(name='clusterElectives') as b:
+            b.attr(style='filled', label='Recommended electives')
+            
+            completed = get_taken('all')
+            cursor.execute(q.get_recommended_classes(id))
+            for row in cursor:
+                if (completed != None or row[0] not in completed):
+                    b.node(row[0], row[0], style='filled', fillcolor=colors.TERTIARY)
+                    
+        with e.subgraph(name='clusterSkills') as c:
+            c.attr(style='filled', label='Desired skills')
+            
+            cursor.execute(q.get_selected_skills(id))
+            for row in cursor:
+                b.node(str(row[0]), row[1], style='filled', fillcolor=colors.SECONDARY)
     
     # Label the graph
     global student
@@ -251,4 +261,4 @@ GRAPH_DIR = 'C:/xampp/graphs'
 id = '2'
 cursor.execute(q.get_student_query(id))
 student = cursor.fetchall()[0]
-create_skill_graph('19')
+#create_skill_graph('19')
