@@ -37,15 +37,15 @@ def print_classes():
     e = graphviz.Digraph(filename=GRAPH_DIR + '/classes', format='png')
     e.attr('node', shape='egg')
     e.attr(rankdir='LR')
+    
+    completed = get_taken('all')
 
     # Query the data for each year individually so they can be grouped into subgraphs
     for i in range(0, 5):
         # Make a new subgraph for each year
         with e.subgraph(name='clusterYear' + str(i)) as a:
             a.attr(style='filled', label='Year ' + str(i), fillcolor=colors.LIGHT2 + ':' + colors.LIGHT)
-            
-            completed = get_taken(i)
-            
+                        
             # Get the class list and make a node for each class
             cursor.execute(q.GET_CLASSES + ' WHERE Year=' + str(i))
             if (cursor == None) :
@@ -77,13 +77,13 @@ def print_recommendations():
         os.remove(GRAPH_DIR + '/recommendations.png')
         
     # Undrected graph to be output as a png
-    e = graphviz.Graph(filename=GRAPH_DIR + '/recommendations', format='png')
+    e = graphviz.Graph(filename=GRAPH_DIR + '/recommendation', format='png')
     e.attr('node', shape='egg')
     
     cursor.execute(q.get_selection(id))
     if (cursor != None):
-        comp = cursor.fetchall()[0]
-        e.node('c' + str(comp[0]), comp[1], style='filled', fillcolor=colors.PRIMARY)
+        for row in cursor:
+            e.node('c' + str(row[0]), row[1], style='filled', fillcolor=colors.PRIMARY)
         
         # Make a subgraph for the recommended classes
         with e.subgraph(name='clusterElectives') as b:

@@ -422,12 +422,11 @@
         <script src="js/custom.js"></script>
         <script type='text/javascript'>
 			$('button.class_graph').click(function () {
-				$('div.class_graph').html('<img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}"/>');
-				$('div.skill_graph').html('<img src="https://127.0.0.1/skillGraph?ID={{ Auth::guard('user')->user()->id }}"/>');
+				$('div.class_graph').html('<img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/>');
+				$('div.skill_graph').html('<img src="https://127.0.0.1/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/>');
 			});
         </script>
     </body>
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
     <!--  footer -->
     <footer>
