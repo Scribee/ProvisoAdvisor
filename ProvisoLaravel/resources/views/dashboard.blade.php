@@ -333,17 +333,20 @@
                                                                 @csrf
                                                                 <table>
                                                                     <th>
-                                                                        <td style="padding-right: 15px; padding-left:0px">Company</td>
+                                                                        <td style="padding-right: 15px; padding-left:0px">Skill</td>
                                                                         <td style="padding-right: 15px">Delete</td>
                                                                     </th>
-                                                                    <tr>                                             
-                                                                        <td style ="padding-left:20px; padding-right:15px">{{ $comp->Name }}</td>
+                                                                    @foreach ($skills as $s)
+                                                                    <tr> 
+                                                                      
+                                                                        <td style ="padding-left:20px; padding-right:15px">{{ App\Models\Skill::select('Name')->where('ID', $s->SkillID)->first()->Name }}</td>
                                                                      
                                                                         <td>
-                                                                            <input type="checkbox" name="KeyToDelete" value="{{ $comp->CompanyID }}"/>
+                                                                            <input type="checkbox" name="KeyToDelete" value="{{ $s->SkillID }}"/>
                                                                         </td>
                                                                         <td><input type="submit" name="submitDeleteBtn"/></td>
                                                                     </tr>
+                                                                    @endforeach
                                                                 </table>
                                                             </form>
                                                             <!-- add drop down menus-->

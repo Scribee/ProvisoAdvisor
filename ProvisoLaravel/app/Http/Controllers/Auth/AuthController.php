@@ -13,6 +13,7 @@ use App\Models\Skill;
 use App\Models\Company;
 use App\Models\Taken;
 use App\Models\Selection;
+use App\Models\Requires;
 use Hash;
 
 class AuthController extends Controller {
@@ -95,6 +96,11 @@ class AuthController extends Controller {
             $class = Classes::all();
             $aval = array();
             $skill = Skill::all();
+            $userid = Company::select('ID')->where('Name', Auth::guard('user')->user())->first();
+            $requires = array();
+            if (!is_null($userid)) {
+                $requires = Requires::select('*')->where('CompanyID', $userid->ID)->get();
+            }
             $company = Company::all();
             $selection = Selection::select('*')->where('ID', Auth::guard('user')->user()->id);
             foreach ($class as $c) {
@@ -116,8 +122,8 @@ class AuthController extends Controller {
                 $comp = Company::select('Name')->where('ID', $compID->CompanyID)->first();
                 $company = Company::select('Name')->where('ID', $compID->CompanyID)->get();
             }
-            
-            return view(view: 'dashboard', data: ['taken' => $taken, 'company' => $company, 'aval' => $aval, 'skill' => $skill, 'selection' => $selection, 'comp' => $comp]);
+                
+            return view(view: 'dashboard', data: ['taken' => $taken, 'company' => $company, 'aval' => $aval, 'skill' => $skill, 'selection' => $selection, 'comp' => $comp, 'skills' => $requires]);
         }
 
         return redirect("login")->withSuccess('Oops! You do not have access');
@@ -229,10 +235,6 @@ class AuthController extends Controller {
     //add user as a company, so that they could add skills individually
     public function addSkill(Request $request) {
 
-        $request->validate([
-            '' => 'required',  
-        ]);
-
         //check that they have selected from each drop down
         $this->createSkill($request);
 
@@ -240,17 +242,24 @@ class AuthController extends Controller {
     }
     //adds the class to the taken table using the model Taken
     public function createSkill(Request $data) {
-        return Company::create([
-                    'ID' => Auth::guard('user')->user()->id,
-                    'Name' => Auth::guard('user')->user()->name,           
+        if (is_null(Company::select('ID')->where('Name', Auth::guard('user')->user()->name))) {
+            Company::create([
+                        'Name' => Auth::guard('user')->user()->name        
+            ]);
+        }
+        
+        return Requires::create([
+            'CompanyID' => Company::select('ID')->where('Name', Auth::guard('user')->user()->name)->first()->ID,
+            'SkillID' => $data->skills,
+            'Priority' => 0
         ]);
     }
     
     public function postSkill(Request $result){
         $skill = $result->input('KeyToDelete');
-        $userid = Auth::guard('user')->user()->id;
+        $userid = Company::select('ID')->where('Name', Auth::guard('user')->user()->name)->first()->ID;
         //where the ID and the class that they input are equal
-        ?::where('ID', $userid)->delete();
+        Requires::where('ID', $userid)->delete();
         //return redirect('dashboard');
 
         return redirect("dashboard")->withSuccess('Cannot delete selection');
