@@ -668,7 +668,8 @@ ul.search li a:hover {
 }
 
 .project_img figure img {
-     width: 100%;
+     width: 400px;
+     height: 400px;
 }
 
 .project_text {
@@ -744,7 +745,7 @@ ul.search li a:hover {
 #proj .carousel-control-next:hover,
 #proj .carousel-control-prev:focus,
 #proj .carousel-control-next:focus {
-     background: #fe9901;
+     background: goldenrod;
      color: #fff;
 }
 
@@ -918,6 +919,7 @@ ul.social_icon_staff li a:hover {
 .contact {
      background: #fff;
      margin-top: 90px;
+     margin-bottom: 90px;
 }
 
 .contact .titlepage {
