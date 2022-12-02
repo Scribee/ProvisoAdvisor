@@ -96,7 +96,7 @@ class AuthController extends Controller {
             $class = Classes::all();
             $aval = array();
             $skill = Skill::all();
-            $userid = Company::select('ID')->where('Name', Auth::guard('user')->user()->name)->first();
+            $userid = Company::select('ID')->where('Name', $this->company_name())->first();
             $requires = array();
             if (!is_null($userid)) {
                 $requires = Requires::select('*')->where('CompanyID', $userid->ID)->get();
@@ -191,13 +191,14 @@ class AuthController extends Controller {
 
         return redirect("dashboard")->withSuccess('Great! You have successfully added a class!');
     }
+	
     //adds the class to the taken table using the model Taken
     public function createClass(Request $data) {
         return Taken::create([
-                    'ID' => Auth::guard('user')->user()->id,
-                    'Class' => $data['Class'],
-                    'Grade' => $data['Grade'],
-                    'Year' => $data['Year']
+            'ID' => Auth::guard('user')->user()->id,
+             'Class' => $data['Class'],
+             'Grade' => $data['Grade'],
+             'Year' => $data['Year']
         ]);
     }
     
@@ -212,11 +213,12 @@ class AuthController extends Controller {
 
         return redirect("dashboard")->withSuccess('Great! You have successfully added a class!');
     }
+	
     //adds the class to the taken table using the model Taken
     public function createSelection(Request $data) {
         return Selection::create([
-                    'ID' => Auth::guard('user')->user()->id,
-                    'CompanyID' => $data['CompanyID']
+            'ID' => Auth::guard('user')->user()->id,
+            'CompanyID' => $data['CompanyID']
         ]);
     }
     
@@ -240,16 +242,22 @@ class AuthController extends Controller {
 
         return redirect("dashboard")->withSuccess('Great! You have successfully added a class!');
     }
+	
     //adds the class to the taken table using the model Taken
     public function createSkill(Request $data) {
-        if (is_null(Company::select('ID')->where('Name', Auth::guard('user')->user()->name)->first())) {
+        if (is_null(Company::select('ID')->where('Name', $this->company_name())->first())) {
             Company::create([
-                'Name' => Auth::guard('user')->user()->name        
+                'Name' => $this->company_name()
             ]);
+			
+			Selection::create([
+				'ID' => Auth::guard('user')->user()->id,
+                'CompanyID' => Company::select('ID')->where('Name', $this->company_name())->first()->ID
+			]);
         }
         
         return Requires::create([
-            'CompanyID' => Company::select('ID')->where('Name', Auth::guard('user')->user()->name)->first()->ID,
+            'CompanyID' => Company::select('ID')->where('Name', $this->company_name())->first()->ID,
             'SkillID' => $data->skills,
             'Priority' => 0
         ]);
@@ -257,7 +265,7 @@ class AuthController extends Controller {
     
     public function postSkill(Request $result){
         $skill = $result->input('KeyToDelete');
-        $userid = Company::select('ID')->where('Name', Auth::guard('user')->user()->name)->first()->ID;
+        $userid = Company::select('ID')->where('Name', $this->company_name())->first()->ID;
         //where the ID and the class that they input are equal
         Requires::where('CompanyID', $userid)->where('SkillID', $skill)->delete();
         //return redirect('dashboard');
@@ -272,4 +280,7 @@ class AuthController extends Controller {
         return redirect('index');
     }
 
+	private function company_name() {
+		return Auth::guard('user')->user()->name . '\'s custom selection';
+	}
 }

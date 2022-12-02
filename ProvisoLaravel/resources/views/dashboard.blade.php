@@ -219,7 +219,7 @@
             </div>
         </div>
         <!--divider -->
-        <div style="background-color: grey; width: none !important; padding:0px !important">
+        <div class="divider" style="background-color: grey; width: none !important; padding:0px !important">
             <div class='row' style="padding:0px !important" >
                 <br>
             </div>
@@ -300,7 +300,7 @@
             </div>
         </div>
         <!--divider -->
-        <div style="background-color: grey; width: none !important; padding:0px !important">
+        <div class="divider" style="background-color: grey; width: none !important; padding:0px !important">
             <div class='row' style="padding:0px !important" >
                 <br>
             </div>
@@ -384,7 +384,7 @@
             </div>
         </div>
         <!--divider -->
-        <div style="background-color: grey; width: none !important; padding:0px !important">
+        <div class="divider" style="background-color: grey; width: none !important; padding:0px !important">
             <div class='row' style="padding:0px !important" >
                 <br>
             </div>
@@ -392,14 +392,15 @@
         <!--generate schedule -->
         <div class = "clients" style="background-color: goldenrod; width: none !important" id="schedule">
             <div class="container">
-                <div class='row' style="width:100%; height:500px; padding:0px !important" >
+                <div class='row' style="width:100%; padding:0px !important" >
                     <div class="col-md-12">
                         <div class="titlepage">
                             <h2>Your Schedule</h2>
                             <br/>
-
                             <button type="button" class="btn btn-secondary class_graph">Show graph of classes</button>
                             <div class="container w-100 class_graph">
+                            </div>
+							<div class="container w-100 skill_graph">
                             </div>
                         </div>
                     </div>
@@ -407,7 +408,7 @@
             </div>
         </div>
         <!--divider -->
-        <div style="background-color: grey; width: none !important; padding:0px !important">
+        <div class="divider" style="background-color: grey; width: none !important; padding:0px !important">
             <div class='row' style="padding:0px !important" >
                 <br>
             </div>
@@ -420,9 +421,10 @@
         <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
         <script src="js/custom.js"></script>
         <script type='text/javascript'>
-$('button.class_graph').click(function () {
-    $('div.class_graph').html('<img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}"/>')
-});
+			$('button.class_graph').click(function () {
+				$('div.class_graph').html('<img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}"/>');
+				$('div.skill_graph').html('<img src="https://127.0.0.1/skillGraph?ID={{ Auth::guard('user')->user()->id }}"/>');
+			});
         </script>
     </body>
         <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
