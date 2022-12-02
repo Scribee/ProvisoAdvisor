@@ -328,8 +328,27 @@
                                                 <div class="row d_flex">
                                                     <div class="col-md-12">
                                                         <div class="consect">
-                                                            <!--Show positions they've already added-->  
+                                                            <!--Show positions they've already added-->
+                                                            <form action="{{ route('skills.post') }}" method="POST" role="form">
+                                                                @csrf
+                                                                <table>
+                                                                    <th>
+                                                                        <td style="padding-right: 15px; padding-left:0px">Company</td>
+                                                                        <td style="padding-right: 15px">Delete</td>
+                                                                    </th>
+                                                                    <tr>                                             
+                                                                        <td style ="padding-left:20px; padding-right:15px">{{ $comp->Name }}</td>
+                                                                     
+                                                                        <td>
+                                                                            <input type="checkbox" name="KeyToDelete" value="{{ $comp->CompanyID }}"/>
+                                                                        </td>
+                                                                        <td><input type="submit" name="submitDeleteBtn"/></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </form>
                                                             <!-- add drop down menus-->
+                                                            <form action='{{route('addSkill')}}' method='POST'>
+                                                                @csrf
                                                             <select name="skills">
                                                                 <option value=''>--Skill--</option>
                                                                 @foreach($skill as $row)
@@ -337,6 +356,7 @@
                                                                 </option>
                                                                 @endforeach
                                                             </select>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>

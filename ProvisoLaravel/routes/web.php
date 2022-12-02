@@ -31,4 +31,5 @@ Route::post('addClass',[AuthController::class, 'addClass'])->name('addClass');
 Route::post('addCompany',[AuthController::class, 'addCompany'])->name('addCompany');
 Route::post('post-company', [AuthController::class, 'postCompany'])->name('company.post');
 Route::post('addSkill',[AuthController::class, 'addSkill'])->name('addSkill');
+Route::post('post-skill', [AuthController::class, 'postSkill'])->name('skill.post');
 

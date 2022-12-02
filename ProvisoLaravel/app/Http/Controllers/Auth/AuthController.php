@@ -245,6 +245,16 @@ class AuthController extends Controller {
                     'Name' => Auth::guard('user')->user()->name,           
         ]);
     }
+    
+    public function postSkill(Request $result){
+        $skill = $result->input('KeyToDelete');
+        $userid = Auth::guard('user')->user()->id;
+        //where the ID and the class that they input are equal
+        ?::where('ID', $userid)->delete();
+        //return redirect('dashboard');
+
+        return redirect("dashboard")->withSuccess('Cannot delete selection');
+    }
 
     public function logout() {
         Session::flush();

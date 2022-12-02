@@ -94,6 +94,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Selection::class,
         ],
+        'requires' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Requires::class,
+        ],
 
         
     ],
