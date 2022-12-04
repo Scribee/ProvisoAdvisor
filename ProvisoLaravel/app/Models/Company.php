@@ -25,7 +25,7 @@ class Company extends Model
     protected $fillable = [
         'ID',
         'Name',
-        
+        'Responsibilities'
     ];
 
     /**

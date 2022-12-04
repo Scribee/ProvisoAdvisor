@@ -95,38 +95,63 @@ class AuthController extends Controller {
             $taken = Taken::select('*')->where('ID', Auth::guard('user')->user()->id);
             $class = Classes::all();
             $aval = array();
-            $skill = Skill::all();
+            $skill = Skill::all()->all();
             $userid = Company::select('ID')->where('Name', $this->company_name())->first();
             $requires = array();
             if (!is_null($userid)) {
-                $requires = Requires::select('*')->where('CompanyID', $userid->ID)->get();
+				if (!is_null(Selection::select('*')->where('CompanyID', $userid->ID)->first())) {
+					$requires = Requires::select('*')->where('CompanyID', $userid->ID)->get();
+				}
             }
-            $company = Company::all();
+            $company = Company::select('*')->where('Responsibilities', '<>', 'Custom skills.')->orWhere('Name', $this->company_name())->get();
             $selection = Selection::select('*')->where('ID', Auth::guard('user')->user()->id);
             foreach ($class as $c) {
                 foreach ($taken->get() as $t) {
                     if ($t["Class"] == $c["Class"]) {
                         $flag = true;
+						break;
                     }
                 }
+				
                 if (!$flag) {
                     array_push($aval, $c);
                 }
                 $flag = false;
             }
-            //if a company has been selected i.e. selection is not null for their id, update dropdown menu of company to not have any values
-      
+			
+            // If a company has been selected i.e. selection is not null for their id, update dropdown menu of company to not have any values
             $compID = Selection::select('*')->where('ID', Auth::guard('user')->user()->id)->first();
             $comp = null;
             if (!is_null($compID)) {
                 $comp = Company::select('Name')->where('ID', $compID->CompanyID)->first();
                 $company = Company::select('Name')->where('ID', $compID->CompanyID)->get();
             }
+			
+			// If the custom company has been created, and the user has selected it, then update the skills drop down to remove duplicates
+			$custom = Company::select('ID')->where('Name', $this->company_name())->first();
+			if (!is_null($custom)) {
+				$skill = array();
+				$flag = false;
+				
+				foreach (Skill::all() as $s) {
+					foreach (Requires::select('*')->where('CompanyID', $custom->ID)->get() as $r) {
+						if ($s->ID == $r->SkillID) {
+							$flag = true;
+							break;
+						}
+					}
+					
+					if (!$flag) {
+						array_push($skill, $s);
+					}
+					$flag = false;
+				}
+			}
                 
             return view(view: 'dashboard', data: ['taken' => $taken, 'company' => $company, 'aval' => $aval, 'skill' => $skill, 'selection' => $selection, 'comp' => $comp, 'skills' => $requires]);
         }
 
-        return redirect("login")->withSuccess('Oops! You do not have access');
+        return redirect("login")->withSuccess('Please log in to access your dashboard.');
     }
 
     public function postDashboard(Request $result) {
@@ -146,31 +171,21 @@ class AuthController extends Controller {
      * @return response()
      */
     public function create(Request $data) {
-        $student = new Student();
-        $student->ID = $data->ID;
-        $student->Password = Hash::make($data->Password);
-        $student->First = $data->First;
-        $student->Last = $data->Last;
-        $student->Major = $data->Major;
-        $student->Year = $data->Year;
-        if ($student->save()) {
-            //return true;
-        }
+		Student::create([
+			'ID' => $data['ID'],
+			'Password' => Hash::make($data['Password']),
+			'First' => $data['First'],
+			'Last' => $data['Last'],
+			'Major' => $data['Major'],
+			'Year' => $data['Year']
+        ]);
 
         return User::create([
-                    'name' => $data['First'] . " " . $data['Last'],
-                    'id' => $data['ID'],
-                    'email' => $data['email'],
-                    'password' => Hash::make($data['Password'])
+			'name' => $data['First'] . " " . $data['Last'],
+			'id' => $data['ID'],
+			'email' => $data['email'],
+			'password' => Hash::make($data['Password'])
         ]);
-        /* return Student::create([
-          'ID' => $data['ID'],
-          'Password' => Hash::make($data['Password']),
-          'First' => $data['First'],
-          'Last' => $data['Last'],
-          'Major' => $data['Major'],
-          'Year' => $data['Year']
-          ]); */
     }
 
     /**
@@ -189,16 +204,16 @@ class AuthController extends Controller {
         //check that they have selected from each drop down
         $this->createClass($request);
 
-        return redirect("dashboard")->withSuccess('Great! You have successfully added a class!');
+        return redirect('dashboard')->withSuccess('Great! You have successfully added a class!');
     }
 	
     //adds the class to the taken table using the model Taken
     public function createClass(Request $data) {
         return Taken::create([
             'ID' => Auth::guard('user')->user()->id,
-             'Class' => $data['Class'],
-             'Grade' => $data['Grade'],
-             'Year' => $data['Year']
+            'Class' => $data['Class'],
+            'Grade' => $data['Grade'],
+            'Year' => $data['Year']
         ]);
     }
     
@@ -211,7 +226,7 @@ class AuthController extends Controller {
         //check that they have selected from each drop down
         $this->createSelection($request);
 
-        return redirect("dashboard")->withSuccess('Great! You have successfully added a class!');
+        return redirect('dashboard')->withSuccess('Great! You have successfully selected a company!');
     }
 	
     //adds the class to the taken table using the model Taken
@@ -231,7 +246,7 @@ class AuthController extends Controller {
         Selection::where('ID', $userid)->delete();
         //return redirect('dashboard');
 
-        return redirect("dashboard")->withSuccess('Cannot delete selection');
+        return redirect('dashboard')->withSuccess('Cannot delete selection');
     }
     
     //add user as a company, so that they could add skills individually
@@ -240,25 +255,36 @@ class AuthController extends Controller {
         //check that they have selected from each drop down
         $this->createSkill($request);
 
-        return redirect("dashboard")->withSuccess('Great! You have successfully added a class!');
+        return redirect('dashboard')->withSuccess('Great! You have successfully added a class!');
     }
 	
-    //adds the class to the taken table using the model Taken
+    // Adds the chosen skill to the custom company for this user, creating and selecting it if necessary.
     public function createSkill(Request $data) {
-        if (is_null(Company::select('ID')->where('Name', $this->company_name())->first())) {
+		// Don't do anything if the empty opeion in the dropdown was selected
+		if (is_null($data->skills)) {
+			return;
+		}
+		
+		// Create the custom company if it doesn't exist for this user
+		$comp = Company::select('ID')->where('Name', $this->company_name())->first();
+        if (is_null($comp)) {
             Company::create([
-                'Name' => $this->company_name()
+                'Name' => $this->company_name(),
+				'Responsibilities' => 'Custom skills.'
             ]);
 		}
-		else if (is_null(Selection::select('*')->where('CompanyID', Company::select('ID')->where('Name', $this->company_name())->first()->ID)->first())) {
+		// Add the custom company to the selection table if it isn't selected
+		if (is_null(Selection::select('*')->where('CompanyID', $comp->ID)->first())) {
+			// Delete the old selection
+			Selection::where('ID', Auth::guard('user')->user()->id)->delete();
 			Selection::create([
 				'ID' => Auth::guard('user')->user()->id,
-                'CompanyID' => Company::select('ID')->where('Name', $this->company_name())->first()->ID
+                'CompanyID' => $comp->ID
 			]);
         }
         
         return Requires::create([
-            'CompanyID' => Company::select('ID')->where('Name', $this->company_name())->first()->ID,
+            'CompanyID' => $comp->ID,
             'SkillID' => $data->skills,
             'Priority' => 0
         ]);
@@ -267,9 +293,8 @@ class AuthController extends Controller {
     public function postSkill(Request $result){
         $skill = $result->input('KeyToDelete');
         $userid = Company::select('ID')->where('Name', $this->company_name())->first()->ID;
-        //where the ID and the class that they input are equal
+        // Select where the ID and the class that they input are equal
         Requires::where('CompanyID', $userid)->where('SkillID', $skill)->delete();
-        //return redirect('dashboard');
 
         return redirect("dashboard")->withSuccess('Cannot delete selection');
     }
