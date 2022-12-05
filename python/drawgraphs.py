@@ -2,7 +2,6 @@ import graphviz
 from dbconnector import cursor
 import queries as q
 import colors
-from datetime import datetime
 import os
 
 ### Function Definitions ###
@@ -77,12 +76,14 @@ def print_recommendations():
         os.remove(GRAPH_DIR + '/recommendations.png')
         
     # Undrected graph to be output as a png
-    e = graphviz.Graph(filename=GRAPH_DIR + '/recommendation', format='png')
-    e.attr('node', shape='egg')
+    e = graphviz.Graph(filename=GRAPH_DIR + '/recommendation', format='png', engine='neato')
+    e.attr('node', shape='square')
+    e.attr(overlap='scale')
     
     cursor.execute(q.get_selection(id))
     if (cursor != None):
-        for row in cursor:
+        companies = cursor.fetchall()
+        for row in companies:
             e.node('c' + str(row[0]), row[1], style='filled', fillcolor=colors.PRIMARY)
         
         # Make a subgraph for the recommended classes
@@ -100,7 +101,17 @@ def print_recommendations():
             
             cursor.execute(q.get_selected_skills(id))
             for row in cursor:
-                b.node(str(row[0]), row[1], style='filled', fillcolor=colors.SECONDARY)
+                c.node(str(row[0]), row[1], style='filled', fillcolor=colors.SECONDARY)
+                
+        # Get relationships between companies and skills
+        for comp in companies:
+            cursor.execute(q.get_requires(str(comp[0])))
+            for row in cursor:
+                e.edge(str(row[0]), 'c' + str(comp[0]))
+                
+        cursor.execute(q.GET_TEACHES + ' WHERE Class IN (' + q.get_recommended_classes(id) + ') AND SkillID IN (SELECT S.ID AS SkillID FROM (' + q.get_selected_skills(id) + ') AS S)')
+        for row in cursor:
+            e.edge(str(row[1]), row[0])
     
     # Label the graph
     global student
@@ -261,4 +272,4 @@ GRAPH_DIR = 'C:/xampp/graphs'
 id = '2'
 cursor.execute(q.get_student_query(id))
 student = cursor.fetchall()[0]
-#create_skill_graph('19')
+create_skill_graph('19')

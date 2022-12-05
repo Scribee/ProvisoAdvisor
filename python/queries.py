@@ -13,6 +13,9 @@ def get_selected_skills(studentID):
     return 'SELECT DISTINCT skills.ID, skills.Name FROM requires, selections, skills WHERE selections.CompanyID=requires.CompanyID AND skills.ID=requires.SkillID AND selections.ID=' + studentID
 def get_selection(studentID):
     return 'SELECT companies.ID, companies.Name FROM companies, selections WHERE companies.ID=selections.CompanyID AND selections.ID=' + studentID
+def get_requires(companyID):
+    return 'SELECT SkillID FROM requires WHERE CompanyID=' + companyID
+
 
 # Constant queries
 #'SELECT skills.ID, skills.Name FROM students, taken, classes, teaches, skills WHERE students.ID=' + studentID + ' AND students.ID=taken.ID AND taken.Class=classes.Class AND classes.Class=teaches.Class AND teaches.SkillID=skills.ID'
