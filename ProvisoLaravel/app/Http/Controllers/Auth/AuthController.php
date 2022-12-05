@@ -190,13 +190,15 @@ class AuthController extends Controller {
     }
 
     /**
-     * adds classes to the taken table 
+     * Verifies that the grade was sufficient for credit, and adds the chosen class to the taken table.
      *
-     * @return redirect to the dashboard
+     * @return redirect to the dashboard with a message explaining any issues
      */
     public function addClass(Request $request) {
+		// Find all classes that need a C or better
 		foreach (Prerequisite::where('Requirement', 'C or better')->get() as $p) {
 			if ($p->Prereq == $request->Class && ($request->Grade == 'D' || $request->Grade == 'F')) {
+				// If the chosen class doesn't have a good enough grade, return without adding to the table
 				return redirect('dashboard')->withSuccess('You needed to have a C or better in ' . $request->Class . ' to get credit.');
 			}
 		}
@@ -208,14 +210,17 @@ class AuthController extends Controller {
             'Year' => 'required'
         ]);
 
+		// Add the entry to the Taken table
         $this->createClass($request);
 
         return redirect('dashboard')->withSuccess('Great! You have successfully added ' . $request->Class . '!');
     }
 	
-    //adds the class to the taken table using the model Taken
+    /*
+	 * Adds the class to the taken table using Eloquent syntax.
+	 */
     public function createClass(Request $data) {		
-        return Taken::create([
+        Taken::create([
             'ID' => Auth::guard('user')->user()->id,
             'Class' => $data['Class'],
             'Grade' => $data['Grade'],
@@ -235,9 +240,11 @@ class AuthController extends Controller {
         return redirect('dashboard')->withSuccess('Great! You have successfully selected a company!');
     }
 	
-    //adds the class to the taken table using the model Taken
+    /*
+	 * Adds the class to the selection table using Eloquent syntax.
+	 */
     public function createSelection(Request $data) {
-        return Selection::create([
+        Selection::create([
             'ID' => Auth::guard('user')->user()->id,
             'CompanyID' => $data['CompanyID']
         ]);
