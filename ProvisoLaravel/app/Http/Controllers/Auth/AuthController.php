@@ -17,26 +17,33 @@ use App\Models\Requires;
 use App\Models\Prerequisite;
 use Hash;
 
+/**
+ * Controller to manage all blade views and allow pages to interface with the database.
+ */
 class AuthController extends Controller {
 
     /**
-     * Write code on Method
+     * Returns the index view.
      *
-     * @return response()
+     * @return index view.
      */
     public function index() {
         return view('index');
     }
 
+	/**
+	 * Returns the login view.
+	 *
+	 * @return login view.
+	 */
     public function login() {
-
         return view('auth.login');
     }
 
     /**
-     * Write code on Method
+     * Returns the registration view.
      *
-     * @return response()
+     * @return registration view.
      */
     public function registration() {
 
@@ -44,9 +51,9 @@ class AuthController extends Controller {
     }
 
     /**
-     * Write code on Method
+     * Checks if the information in the login form was correct.
      *
-     * @return response()
+     * @return redirect to the dashboard if the information was correct, redirect to login with a message otherwise.
      */
     public function postLogin(Request $request) {
         $request->validate([
@@ -54,19 +61,19 @@ class AuthController extends Controller {
             'password' => 'required',
         ]);
 
+		// Check if the credentials can be authenticated
         $credentials = $request->only('email', 'password');
         if (Auth::guard('user')->attempt($credentials)) {
-            return redirect()->intended('dashboard')
-                            ->withSuccess('You have successfully logged in');
+            return redirect()->intended('dashboard')->withSuccess('You have successfully logged in.');
         }
 
-        return redirect("login")->withSuccess('You have entered invalid credentials');
+        return redirect("login")->withSuccess('You have entered invalid credentials.');
     }
 
     /**
-     * Write code on Method
+     * Adds the given information to the users and students table when the registration form is completed.
      *
-     * @return response()
+     * @return redirect to login with a success message.
      */
     public function postRegistration(Request $request) {
         $request->validate([
@@ -79,16 +86,16 @@ class AuthController extends Controller {
             'Year' => 'required'
         ]);
 
-        //$data = $request->all();
+		// Update the database with the registered user's information
         $this->create($request);
 
         return redirect("login")->withSuccess('Great! You have successfully registered!');
     }
 
     /**
-     * Write code on Method
+     * Sets all the necessary global variables for the dashboard blade and returns the view.
      *
-     * @return response()
+     * @return dashboard view if the user is logged in, redirect to the login page otherwise.
      */
     public function dashboard() {
         if (Auth::guard('user')->check()) {
@@ -154,22 +161,23 @@ class AuthController extends Controller {
 
         return redirect("login")->withSuccess('Please log in to access your dashboard.');
     }
-
+	
+	/**
+	 * Removes the selected class from the taken table for this user.
+	 *
+	 * @return redirect to the dashboard with a success message.
+	 */
     public function postDashboard(Request $result) {
         $class = $result->input('KeyToDelete');
         $userid = Auth::guard('user')->user()->id;
-        //where the ID and the class that they input are equal
+        // Find the row for this user and matching class to delete
         Taken::where('ID', $userid)->where('Class', $class)->delete();
-        echo ("Class Record deleted successfully.");
-        //return redirect('dashboard');
 
-        return redirect("dashboard")->withSuccess('Cannot delete class');
+        return redirect("dashboard")->withSuccess('Successfully removed ' . $class . ' from your list of taken classes.');
     }
 
     /**
-     * Write code on Method
-     *
-     * @return response()
+     * Add the user's information to the users and students tables when they register.
      */
     public function create(Request $data) {
 		Student::create([
@@ -181,7 +189,7 @@ class AuthController extends Controller {
 			'Year' => $data['Year']
         ]);
 
-        return User::create([
+        User::create([
 			'name' => $data['First'] . " " . $data['Last'],
 			'id' => $data['ID'],
 			'email' => $data['email'],
@@ -216,7 +224,7 @@ class AuthController extends Controller {
         return redirect('dashboard')->withSuccess('Great! You have successfully added ' . $request->Class . '!');
     }
 	
-    /*
+    /**
 	 * Adds the class to the taken table using Eloquent syntax.
 	 */
     public function createClass(Request $data) {		
@@ -228,6 +236,11 @@ class AuthController extends Controller {
         ]);
     }
     
+	/**
+	 * Adds the given company to the selections table.
+	 *
+	 * @return redirect to the dashboard with a success message.
+	 */
     public function addCompany(Request $request) {
 
         $request->validate([
@@ -240,7 +253,7 @@ class AuthController extends Controller {
         return redirect('dashboard')->withSuccess('Great! You have successfully selected a company!');
     }
 	
-    /*
+    /**
 	 * Adds the class to the selection table using Eloquent syntax.
 	 */
     public function createSelection(Request $data) {
@@ -251,29 +264,38 @@ class AuthController extends Controller {
     }
     
     
-    //deleting an entry from the selections table
+    /**
+	 * Deletes an entry with the same CompanyID from the selections table.
+	 *
+	 * @return redirect to the dashboard with a success message.
+	 */
     public function postCompany(Request $result){
         $comp = $result->input('KeyToDelete');
         $userid = Auth::guard('user')->user()->id;
-        //where the ID and the class that they input are equal
+        // Where the ID and the current user match
         Selection::where('ID', $userid)->delete();
-        //return redirect('dashboard');
 
-        return redirect('dashboard')->withSuccess('Cannot delete selection');
+        return redirect('dashboard')->withSuccess('Cleared selected company.');
     }
     
-    //add user as a company, so that they could add skills individually
+    /**
+	 * Add a custom company for the current user so they can add skills individually.
+	 *
+	 * @return redirect to the dashboard with a success message.
+	 */
     public function addSkill(Request $request) {
 
-        //check that they have selected from each drop down
+        // Update the database with the new skill and company and selection if needed
         $this->createSkill($request);
 
-        return redirect('dashboard')->withSuccess('Great! You have successfully added a class!');
+        return redirect('dashboard')->withSuccess('Skill successfully selected.');
     }
 	
-    // Adds the chosen skill to the custom company for this user, creating and selecting it if necessary.
+    /**
+	 * Adds the chosen skill to the custom company for this user, creating and selecting it if necessary.
+	 */
     public function createSkill(Request $data) {
-		// Don't do anything if the empty opeion in the dropdown was selected
+		// Don't do anything if the empty option in the dropdown was selected
 		if (is_null($data->skills)) {
 			return;
 		}
@@ -286,36 +308,54 @@ class AuthController extends Controller {
 				'Responsibilities' => 'Custom skills.'
             ]);
 		}
-		// Add the custom company to the selection table if it isn't selected
+		
+		// Add the custom company to the selection table if it isn't selected yet
 		if (is_null(Selection::select('*')->where('CompanyID', $comp->ID)->first())) {
 			// Delete the old selection
 			Selection::where('ID', Auth::guard('user')->user()->id)->delete();
+			// Add the custom company for this user
 			Selection::create([
 				'ID' => Auth::guard('user')->user()->id,
                 'CompanyID' => $comp->ID
 			]);
         }
         
-        return Requires::create([
+		// Add the skill for the custom company
+        Requires::create([
             'CompanyID' => $comp->ID,
             'SkillID' => $data->skills,
             'Priority' => 0
         ]);
     }
     
+	/**
+	 * Removes the skill with the given ID from the requires table for the user's custom company.
+	 *
+	 * @return redirect to the dashboard with a success message.
+	 */
     public function postSkill(Request $result){
         $skill = $result->input('KeyToDelete');
         $userid = Company::select('ID')->where('Name', $this->company_name())->first()->ID;
-        // Select where the ID and the class that they input are equal
+        // Select where the CompanyID matches the custom company and the skill that they input matches the skill's ID
         Requires::where('CompanyID', $userid)->where('SkillID', $skill)->delete();
 
-        return redirect("dashboard")->withSuccess('Cannot delete selection');
+        return redirect("dashboard")->withSuccess('Skill deselected.');
     }
     
+	/**
+	 * Returns the profile view.
+	 *
+	 * @return profile view.
+	 */
     public function profile(){
         return view('profile');
     }
 
+	/**
+	 * Removes the session cookies and resets Auth.
+	 *
+	 * @return redirect to the index page.
+	 */
     public function logout() {
         Session::flush();
         Auth::logout();
@@ -323,6 +363,11 @@ class AuthController extends Controller {
         return redirect('index');
     }
 
+	/**
+	 * Getter method for the name to use when creating and querying the user's custom company.
+	 *
+	 * @return string name of the the custom company for this user.
+	 */
 	private function company_name() {
 		return Auth::guard('user')->user()->name . '\'s custom selection';
 	}
