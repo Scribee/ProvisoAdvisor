@@ -118,11 +118,11 @@
             <!-- banner -->
 
         </header>
-        @if(session()->has('message'))
-        <div class="alert alert-success">
-            {{ session()->get('message') }}
-        </div>
-        @endif
+		@if (session('success'))
+		<div class="alert alert-success" role="alert">
+			{{ session('success') }}
+		</div>
+		@endif
         <!-- classes -->
         <div class="clients" id="addClass">
             <div class="container">
