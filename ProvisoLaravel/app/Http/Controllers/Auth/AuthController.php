@@ -311,6 +311,10 @@ class AuthController extends Controller {
 
         return redirect("dashboard")->withSuccess('Cannot delete selection');
     }
+    
+    public function profile(){
+        return view('profile');
+    }
 
     public function logout() {
         Session::flush();

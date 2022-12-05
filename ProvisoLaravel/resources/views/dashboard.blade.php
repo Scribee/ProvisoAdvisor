@@ -47,7 +47,7 @@
                             <div class="col-md-3">
                                 <ul class = "">
                                     <li style='display:inline;'><img src="images/profile.png" style='width: 20px; height: 20px' alt="#"/></li>
-                                    <li style='display:inline; padding:15px'>{{Auth::guard('user')->user()->name}}</li>
+                                    <li style='display:inline; padding:15px'><a href="{{route('profile')}}">{{Auth::guard('user')->user()->name}}</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
@@ -88,7 +88,7 @@
                                             <div class="collapse navbar-collapse" id="navbarsExample04">
                                                 <ul class="navbar-nav mr-auto">
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="{{route('dashboard')}}">Home</a>
+                                                        <a class="nav-link" href="#">Home</a>
                                                     </li>
                                                     <li class="nav-item">
                                                         <a class="nav-link" href="#addClass">Add Classes</a>
