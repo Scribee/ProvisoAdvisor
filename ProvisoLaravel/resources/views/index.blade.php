@@ -131,7 +131,7 @@
                               <div class="col-md-9">
                                  <div class="build_box">
                                     <h1>Welcome to Proviso Advising!</h1>
-                                    <p>Advising made easy!</p>
+                                    <p>Self-Advising made easy!</p>
                                     <a class="read_more signIn_btn" href="{{route('login')}}" role="button">Sign In</a>
                                  </div>
                               </div>
@@ -201,7 +201,7 @@
                <div class="col-md-7">
                   <div class="titlepage">
                      <h2>About Our Website</h2>
-                     <span>Proviso Advising is a dedicated advising site that eliminates the need to schedule an appointment with a professional. 
+                     <span>Proviso Advising is a dedicated self-advising site that eliminates the need to schedule an appointment with a professional. 
                      Here at Proviso you can generate your schedule in just a few easy steps. 
                      First register or sign in as a user. Then add the classes that you've already taken. Lastly, select a company or position you'd like to explore.
                      Proviso will then generate a chart of classes that we recommend to set you up for those career goals!</span>
