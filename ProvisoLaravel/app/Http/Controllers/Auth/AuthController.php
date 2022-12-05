@@ -14,6 +14,7 @@ use App\Models\Company;
 use App\Models\Taken;
 use App\Models\Selection;
 use App\Models\Requires;
+use App\Models\Prerequisite;
 use Hash;
 
 class AuthController extends Controller {
@@ -194,21 +195,26 @@ class AuthController extends Controller {
      * @return redirect to the dashboard
      */
     public function addClass(Request $request) {
+		foreach (Prerequisite::where('Requirement', 'C or better')->get() as $p) {
+			if ($p->Prereq == $request->Class && ($request->Grade == 'D' || $request->Grade == 'F')) {
+				return redirect('dashboard')->withSuccess('You needed to have a C or better in ' . $request->Class . ' to get credit.');
+			}
+		}
 
-        $request->validate([
+        // Check that they have selected from each drop down
+		$request->validate([
             'Class' => 'required',
             'Grade' => 'required',
             'Year' => 'required'
         ]);
 
-        //check that they have selected from each drop down
         $this->createClass($request);
 
-        return redirect('dashboard')->withSuccess('Great! You have successfully added a class!');
+        return redirect('dashboard')->withSuccess('Great! You have successfully added ' . $request->Class . '!');
     }
 	
     //adds the class to the taken table using the model Taken
-    public function createClass(Request $data) {
+    public function createClass(Request $data) {		
         return Taken::create([
             'ID' => Auth::guard('user')->user()->id,
             'Class' => $data['Class'],
