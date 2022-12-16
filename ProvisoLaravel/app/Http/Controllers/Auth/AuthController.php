@@ -348,7 +348,9 @@ class AuthController extends Controller {
 	 * @return profile view.
 	 */
     public function profile(){
-        return view('profile');
+        $userid = Auth::guard('user')->user()->id;
+        $info = Student::select('*')->where('ID', $userid)->get();
+        return view('profile', ['info' => $info]);
     }
 
 	/**
