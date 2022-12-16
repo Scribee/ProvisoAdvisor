@@ -37,8 +37,11 @@
 			<div class="login">
 				<div class="login_container">
 					<div class="row">
-						<div class="w-100">
+                                                <div class='col-lg-3'>
+                                                </div>
+						<div class="col-lg-6" style="background: whitesmoke; padding: 30px 30px 15px 30px">
 							<h3>Login</h3>
+                                                        
 							<form class="login_form" align='center' action="{{route('login.post')}}" method='POST'>
 								@csrf
 								
@@ -46,11 +49,14 @@
 								<input class="login-input form-control enter" placeholder="Enter your password" type="password" name="password" required />
 								<button class="sub_btn">Sign In</button>
 							</form>
+                                                        
+                                                        <p>Don't have an account? <a href="{{ route('register') }}">Register here</a></p> 
 						</div>
+                                                <div class='col-lg-3'>
+                                                </div>
 					</div>
 				</div>
-				<br>
-				<p>Don't have an account? <a href="{{ route('register') }}">Register here</a></p>	   
+					   
 			</div>
 		</center>
 		<script src="js/jquery.min.js"></script>

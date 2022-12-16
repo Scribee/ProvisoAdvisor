@@ -153,15 +153,15 @@
                                                         <div class="consect">
                                                             @if(!is_null($taken->first()))
                                                             <!--Show classes they've already added-->
-                                                            <form action="{{ route('dashboard.post') }}" method="POST" role="form">
+                                                            <form  action="{{ route('dashboard.post') }}" method="POST" role="form">
                                                                 @csrf
-                                                                <table>
+                                                                <table class="customers" style="display:flex">
                                                                     <tr>
-                                                                        <td style="padding-right: 15px">Class</td>
-                                                                        <td style="padding-right: 15px">Grade</td>
-                                                                        <td style="padding-right: 15px">Year</td>
-                                                                        <td style="padding-right: 15px">Delete</td>
-                                                                        <td></td>
+                                                                        <th style="padding-right: 15px">Class</th>
+                                                                        <th style="padding-right: 15px">Grade</th>
+                                                                        <th style="padding-right: 15px">Year</th>
+                                                                        <th style="padding-right: 15px">Delete</th>
+                                                                        <th></th>
                                                                     </tr>
                                                                     @foreach ($taken->get() as $take)
                                                                     <tr>                                             
