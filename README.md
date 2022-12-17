@@ -30,8 +30,8 @@ ProvisoAdvisor is a college advising site specifically intended to be used by CS
 1. Run the command `mod_wsgi-express module-config` in a terminal and copy the output, which should be 3 lines.  
   
 1. Apache must now be configured to allow mod-wsgi to handle certain HTTP requests by adding several lines to *httpd.conf*. I've provided *SAMPLE_httpd.conf* as an example of how I modified mine for running wsgi with XAMPP. It's not necessary to look at this since I'm not sure how different things are for your Apache setup. Lines 188 to 221 include all of the additions I made to the default configuration file.
-  - Within our project's VirtualHost section, paste the output of the last command. This should include paths to the python installation and mod-wsgi module.
-  - Below this, add the following WSGI configuration:  
+    - Within our project's VirtualHost section, paste the output of the last command. This should include paths to the python installation and mod-wsgi module.
+    - Below this, add the following WSGI configuration:  
 ```
 # Change "localhost" to the ServerName of the VirtualHost  
 WSGIDaemonProcess localhost maximum-requests=4  
@@ -40,7 +40,7 @@ WSGIProcessGroup localhost
 WSGIScriptAlias /wsgi/classGraph C:/xampp/wsgi/drawclassgraph.wsgi  
 WSGIScriptAlias /wsgi/skillGraph C:/xampp/wsgi/drawskillgraph.wsgi
 ```
-	- Below this, add the following directory information:  
+    - Below this, add the following directory information:  
 ```
 # Change this path to the location of the wsgi directory  
 <Directory "C:/xampp/wsgi">  
@@ -53,4 +53,4 @@ WSGIScriptAlias /wsgi/skillGraph C:/xampp/wsgi/drawskillgraph.wsgi
 </IfVersion>  
 </Directory>
 ```
-  - More information about mod-wsgi configuration can be found [here](https://modwsgi.readthedocs.io/en/develop/configuration.html).
+    - More information about mod-wsgi configuration can be found [here](https://modwsgi.readthedocs.io/en/develop/configuration.html).
