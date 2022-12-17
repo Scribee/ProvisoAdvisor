@@ -303,7 +303,7 @@ class AuthController extends Controller {
 		// Create the custom company if it doesn't exist for this user
 		$comp = Company::select('ID')->where('Name', $this->company_name())->first();
         if (is_null($comp)) {
-            Company::create([
+            $comp = Company::create([
                 'Name' => $this->company_name(),
 				'Responsibilities' => 'Custom skills.'
             ]);
