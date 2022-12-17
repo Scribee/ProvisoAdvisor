@@ -115,7 +115,7 @@
         </header>
 		
 		@if (session('success'))
-		<div class="alert alert-success" role="alert">
+		<div id="status" class="alert alert-success" role="alert">
 			{{ session('success') }}
 		</div>
 		@endif
@@ -148,8 +148,7 @@
                                                 <div class="row d_flex">
                                                     <div class="col-md-12">
                                                         <div class="consect">
-                                                            
-                                                            @if(!empty($taken->get()))
+                                                            @if(count($taken) > 0)
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Added Classes</h3>
                                                             <!--Show classes they've already added-->
                                                             <form action="{{ route('dashboard.post') }}" method="POST" role="form">
@@ -162,7 +161,7 @@
                                                                         <th style="padding-right: 15px">Delete</th>
                                                                         <th></th>
                                                                     </tr>
-                                                                    @foreach ($taken->get() as $take)
+                                                                    @foreach ($taken as $take)
                                                                     <tr>
                                                                         <td>{{ $take->Class }}</td>
                                                                         <td>{{ $take->Grade }}</td>
@@ -181,14 +180,14 @@
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add Classes</h3>
                                                             <form action='{{route('addClass')}}' method='POST'>
                                                                 @csrf
-                                                                <select name="Class" class="dropdown">
+                                                                <select name="Class" class="dropdown" required>
                                                                     <option value=''>--Classes--</option>
                                                                     @foreach($aval as $row)
                                                                     <option value="{{$row->Class}}">{{$row->Class}}
                                                                     </option>
                                                                     @endforeach
                                                                 </select>
-                                                                <select name='Grade' class="dropdown">
+                                                                <select name='Grade' class="dropdown" required>
                                                                     <option value=''>--Grade--</option>
                                                                     <option value='A'>A</option>
                                                                     <option value='B'>B</option>
@@ -196,7 +195,7 @@
                                                                     <option value='D'>D</option>
                                                                     <option value='F'>F</option>
                                                                 </select>
-                                                                <select name='Year' class="dropdown">
+                                                                <select name='Year' class="dropdown" required>
                                                                     <option value=''>--Year--</option>
                                                                     <option value='1'>1</option>
                                                                     <option value='2'>2</option>
@@ -251,8 +250,7 @@
                                             <div class="carousel-caption relative2">
                                                 <div class="row d_flex">
                                                     <div class="col-md-12">
-                                                        <div class="consect" >
-                                                            
+                                                        <div class="consect">                                                         
                                                            @if(!is_null($comp))
                                                            <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Selected Company</h3>
                                                            <!--Show positions they've already added-->  
@@ -280,7 +278,7 @@
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add A Company</h3>
                                                             <form action='{{route('addCompany')}}' method='POST'>
                                                                 @csrf
-                                                            <select name="CompanyID" class="dropdown">
+                                                            <select name="CompanyID" class="dropdown" required>
                                                                 <option value=''>--Companies/Positions--</option>
                                                                 @foreach($company as $c)
                                                                 <option value="{{$c->ID}}">{{$c->Name}}
@@ -367,7 +365,7 @@
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add Skills</h3>
                                                             <form action='{{route('addSkill')}}' method='POST'>
                                                                 @csrf
-                                                            <select name="skills" class="dropdown">
+                                                            <select name="skills" class="dropdown" required>
                                                                 <option value=''>--Skills--</option>
                                                                 @foreach($skill as $row)
                                                                 <option value="{{$row->ID}}">{{$row->Name}}

@@ -100,7 +100,7 @@ class AuthController extends Controller {
     public function dashboard() {
         if (Auth::guard('user')->check()) {
             $flag = false;
-            $taken = Taken::select('*')->where('ID', Auth::guard('user')->user()->id);
+            $taken = Taken::select('*')->where('ID', Auth::guard('user')->user()->id)->get();
             $class = Classes::all();
             $aval = array();
             $skill = Skill::all()->all();
@@ -114,7 +114,7 @@ class AuthController extends Controller {
             $company = Company::select('*')->where('Responsibilities', '<>', 'Custom skills.')->orWhere('Name', $this->company_name())->get();
             $selection = Selection::select('*')->where('ID', Auth::guard('user')->user()->id);
             foreach ($class as $c) {
-                foreach ($taken->get() as $t) {
+                foreach ($taken as $t) {
                     if ($t["Class"] == $c["Class"]) {
                         $flag = true;
 						break;

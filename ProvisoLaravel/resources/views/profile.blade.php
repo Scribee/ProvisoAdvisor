@@ -53,12 +53,14 @@
                         <p style="text-align: left; border: solid black .5px; padding: 8px"> Email: {{Auth::guard('user')->user()->email}}</p>
                         <form action="{{ route('postProfile') }}" method="POST" role="form">
                             @csrf
-                            <div class="d-flex" style="align-items: center; text-align: left; border: solid black .5px; padding: 8px"> <p> Major: {{$info->Major}}  </p>                                             
-                                <input class="float-right" type="text" name="Major" placeholder="Edit">
+                            <div style="display: flex; justify-content: flex-end; align-items: center; text-align: left; border: solid black .5px; padding: 8px">
+								<p style="flex: 1">Major: {{$info->Major}}</p>
+								<input style="flex: 2" class="float-right" type="text" name="Major" placeholder="Edit">
                             </div>
-                            <p style="text-align: left; border: solid black .5px; padding: 8px"> Year: {{$info->Year}} 
-                                <input class="float-right" type="number" name="Year" min="0" placeholder="Edit">
-                            </p>
+                            <div style="display: flex; justify-content: flex-end; align-items: center; text-align: left; border: solid black .5px; padding: 8px">
+								<p style="flex: 1">Year: {{$info->Year}}</p>
+                                <input style="flex: 2" class="float-right" type="number" name="Year" min="0" placeholder="Edit">
+                            </div>
                             <input type="submit" name="submitDeleteBtn">
                         </form>
                     </div>
