@@ -155,7 +155,7 @@
                                                             <!--Show classes they've already added-->
                                                             <form  action="{{ route('dashboard.post') }}" method="POST" role="form">
                                                                 @csrf
-                                                                <table class="customers" style="display:flex">
+                                                                <table class="customers">
                                                                     <tr>
                                                                         <th style="padding-right: 15px">Class</th>
                                                                         <th style="padding-right: 15px">Grade</th>
@@ -256,11 +256,11 @@
                                                            <!--Show positions they've already added-->  
                                                             <form action="{{ route('company.post') }}" method="POST" role="form">
                                                                 @csrf
-                                                                <table>
+                                                                <table class="customers">
                                                                     <tr>
-                                                                        <td style="padding-right: 15px">Company</td>
-                                                                        <td style="padding-right: 15px">Delete</td>
-                                                                        <td></td>
+                                                                        <th style="padding-right: 15px">Company</th>
+                                                                        <th style="padding-right: 15px">Delete</th>
+                                                                        <th></th>
                                                                     </tr>
                                                                     <tr>                                             
                                                                         <td style ="padding-right:15px">{{ $comp->Name }}</td>
@@ -337,11 +337,12 @@
                                                             <!--Show positions they've already added-->
                                                             <form action="{{ route('skills.post') }}" method="POST" role="form">
                                                                 @csrf
-                                                                <table>
+                                                                <table class="customers">
+                                                                  
                                                                     <tr>
-                                                                        <td style="padding-right: 15px">Skill</td>
-                                                                        <td style="padding-right: 15px">Delete</td>
-                                                                        <td></td>
+                                                                        <th style="padding-right: 15px">Skill</th>
+                                                                        <th style="padding-right: 15px">Delete</th>
+                                                                        <th></th>
                                                                     </tr>
                                                                     @foreach ($skills as $s)
                                                                     <tr> 
