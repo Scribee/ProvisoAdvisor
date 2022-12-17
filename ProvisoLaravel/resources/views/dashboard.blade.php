@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!DOCTYPE html>
-    <html lang="en">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- mobile metas -->
@@ -81,7 +79,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                                        <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                                        <nav class="navigation navbar navbar-expand-md navbar-dark">
                                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                                                 <span class="navbar-toggler-icon"></span>
                                             </button>
@@ -116,13 +114,14 @@
             <!-- end header inner -->
             <!-- end header -->
             <!-- banner -->
-
         </header>
+		
 		@if (session('success'))
 		<div class="alert alert-success" role="alert">
 			{{ session('success') }}
 		</div>
 		@endif
+		
         <!-- classes -->
         <div class="clients" id="addClass">
             <div class="container">

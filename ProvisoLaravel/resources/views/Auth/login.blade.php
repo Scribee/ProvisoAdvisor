@@ -33,12 +33,19 @@
 		<div>
 			<button style='width:50px; height:50px'><a href = "{{route('home')}}" ><img src="images/back.png" alt="#"/></a></button>
 		</div>
+		
+		@if (session('success'))
+		<div class="alert alert-success" role="alert">
+			{{ session('success') }}
+		</div>
+		@endif
+		
 		<center>
 			<div class="login">
 				<div class="login_container">
 					<div class="row">
-                                                <div class='col-lg-3'>
-                                                </div>
+                        <div class='col-lg-3'>
+                        </div>
 						<div class="col-lg-6" style="background: whitesmoke; padding: 30px 30px 15px 30px">
 							<h3>Login</h3>
                                                         
@@ -50,10 +57,10 @@
 								<button class="sub_btn">Sign In</button>
 							</form>
                                                         
-                                                        <p>Don't have an account? <a href="{{ route('register') }}">Register here</a></p> 
+                            <p>Don't have an account? <a href="{{ route('register') }}">Register here</a></p> 
 						</div>
-                                                <div class='col-lg-3'>
-                                                </div>
+                        <div class='col-lg-3'>
+                        </div>
 					</div>
 				</div>
 					   
@@ -66,22 +73,5 @@
 		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 		<script src="js/custom.js"></script>
 	</body>
-	<?php
-	 /*<form class="form" action="{{ route('login.post') }}" method="POST" name="login">
-			@csrf
-			<h1 class="login-title">Login</h1>
-			<input type="text" class="login-input form-control" name="email" placeholder="Email" id="email" required/>
-			<input type="password" class="login-input form-control" name="password" placeholder="Password" id="Password" required/>
-			<input type="submit" value="Login" name="submit" class="login-button"/>
-	   </form>
-	   
-	   @if (session('success'))
-		<div class="alert alert-success" role="alert">
-		{{ session('success') }}
-		</div>
-	   @endif
-	  * 
-	  */
-	?>
 </html>
 
