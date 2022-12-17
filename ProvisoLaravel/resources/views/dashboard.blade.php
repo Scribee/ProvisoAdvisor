@@ -151,9 +151,9 @@
                                                 <div class="row d_flex">
                                                     <div class="col-md-12">
                                                         <div class="consect">
-                                                            @if(!is_null($taken->first()))
+                                                            @if(!is_null($taken->get()[0]))
                                                             <!--Show classes they've already added-->
-                                                            <form  action="{{ route('dashboard.post') }}" method="POST" role="form">
+                                                            <form action="{{ route('dashboard.post') }}" method="POST" role="form">
                                                                 @csrf
                                                                 <table class="customers" style="display:flex">
                                                                     <tr>
@@ -164,7 +164,7 @@
                                                                         <th></th>
                                                                     </tr>
                                                                     @foreach ($taken->get() as $take)
-                                                                    <tr>                                             
+                                                                    <tr>
                                                                         <td>{{ $take->Class }}</td>
                                                                         <td>{{ $take->Grade }}</td>
                                                                         <td>{{ $take->Year }}</td>
