@@ -17,8 +17,6 @@
         <link rel="stylesheet" href="css/style.css">
         <!-- Responsive-->
         <link rel="stylesheet" href="css/responsive.css">
-        <!-- fevicon -->
-        <link rel="icon" href="images/fevicon.png" type="image/gif" />
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
         <!-- Tweaks for older IEs-->
@@ -405,11 +403,51 @@
                         <div class="titlepage">
                             <h2>Your Schedule</h2>
                             <br/>
-                            <button type="button" class="btn btn-secondary class_graph">Show graph of classes</button>
-                            <div class="container w-100 class_graph">
-                            </div>
+                            <button type="button" class="btn btn-secondary class_graph">Generate graphs</button>
+							<!--<div class="d-flex justify-content-center modal_tip bg-light text-center" style="margin-top: 10px">
+							</div>-->
+							<!-- Classes -->
+							<div class="container w-100 class_graph">
+							</div>
+							<div class="modal fade" id="class_modal" tabindex="-1" role="dialog" aria-labelledby="class_modal_label" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="class_modal_label">Four year plan</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Skills -->
 							<div class="container w-100 skill_graph">
-                            </div>
+							</div>
+							<div class="modal fade" id="skill_modal" tabindex="-1" role="dialog" aria-labelledby="skill_modal_label" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="skill_modal_label">Desired skills</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<img src="https://127.0.0.1/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
                         </div>
                     </div>
                 </div>
@@ -430,69 +468,10 @@
         <script src="js/custom.js"></script>
         <script type='text/javascript'>
 			$('button.class_graph').click(function () {
-				$('div.class_graph').html('<img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/>');
-				$('div.skill_graph').html('<img src="https://127.0.0.1/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/>');
+				$('div.class_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#class_modal"><img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/></button>');
+				$('div.skill_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#skill_modal"><img src="https://127.0.0.1/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/></button>');
+				//$('div.modal_tip').html('<p>Click either graph to open it in a larger window.</p>');
 			});
         </script>
     </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-<?php
-//include auth_session.php file on all user panel pages
-//include("auth_session.php");
-//require('db.php');
-
-/*<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Dashboard - Client area</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg" style="background-color:gold"> 
-            <div class="container">
-                <a href="dashboard.php" class="navbar-brand">Home</a>
-                <div class="collaspe navbar-collapse">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a href="AddForm.php" class="nav-link">Add Taken Classes</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-</nav>
-    <div class="form">
-        <p>Hey!</p>
-        <h2>You are now on the students dashboard page.</h2>   
-    </div>
-    @if (session('success'))
-
-                        <div class="alert alert-success" role="alert">
-
-                            {{ session('success') }}
-
-                        </div>
-
-                    @endif
-    <div class="form">
-        <p><a href="logout.php">Logout</a></p>
-    </div>
-    
-    
-</body>
-</html>
- * 
- */
