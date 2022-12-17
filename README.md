@@ -17,7 +17,7 @@ ProvisoAdvisor is a college advising site specifically intended to be used by CS
 ## Server Setup  
   
 - The web interface was created in Laravel, and is completely contained within the *ProvisoLaravel* directory.  
-  - The login system and dashboard rely on having the provisoadvising database set up in phpMyAdmin. We have not created a migration for these tables, instead create an empty database in phpMyAdmin called **provisoadvising** and import the *DatabaseSetup.sql* file found at the top level of the repository.
+  - The login system and dashboard rely on having the provisoadvising database set up in phpMyAdmin. We have not created a migration for these tables, instead create an empty database in phpMyAdmin called **provisoadvising** and import the *DatabaseSetup.sql* file found at the top level of the repository.  
 &nbsp;  
   
 - The graph generation scripts are in the *python* directory, which can be placed anywhere within the server memory. To run these scripts, the following system requirements must be met:
@@ -26,7 +26,7 @@ ProvisoAdvisor is a college advising site specifically intended to be used by CS
 - Packages
   - **mod-wsgi 4.9.4**: run `pip install mod-wsgi`. More information can be found [here](https://pypi.org/project/mod-wsgi/).
   - **mysql-connector-python 8.0.29**: run `pip install mysql-connector-python==8.0.29`. This version is necessary for compatibility with mod-wsgi on my machine.
-  - **graphviz 0.20.1**: run `pip install graphviz`.
+  - **graphviz 0.20.1**: run `pip install graphviz`.  
 &nbsp;  
   
 - The WSGI interface scripts are in the *wsgi* directory, which can be placed anywhere outside the *ProvisoLaravel* directory. Inside the *wsgi* directory are two scripts which **need to be modified** once the python scripts have been copied to the server. Open each one and change the string in the 5th line to the path of the *python* folder on the server so the wsgi scripts can import the graph generator.  
