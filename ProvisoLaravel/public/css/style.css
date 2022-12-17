@@ -1355,6 +1355,13 @@ ul.insta li {
 }
 
 
+/**drop down menu style**/
+.dropdown {
+    text-align: center;
+    background-color: transparent;
+    color: black;
+}
+.dropdown option:nth-child(even){background-color: #f2f2f2;}
 /** endinner page css **/
 
 .inner_page .full_bg {

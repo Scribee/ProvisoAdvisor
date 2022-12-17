@@ -184,14 +184,14 @@
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add Classes</h3>
                                                             <form action='{{route('addClass')}}' method='POST'>
                                                                 @csrf
-                                                                <select name="Class">
+                                                                <select name="Class" class="dropdown">
                                                                     <option value=''>--Classes--</option>
                                                                     @foreach($aval as $row)
                                                                     <option value="{{$row->Class}}">{{$row->Class}}
                                                                     </option>
                                                                     @endforeach
                                                                 </select>
-                                                                <select name='Grade'>
+                                                                <select name='Grade' class="dropdown">
                                                                     <option value=''>--Grade--</option>
                                                                     <option value='A'>A</option>
                                                                     <option value='B'>B</option>
@@ -199,7 +199,7 @@
                                                                     <option value='D'>D</option>
                                                                     <option value='F'>F</option>
                                                                 </select>
-                                                                <select name='Year'>
+                                                                <select name='Year' class="dropdown">
                                                                     <option value=''>--Year--</option>
                                                                     <option value='1'>1</option>
                                                                     <option value='2'>2</option>
@@ -283,7 +283,7 @@
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add A Company</h3>
                                                             <form action='{{route('addCompany')}}' method='POST'>
                                                                 @csrf
-                                                            <select name="CompanyID">
+                                                            <select name="CompanyID" class="dropdown">
                                                                 <option value=''>--Companies/Positions--</option>
                                                                 @foreach($company as $c)
                                                                 <option value="{{$c->ID}}">{{$c->Name}}
@@ -370,7 +370,7 @@
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add Skills</h3>
                                                             <form action='{{route('addSkill')}}' method='POST'>
                                                                 @csrf
-                                                            <select name="skills">
+                                                            <select name="skills" class="dropdown">
                                                                 <option value=''>--Skills--</option>
                                                                 @foreach($skill as $row)
                                                                 <option value="{{$row->ID}}">{{$row->Name}}
