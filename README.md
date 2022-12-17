@@ -1,4 +1,6 @@
 # ProvisoAdvisor  
+
+#### CS 360 Research Project - Carson and Molly - 12/20/2022
   
 ## Overview  
   
@@ -32,7 +34,7 @@ ProvisoAdvisor is a college advising site specifically intended to be used by CS
 - Apache must now be configured to allow mod-wsgi to handle certain HTTP requests by adding several lines to *httpd.conf*. I've provided *SAMPLE_httpd.conf* as an example of how I modified mine for running wsgi with XAMPP. It's not necessary to look at this since I'm not sure how different things are for your Apache setup. Lines 188 to 221 include all of the additions I made to the default configuration file.
   - Within our project's VirtualHost section, paste the output of the last command. This should include paths to the python installation and mod-wsgi module.
   - Below this, add the following WSGI configuration:  
-  - ```
+```
 # Change "localhost" to the ServerName of the VirtualHost  
 WSGIDaemonProcess localhost maximum-requests=4  
 WSGIProcessGroup localhost  
@@ -41,7 +43,7 @@ WSGIScriptAlias /wsgi/classGraph C:/xampp/wsgi/drawclassgraph.wsgi
 WSGIScriptAlias /wsgi/skillGraph C:/xampp/wsgi/drawskillgraph.wsgi
 ```
   - Below this, add the following directory information:  
-  - ```
+```
 # Change this path to the location of the wsgi directory  
 <Directory "C:/xampp/wsgi">  
 <IfVersion < 2.4>  
