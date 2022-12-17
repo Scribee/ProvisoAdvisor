@@ -37,7 +37,10 @@
 			<div class="login">
 				<div class="login_container">
 					<div class="row">
-						<div>
+                                            <div class='col-lg-3'>
+                                                </div>
+						<div class="col-lg-6" style="background: whitesmoke; padding: 30px 30px 15px 30px">
+						
 						<h3>Registration</h3>
 						<form class="login_form" align='center' action="{{route('register.post')}}" method='POST'>
 							@csrf
@@ -70,16 +73,17 @@
 							@if ($errors->has('Year'))
 								<span class="text-danger">{{ $errors->first('Year') }}</span>
 							@endif
-                                                        <div style="background: grey">
+                                                        
 							<button class="sub_btn">Register</button>
-                                                        </div>
 						 </form>
-					  </div>
-					   
+                                                <p>Already have an account? <a href="{{ route('login') }}">Login here!</a></p>
+                                            </div>
+					   <div class='col-lg-3'>
+                                           </div>
 				   </div>
 				</div>
-				<br>
-				<p>Already have an account? <a href="{{ route('login') }}">Login here!</a></p>
+				
+				
 			</div>
 		</center>
 		<script src="js/jquery.min.js"></script>
