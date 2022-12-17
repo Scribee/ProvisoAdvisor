@@ -44,7 +44,7 @@
                         <p style="text-align: left; border: solid black .5px; padding: 5px"> ID: {{Auth::guard('user')->user()->id}}</p>
                         <p style="text-align: left; border: solid black .5px; padding: 5px"> Name: {{Auth::guard('user')->user()->name}}</p>
                         <p style="text-align: left; border: solid black .5px; padding: 5px"> Email: {{Auth::guard('user')->user()->email}}</p>
-                        <p style="text-align: left; border: solid black .5px; padding: 5px"> Major: {{$info->get('Major')}} </p>
+                        <p style="text-align: left; border: solid black .5px; padding: 5px"> Major: {{$info}} </p>
                         <p style="text-align: left; border: solid black .5px; padding: 5px"> Year: {{$info}}</p>
                     </div>
                     <div class='col-lg-3'>
