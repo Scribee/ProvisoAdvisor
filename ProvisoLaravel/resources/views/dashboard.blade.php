@@ -254,7 +254,7 @@
                                                         <div class="consect" >
                                                             
                                                            @if(!is_null($comp))
-                                                           <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Added Company</h3>
+                                                           <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Selected Company</h3>
                                                            <!--Show positions they've already added-->  
                                                             <form action="{{ route('company.post') }}" method="POST" role="form">
                                                                 @csrf

@@ -1,7 +1,8 @@
 # Script that interfaces between Apache and the graph generator Python scripts.
 
 import sys
-path = 'C:/xampp/htdocs/ProvisoAdvisor/python'
+# REPLACE BELOW PATH
+path = 'C:/xampp/htdocs/ProvisoAdvisor/python' # REPLACE PATH FOR WHERE THE PYTHON DIRECTORY WAS PLACED
 if path not in sys.path:
     sys.path.append(path)
 import drawgraphs
