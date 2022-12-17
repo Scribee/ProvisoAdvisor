@@ -352,6 +352,22 @@ class AuthController extends Controller {
         $info = Student::select('Major', 'Year')->where('ID', $userid)->first();
         return view(view: 'profile', data: ['info' => $info]);
     }
+    
+    /**
+	 * Returns the profile view.
+	 *
+	 * @return profile view.
+	 */
+    public function postProfile(Request $request){
+        $year = Student::select('Year')->where('ID', Auth::guard('user')->user()->id)->first()->Year;
+        $major = Student::select('Major')->where('ID', Auth::guard('user')->user()->id)->first()->Major;
+        Student::where('ID', Auth::guard('user')->user()->id)
+       ->update([
+           'Year' => is_null($request->input('Year')) ? $year : $request->input('Year'),
+           'Major' => is_null($request->input('Major')) ? $major : $request->input('Major')
+        ]);
+        return redirect('profile')->withSuccess("Profile updated successfully");
+    }
 
 	/**
 	 * Removes the session cookies and resets Auth.

@@ -33,38 +33,46 @@
         <div>
             <button style='width:50px; height:50px'><a href= "{{route('dashboard')}}" ><img src="images/back.png" alt="#"/></a></button>
         </div>
-				
-		@if (session('success'))
-		<div class="alert alert-success" role="alert">
-			{{ session('success') }}
-		</div>
-		@endif
-		
-		<center>
-			<div class="login">
-				<div class="login_container">
-					<div class="row">
-						<div class='col-lg-3'>
-						</div>
-						<div class="col-lg-6" style="background: whitesmoke; padding: 30px 30px 15px 30px">
-							<h3>Profile</h3>
-							<p style="text-align: left; border: solid black .5px; padding: 5px"> ID: {{Auth::guard('user')->user()->id}}</p>
-							<p style="text-align: left; border: solid black .5px; padding: 5px"> Name: {{Auth::guard('user')->user()->name}}</p>
-							<p style="text-align: left; border: solid black .5px; padding: 5px"> Email: {{Auth::guard('user')->user()->email}}</p>
-							<p style="text-align: left; border: solid black .5px; padding: 5px"> Major: {{$info->Major}} </p>
-							<p style="text-align: left; border: solid black .5px; padding: 5px"> Year: {{$info->Year}}</p>
-						</div>
-						<div class='col-lg-3'>
-						</div>
-					</div>
-				</div>
-			</div>
-		</center>
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.bundle.min.js"></script>
-		<script src="js/jquery-3.0.0.min.js"></script>
-		<!-- sidebar -->
-		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-		<script src="js/custom.js"></script>
-	</body>
+
+        @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+        @endif
+
+    <center>
+        <div class="login">
+            <div class="login_container">
+                <div class="row">
+                    <div class='col-lg-3'>
+                    </div>
+                    <div class="col-lg-6" style="background: whitesmoke; padding: 30px 30px 15px 30px">
+                        <h3>Profile</h3>
+                        <p style="text-align: left; border: solid black .5px; padding: 8px"> ID: {{Auth::guard('user')->user()->id}}</p>
+                        <p style="text-align: left; border: solid black .5px; padding: 8px"> Name: {{Auth::guard('user')->user()->name}}</p>
+                        <p style="text-align: left; border: solid black .5px; padding: 8px"> Email: {{Auth::guard('user')->user()->email}}</p>
+                        <form action="{{ route('postProfile') }}" method="POST" role="form">
+                            @csrf
+                            <div class="d-flex" style="align-items: center; text-align: left; border: solid black .5px; padding: 8px"> <p> Major: {{$info->Major}}  </p>                                             
+                                <input class="float-right" type="text" name="Major" placeholder="Edit">
+                            </div>
+                            <p style="text-align: left; border: solid black .5px; padding: 8px"> Year: {{$info->Year}} 
+                                <input class="float-right" type="number" name="Year" min="0" placeholder="Edit">
+                            </p>
+                            <input type="submit" name="submitDeleteBtn">
+                        </form>
+                    </div>
+                    <div class='col-lg-3'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+</body>
 </html>

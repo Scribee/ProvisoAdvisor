@@ -57,7 +57,7 @@
 									<span class="text-danger">{{ $errors->first('ID') }}</span>
 								@endif
 								<input type="text" class="login-input form-control enter" name="email" placeholder="Email" required />
-								@if ($errors->has('Password'))
+								@if ($errors->has('email'))
 									<span class="text-danger">{{ $errors->first('email') }}</span>
 								@endif
 								<input type="password" class="login-input form-control enter" name="Password" placeholder="Password" required />

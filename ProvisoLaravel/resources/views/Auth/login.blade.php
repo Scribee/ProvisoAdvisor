@@ -53,7 +53,13 @@
 								@csrf
 								
 								<input class="login-input form-control enter" placeholder="Enter your email" type="text" name="email" required />
+                                                               @if ($errors->has('email'))
+									<span class="text-danger">{{ $errors->first('email') }}</span>
+								@endif
 								<input class="login-input form-control enter" placeholder="Enter your password" type="password" name="password" required />
+                                                                @if ($errors->has('Password'))
+									<span class="text-danger">{{ $errors->first('Password') }}</span>
+								@endif
 								<button class="sub_btn">Sign In</button>
 							</form>
                                                         

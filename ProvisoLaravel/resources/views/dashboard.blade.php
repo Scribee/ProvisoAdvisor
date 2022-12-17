@@ -149,7 +149,7 @@
                                                     <div class="col-md-12">
                                                         <div class="consect">
                                                             
-                                                            @if(!is_null($taken->get()[0]))
+                                                            @if(!empty($taken->get()))
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Added Classes</h3>
                                                             <!--Show classes they've already added-->
                                                             <form action="{{ route('dashboard.post') }}" method="POST" role="form">
