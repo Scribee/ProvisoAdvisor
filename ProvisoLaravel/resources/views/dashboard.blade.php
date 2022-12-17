@@ -151,7 +151,9 @@
                                                 <div class="row d_flex">
                                                     <div class="col-md-12">
                                                         <div class="consect">
+                                                            
                                                             @if(!is_null($taken->get()[0]))
+                                                            <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Added Classes</h3>
                                                             <!--Show classes they've already added-->
                                                             <form action="{{ route('dashboard.post') }}" method="POST" role="form">
                                                                 @csrf
@@ -179,6 +181,7 @@
                                                             @endif
                                                             <!-- add drop down menus-->
                                                             <br>
+                                                            <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add Classes</h3>
                                                             <form action='{{route('addClass')}}' method='POST'>
                                                                 @csrf
                                                                 <select name="Class">
@@ -252,7 +255,9 @@
                                                 <div class="row d_flex">
                                                     <div class="col-md-12">
                                                         <div class="consect" >
+                                                            
                                                            @if(!is_null($comp))
+                                                           <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Added Company</h3>
                                                            <!--Show positions they've already added-->  
                                                             <form action="{{ route('company.post') }}" method="POST" role="form">
                                                                 @csrf
@@ -275,6 +280,7 @@
                                                             @endif
                                                             <br>
                                                             <!-- add drop down menus-->
+                                                            <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add A Company</h3>
                                                             <form action='{{route('addCompany')}}' method='POST'>
                                                                 @csrf
                                                             <select name="CompanyID">
@@ -335,6 +341,7 @@
                                                         <div class="consect">
                                                             @if(!empty($skills))
                                                             <!--Show positions they've already added-->
+                                                            <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Added Skills</h3>
                                                             <form action="{{ route('skills.post') }}" method="POST" role="form">
                                                                 @csrf
                                                                 <table class="customers">
@@ -360,10 +367,11 @@
                                                             @endif
                                                             <br>
                                                             <!-- add drop down menus-->
+                                                            <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add Skills</h3>
                                                             <form action='{{route('addSkill')}}' method='POST'>
                                                                 @csrf
                                                             <select name="skills">
-                                                                <option value=''>--Skill--</option>
+                                                                <option value=''>--Skills--</option>
                                                                 @foreach($skill as $row)
                                                                 <option value="{{$row->ID}}">{{$row->Name}}
                                                                 </option>
