@@ -417,7 +417,7 @@
 											</button>
 										</div>
 										<div class="modal-body">
-											<img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/>
+											<img src="/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/>
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -438,7 +438,7 @@
 											</button>
 										</div>
 										<div class="modal-body">
-											<img src="https://127.0.0.1/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/>
+											<img src="/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/>
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -466,8 +466,8 @@
         <script src="js/custom.js"></script>
         <script type='text/javascript'>
 			$('button.class_graph').click(function () {
-				$('div.class_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#class_modal"><img src="https://127.0.0.1/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/></button>');
-				$('div.skill_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#skill_modal"><img src="https://127.0.0.1/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/></button>');
+				$('div.class_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#class_modal"><img src="/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/></button>');
+				$('div.skill_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#skill_modal"><img src="/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/></button>');
 				//$('div.modal_tip').html('<p>Click either graph to open it in a larger window.</p>');
 			});
         </script>
