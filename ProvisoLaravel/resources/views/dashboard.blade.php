@@ -43,7 +43,7 @@
                             <div class="col-md-3">
                                 <ul class = "">
                                     <li style='display:inline;'><img src="images/profile.png" style='width: 20px; height: 20px' alt="#"/></li>
-                                    <li style='display:inline; padding:15px'><a href="{{route('profile')}}">{{Auth::guard('user')->user()->name}}</a></li>
+                                    <li style='display:inline; padding:15px'><a href="{{ route('profile') }}">{{ Auth::guard('user')->user()->name }}</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md-3">
                                 <ul class = "">
-                                    <li style='align-content: end; display:inline; padding-left:200px'><a href='{{route('logout')}}'>Logout</a></li>
+                                    <li style="align-content: end; display:inline; padding-left:200px"><a href="{{ route('logout') }}">Logout</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                                         <div class="full">
                                             <div class="center-desk">
                                                 <div class="logo">
-                                                    <a href="{{route('dashboard')}}">Proviso</a>
+                                                    <a href="{{ route('dashboard') }}">Proviso</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,7 +98,6 @@
                                                     <li class="nav-item">
                                                         <a class="nav-link" href="#schedule">Schedule</a>
                                                     </li>
-
                                                 </ul>
                                             </div>
                                         </nav>
@@ -169,7 +168,9 @@
                                                                         <td>
                                                                             <input type="checkbox" name="KeyToDelete" value="{{ $take->Class }}">
                                                                         </td>
-                                                                        <td><input type="submit" name="submitDeleteBtn"></td>
+                                                                        <td>
+																			<input type="submit" name="submitDeleteBtn">
+																		</td>
                                                                     </tr>                                                                   
                                                                     @endforeach
                                                                 </table>
@@ -178,12 +179,12 @@
                                                             <!-- add drop down menus-->
                                                             <br>
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add Classes</h3>
-                                                            <form action='{{route('addClass')}}' method='POST'>
+                                                            <form action='{{ route('addClass') }}' method='POST'>
                                                                 @csrf
                                                                 <select name="Class" class="dropdown" required>
                                                                     <option value=''>--Classes--</option>
                                                                     @foreach($aval as $row)
-                                                                    <option value="{{$row->Class}}">{{$row->Class}}
+                                                                    <option value="{{ $row->Class }}">{{ $row->Class }}
                                                                     </option>
                                                                     @endforeach
                                                                 </select>
@@ -282,16 +283,16 @@
                                                             <br>
                                                             <!-- add drop down menus-->
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add A Company</h3>
-                                                            <form action='{{route('addCompany')}}' method='POST'>
+                                                            <form action='{{ route('addCompany') }}' method='POST'>
                                                                 @csrf
-                                                            <select name="CompanyID" class="dropdown" required>
-                                                                <option value=''>--Companies/Positions--</option>
-                                                                @foreach($company as $c)
-                                                                <option value="{{$c->ID}}">{{$c->Name}}
-                                                                </option>
-                                                                @endforeach
-                                                            </select>
-                                                            <input type="submit" name="submit" value="Add"/>
+																<select name="CompanyID" class="dropdown" required>
+																	<option value=''>--Companies/Positions--</option>
+																	@foreach($company as $c)
+																	<option value="{{ $c->ID }}">{{$c->Name}}
+																	</option>
+																	@endforeach
+																</select>
+																<input type="submit" name="submit" value="Add"/>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -363,7 +364,7 @@
                                                                     @endforeach
                                                                 </table>
                                                             </form>
-															<a href="{{route('newCompany')}}"><u>Are these skills for a company not yet in our database? Suggest it to us here!</u></a>
+															<a href="{{ route('newCompany') }}"><u>Are these skills for a company not yet in our database? Suggest it to us here!</u></a>
 															<br/>
                                                             @endif
 															@if(!is_null($comp) && $comp->Responsibilities != 'Custom skills.')
@@ -372,16 +373,16 @@
                                                             <br>
                                                             <!-- add drop down menus-->
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add Skills</h3>
-                                                            <form action='{{route('addSkill')}}' method='POST'>
+                                                            <form action='{{ route('addSkill') }}' method='POST'>
                                                                 @csrf
-                                                            <select name="skills" class="dropdown" required>
-                                                                <option value=''>--Skills--</option>
-                                                                @foreach($skill as $row)
-                                                                <option value="{{$row->ID}}">{{$row->Name}}
-                                                                </option>
-                                                                @endforeach
-                                                            </select>
-                                                            <input type="submit" name="submit" value="Add"/>
+																<select name="skills" class="dropdown" required>
+																	<option value=''>--Skills--</option>
+																	@foreach($skill as $row)
+																	<option value="{{ $row->ID }}">{{$row->Name}}
+																	</option>
+																	@endforeach
+																</select>
+																<input type="submit" name="submit" value="Add"/>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -411,8 +412,6 @@
                             <h2>Your Schedule</h2>
                             <br/>
                             <button type="button" class="btn btn-secondary class_graph">Generate graphs</button>
-							<!--<div class="d-flex justify-content-center modal_tip bg-light text-center" style="margin-top: 10px">
-							</div>-->
 							<!-- Classes -->
 							<div class="container w-100 class_graph">
 							</div>
