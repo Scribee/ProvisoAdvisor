@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2022 at 07:34 AM
+-- Generation Time: Dec 18, 2022 at 06:26 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -33,37 +33,62 @@ CREATE TABLE `classes` (
   `Course#` int(11) NOT NULL,
   `Title` varchar(64) NOT NULL,
   `Year` int(11) NOT NULL,
-  `Class` varchar(32) GENERATED ALWAYS AS (concat(`Subject`,`Course#`)) VIRTUAL
+  `Class` varchar(32) GENERATED ALWAYS AS (concat(`Subject`,`Course#`)) VIRTUAL,
+  `Credits` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `classes`
 --
 
-INSERT INTO `classes` (`ID`, `Subject`, `Course#`, `Title`, `Year`) VALUES
-(0, 'CS', 120, 'Computer Science 1', 1),
-(1, 'CS', 121, 'Computer Science 2', 1),
-(2, 'CS', 210, 'Programming Languages', 2),
-(3, 'CS', 240, 'Computer Operating Systems', 2),
-(4, 'CS', 150, 'Computer Organization and Architecture', 1),
-(5, 'MATH', 176, 'Discrete Mathematics', 1),
-(6, 'MATH', 170, 'Calculus 1', 1),
-(7, 'MATH', 175, 'Calculus 2', 2),
-(8, 'CS', 383, 'Software Engineering', 3),
-(9, 'CS', 385, 'Theory of Computation', 3),
-(10, 'CS', 404, 'Special Projects', 4),
-(11, 'CS', 270, 'System Software', 2),
-(12, 'CS', 395, 'Analysis of Algorithms', 3),
-(13, 'CS', 360, 'Database Systems', 3),
-(14, 'CS', 480, 'Senior Capstone Design 1', 4),
-(15, 'CS', 481, 'Senior Capstone Design 2', 4),
-(16, 'CS', 400, 'Contemporary Issues in Computer Science', 4),
-(17, 'CS', 445, 'Compiler Design', 4),
-(18, 'MATH', 330, 'Linear Algebra', 3),
-(19, 'ENGL', 317, 'Technical Writing', 3),
-(20, 'ENGL', 102, 'College Writing and Rhetoric', 1),
-(21, 'COMM', 101, 'Fundamentals of Public Speaking', 1),
-(22, 'STAT', 301, 'Probability & Statistics', 3);
+INSERT INTO `classes` (`ID`, `Subject`, `Course#`, `Title`, `Year`, `Credits`) VALUES
+(0, 'CS', 120, 'Computer Science 1', 1, 4),
+(1, 'CS', 121, 'Computer Science 2', 1, 3),
+(2, 'CS', 210, 'Programming Languages', 2, 3),
+(3, 'CS', 240, 'Computer Operating Systems', 2, 3),
+(4, 'CS', 150, 'Computer Organization and Architecture', 1, 3),
+(5, 'MATH', 176, 'Discrete Mathematics', 1, 3),
+(6, 'MATH', 170, 'Calculus 1', 1, 3),
+(7, 'MATH', 175, 'Calculus 2', 2, 3),
+(8, 'CS', 383, 'Software Engineering', 3, 4),
+(9, 'CS', 385, 'Theory of Computation', 3, 3),
+(10, 'CS', 404, 'Special Projects', 0, 3),
+(11, 'CS', 270, 'System Software', 2, 3),
+(12, 'CS', 395, 'Analysis of Algorithms', 3, 3),
+(13, 'CS', 360, 'Database Systems', 3, 4),
+(14, 'CS', 480, 'Senior Capstone Design 1', 4, 3),
+(15, 'CS', 481, 'Senior Capstone Design 2', 4, 3),
+(16, 'CS', 400, 'Contemporary Issues in Computer Science', 4, 1),
+(17, 'CS', 445, 'Compiler Design', 0, 4),
+(18, 'MATH', 330, 'Linear Algebra', 3, 3),
+(19, 'ENGL', 317, 'Technical Writing', 3, 3),
+(20, 'ENGL', 102, 'College Writing and Rhetoric', 1, 3),
+(21, 'COMM', 101, 'Fundamentals of Public Speaking', 1, 3),
+(22, 'STAT', 301, 'Probability & Statistics', 3, 3),
+(10056, 'ENGL', 101, 'Writing and Rhetoric', 1, 3),
+(10058, 'GEOL', 102, 'Historical geology', 0, 4),
+(10059, 'CS', 415, 'Computational Biology', 0, 3),
+(10060, 'CS', 477, 'Python for Machine Learning', 0, 3),
+(10061, 'ENGL', 175, 'Literature and Ideas', 0, 3),
+(10062, 'PHIL', 103, 'Intro to Ethics', 0, 3),
+(10063, 'SPAN', 101, 'Elementary Spanish I', 0, 4),
+(10064, 'SPAN', 102, 'Elementary Spanish II', 0, 4),
+(10065, 'HIST', 111, 'Intro to US History I', 0, 3),
+(10066, 'HIST', 102, 'Intro to US History II', 0, 3),
+(10067, 'POLS', 101, 'Intro to Political Science/American Government', 0, 3),
+(10068, 'BIOL', 102, 'Biology and Society', 0, 3),
+(10069, 'CHEM', 111, 'General Chemistry I', 0, 4),
+(10070, 'CHEM', 112, 'General Chemistry II', 0, 4),
+(10071, 'ENVS', 101, 'Intro to Environmental Science', 0, 3),
+(10072, 'PHYS', 211, 'Engineering Physics I', 0, 4),
+(10073, 'PHYS', 111, 'General Physics I', 0, 4),
+(10074, 'CS', 112, 'Computational Thinking and Problem Solving', 0, 3),
+(10075, 'CS', 431, 'SFS Professional Development', 0, 3),
+(10076, 'CS', 452, 'Real-time Operating Systems', 0, 3),
+(10077, 'CS', 460, 'Database Management Systems Design', 0, 3),
+(10078, 'CS', 212, 'Practical Python', 0, 3),
+(10079, 'CS', 398, 'Computer Science Cooperative Internship', 0, 2),
+(10081, 'CS', 298, 'Internship', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -97,7 +122,8 @@ INSERT INTO `companies` (`ID`, `Name`, `Responsibilities`) VALUES
 (12, 'Oracle', '• Work individually or as part of a team of problem solvers, using a structured project delivery method to help solve complex business issues from strategy to execution in cloud-based environments. \r\n• Deliver high-quality projects, identify and make suggestions for improvements when problems or opportunities arise, advise on industry best practices, and manage gaps in customer requirements and NetSuite functionality.\r\n• Consult with clients to understand their business requirements, map them to NetSuite, and support them in configuring their NetSuite systems. You will help them transition to new ways of working by designing and developing creative scripted solutions, leveraging the powerful features of the NetSuite SuiteCloud platform.'),
 (13, 'Carson last\'s custom selection', 'Custom skills.'),
 (15, '19 19\'s custom selection', 'Custom skills.'),
-(16, 'carson sloan\'s custom selection', 'Custom skills.');
+(16, 'carson sloan\'s custom selection', 'Custom skills.'),
+(20, 'IBM', '');
 
 -- --------------------------------------------------------
 
@@ -349,15 +375,38 @@ INSERT INTO `requires` (`CompanyID`, `SkillID`, `Priority`) VALUES
 (13, 1, 0),
 (14, 14, 0),
 (15, 0, 0),
-(15, 2, 0),
-(15, 16, 0),
-(15, 6, 0),
 (16, 8, 0),
 (16, 13, 0),
 (16, 7, 0),
-(15, 22, 0),
 (15, 87, 0),
-(15, 97, 0);
+(15, 3, 0),
+(15, 7, 0),
+(15, 90, 0),
+(15, 84, 0),
+(15, 42, 0),
+(15, 12, 0),
+(15, 13, 0),
+(15, 17, 0),
+(15, 99, 0),
+(15, 93, 0),
+(15, 57, 0),
+(15, 50, 0),
+(20, 0, 1),
+(20, 87, 1),
+(20, 3, 1),
+(20, 7, 1),
+(20, 90, 1),
+(20, 84, 1),
+(20, 42, 1),
+(20, 12, 1),
+(20, 13, 1),
+(20, 17, 1),
+(20, 99, 1),
+(20, 93, 1),
+(20, 57, 1),
+(20, 50, 1),
+(15, 4, 0),
+(15, 16, 0);
 
 -- --------------------------------------------------------
 
@@ -369,15 +418,6 @@ CREATE TABLE `selections` (
   `ID` int(11) NOT NULL,
   `CompanyID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `selections`
---
-
-INSERT INTO `selections` (`ID`, `CompanyID`) VALUES
-(1, 10),
-(12345, 16),
-(19, 15);
 
 -- --------------------------------------------------------
 
@@ -534,8 +574,8 @@ INSERT INTO `students` (`ID`, `Password`, `First`, `Last`, `Major`, `Year`) VALU
 (17, '$2y$10$0a7Wk08z04iWfIopDEYp.uDZxx7/5PQoqOXi2o5CBwzPloNjGQGz6', '17', '17', '17', 17),
 (18, '$2y$10$AvE9J6/6pfvMX3ME8ratKeuorzUKjfNX77sgympXffzSc1f0Ivg.i', '18', '18', '18', 18),
 (19, '$2y$10$SXR.CIiMvJ9UgKKKeUpfMOMEamihXtS80mUIPamfRrMoH7acAXpLa', '19', '19', '19', 19),
-(1234, 'd41d8cd98f00b204e9800998ecf8427e', 'John', 'Doe', 'Computer Science', 1),
-(12345, '$2y$10$HdTvPfSjnh40vufAnvTQc.YXNJV0eBY2rDwmVAp/rPYSqRsIrI4Sm', 'carson', 'sloan', 'cs', 123);
+(100, '$2y$10$G9fYlPktsuUiyCQeJvyuyuQPrul2DdNfdmIMnhWfedAQs.H.Un6Hu', 'Janet', 'Doe', 'CS', 1),
+(1234, 'd41d8cd98f00b204e9800998ecf8427e', 'John', 'Doe', 'Computer Science', 1);
 
 -- --------------------------------------------------------
 
@@ -565,11 +605,11 @@ INSERT INTO `taken` (`ID`, `Class`, `Grade`, `Year`) VALUES
 (4, 'CS120', '', 1),
 (4, 'CS480', '', 4),
 (2, 'CS120', 'A', 1),
-(19, 'CS400', 'A', 4),
-(1, 'CS240', 'C', 2),
-(12345, 'CS121', 'B', 1),
-(19, 'CS360', 'C', 3),
-(19, 'CS445', 'B', 4);
+(19, 'CS121', 'A', 1),
+(19, 'CS120', 'A', 1),
+(19, 'CS210', 'C', 2),
+(19, 'CS240', 'B', 2),
+(19, 'CS480', 'A', 4);
 
 -- --------------------------------------------------------
 
@@ -645,7 +685,11 @@ INSERT INTO `teaches` (`Class`, `SkillID`) VALUES
 ('CS120', 38),
 ('CS400', 22),
 ('CS240', 20),
-('CS270', 20);
+('CS270', 20),
+('', 0),
+('CS398', 64),
+('CS398', 59),
+('CS298', 64);
 
 -- --------------------------------------------------------
 
@@ -672,7 +716,7 @@ INSERT INTO `users` (`created_at`, `email`, `email_verified_at`, `id`, `name`, `
 ('2022-11-24 08:27:52', '13', NULL, 1, '13 13', '$2y$10$HAlv.ZdzTbtVfPU.SqQLO.F3HhwfWA27UcAnHsCi68bR5vSPmtmL6', NULL, '2022-11-24 08:27:52'),
 ('2022-11-30 10:32:21', '15', NULL, 2, '15 15', '$2y$10$wI0hlidYQtoii1bkxDUdp.JCYI2Vp67qSJqPxpiBHSFVy9YJ.SON.', NULL, '2022-11-30 10:32:21'),
 ('2022-12-01 02:50:42', '19', NULL, 19, '19 19', '$2y$10$8RVX7VBMzTj9jKk.dS49jexp4R6MvoOaLy4OxCU6lq5.AX/05sHoa', NULL, '2022-12-01 02:50:42'),
-('2022-12-07 05:35:18', 'carson', NULL, 12345, 'carson sloan', '$2y$10$ZskF6nHqHbzlg3fVIv9LsOmQzcBTOY15QSSdTM6Dp5PlRXKcwKL/6', NULL, '2022-12-07 05:35:18');
+('2022-12-18 01:23:39', 'temp@gmail', NULL, 100, 'Janet Doe', '$2y$10$BjYFlwkmmcS7IygMGd0BkuNVuwjVLf2zgsrIU9QPb9Tq0ThaPcyKG', NULL, '2022-12-18 01:23:39');
 
 --
 -- Indexes for dumped tables
@@ -717,13 +761,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10056;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10082;
 
 --
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `skills`
