@@ -76,15 +76,17 @@ def print_recommendations():
         os.remove(GRAPH_DIR + '/recommendations.png')
         
     # Undrected graph to be output as a png
-    e = graphviz.Graph(filename=GRAPH_DIR + '/recommendation', format='png', engine='neato')
-    e.attr('node', shape='square')
+    e = graphviz.Digraph(filename=GRAPH_DIR + '/recommendations', format='png', engine='dot')
+    e.attr('node', shape='square', style='filled')
     e.attr(overlap='scale')
     
     cursor.execute(q.get_selection(id))
     if (cursor != None):
         companies = cursor.fetchall()
-        for row in companies:
-            e.node('c' + str(row[0]), row[1], style='filled', fillcolor=colors.PRIMARY)
+        
+        with e.subgraph(name="clusterCompanies") as a:
+            for row in companies:
+                a.node('c' + str(row[0]), row[1], fillcolor=colors.PRIMARY)
         
         # Make a subgraph for the recommended classes
         with e.subgraph(name='clusterElectives') as b:
@@ -94,14 +96,14 @@ def print_recommendations():
             cursor.execute(q.get_recommended_classes(id))
             for row in cursor:
                 if (completed != None or row[0] not in completed):
-                    b.node(row[0], row[0], style='filled', fillcolor=colors.TERTIARY)
+                    b.node(row[0], row[0], fillcolor=colors.TERTIARY)
                     
         with e.subgraph(name='clusterSkills') as c:
             c.attr(style='filled', label='Desired skills')
             
             cursor.execute(q.get_selected_skills(id))
             for row in cursor:
-                c.node(str(row[0]), row[1], style='filled', fillcolor=colors.SECONDARY)
+                c.node(str(row[0]), row[1], fillcolor=colors.SECONDARY)
                 
         # Get relationships between companies and skills
         for comp in companies:
@@ -272,4 +274,5 @@ GRAPH_DIR = 'C:/xampp/graphs'
 id = '2'
 cursor.execute(q.get_student_query(id))
 student = cursor.fetchall()[0]
-#create_skill_graph('19')
+#create_skill_graph(19)
+print_classes_and_skills()
