@@ -27,7 +27,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
 
-        <title>Profile</title>
+        <title>Company suggestion</title>
     </head>
     <body style='background-color: grey'>
         <div>
@@ -47,21 +47,24 @@
 						<div class='col-lg-3'>
 						</div>
 						<div class="col-lg-6" style="background: whitesmoke; padding: 30px 30px 15px 30px">
-							<h3>Profile</h3>
-							<p style="text-align: left; border: solid black .5px; padding: 8px"> ID: {{Auth::guard('user')->user()->id}}</p>
-							<p style="text-align: left; border: solid black .5px; padding: 8px"> Name: {{Auth::guard('user')->user()->name}}</p>
-							<p style="text-align: left; border: solid black .5px; padding: 8px"> Email: {{Auth::guard('user')->user()->email}}</p>
-							<form action="{{ route('postProfile') }}" method="POST" role="form">
+							<h3>Suggest a new company for the database</h3>
+							<p style="text-align: center">If this set of skills matches a company you think belongs in our database, add its name below to suggest it to the administrator.</p>
+							<br/>
+							@foreach ($skills as $skill)
+							<p style="text-align: left; border: solid black .5px; padding: 8px">{{$skill->Name}}</p>
+							@endforeach
+							<form action="{{ route('postNewCompany') }}" method="POST" role="form">
 								@csrf
 								<div style="display: flex; justify-content: flex-end; align-items: center; text-align: left; border: solid black .5px; padding: 8px">
-									<p style="flex: 1">Major: {{$info->Major}}</p>
-									<input style="flex: 2" class="float-right" type="text" name="Major" placeholder="Edit">
+									<p style="flex: 1">Company name:</p>
+									<input style="flex: 2" class="float-right" type="text" name="Company" placeholder="Add name" required />
 								</div>
 								<div style="display: flex; justify-content: flex-end; align-items: center; text-align: left; border: solid black .5px; padding: 8px">
-									<p style="flex: 1">Year: {{$info->Year}}</p>
-									<input style="flex: 2" class="float-right" type="number" name="Year" min="0" placeholder="Edit">
+									<p style="flex: 1">Example responsibilities:</p>
+									<input style="flex: 2" class="float-right" type="textarea" name="Description" placeholder="Add description (optional)"/>
 								</div>
-								<input type="submit" name="submitDeleteBtn">
+								<br/>
+								<input type="submit" name="Submit" value="Submit Suggestion"/>
 							</form>
 						</div>
 						<div class='col-lg-3'>

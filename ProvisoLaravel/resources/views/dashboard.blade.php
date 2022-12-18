@@ -128,7 +128,7 @@
                         <div class="titlepage">
                             <h2>Add Your Classes</h2>
                             <span>Select from the drop down menu a class you have taken, the semester you have taken it and then click add.
-                                Do not add classes you have not passed. </span>
+                                Do not add classes you have not passed. Check the delete box next to the entry and click submit to delete that class.</span>
                         </div>
                     </div>
                 </div>
@@ -230,8 +230,8 @@
                     <div class="col-md-12">
                         <div class="titlepage">
                             <h2>Select a Company or Position</h2>
-                            <span>Select from the drop down menu a company or position you are interested in and then click add.
-                                To delete a company or position select the red x next to the entry.</span>
+                            <span>Select from the drop down menu a company or position you are interested in and then click add.<br/>
+                                To deselect the chosen company or position, check the delete box next to the entry and click submit.</span>
                         </div>
                     </div>
                 </div>
@@ -252,7 +252,7 @@
                                                     <div class="col-md-12">
                                                         <div class="consect">                                                         
                                                            @if(!is_null($comp))
-                                                           <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Selected Company</h3>
+                                                           <h3 style="border-bottom: 1px solid black; margin-bottom: 15px">Selected Company</h3>
                                                            <!--Show positions they've already added-->  
                                                             <form action="{{ route('company.post') }}" method="POST" role="form">
                                                                 @csrf
@@ -272,7 +272,13 @@
                                                                     </tr>
                                                                 </table>
                                                             </form>
+															@if($comp->Responsibilities == 'Custom skills.')
+															<p>Your chosen skills are saved to this company even if it's deselected.</p>
+															@elseif($comp->Responsibilities != '')
+															<p>Example responsibilities of employees at {{ $comp->Name }}:</p>
+															<blockquote style="margin-top: 0; margin-bottom: 0; padding-top: 20px; padding-bottom: 10px">{{ $comp->Responsibilities }}</blockquote>
                                                             @endif
+															@endif
                                                             <br>
                                                             <!-- add drop down menus-->
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add A Company</h3>
@@ -340,15 +346,13 @@
                                                             <form action="{{ route('skills.post') }}" method="POST" role="form">
                                                                 @csrf
                                                                 <table class="customers">
-                                                                  
                                                                     <tr>
                                                                         <th style="padding-right: 15px">Skill</th>
                                                                         <th style="padding-right: 15px">Delete</th>
                                                                         <th></th>
                                                                     </tr>
                                                                     @foreach ($skills as $s)
-                                                                    <tr> 
-                                                                      
+                                                                    <tr>
                                                                         <td style ="padding-right:15px">{{ App\Models\Skill::select('Name')->where('ID', $s->SkillID)->first()->Name }}</td>
                                                                      
                                                                         <td>
@@ -359,7 +363,12 @@
                                                                     @endforeach
                                                                 </table>
                                                             </form>
+															<a href="{{route('newCompany')}}"><u>Are these skills for a company not yet in our database? Suggest it to us here!</u></a>
+															<br/>
                                                             @endif
+															@if(!is_null($comp) && $comp->Responsibilities != 'Custom skills.')
+															<p>Choosing specific skills will cancel the company selection above.</p>
+															@endif
                                                             <br>
                                                             <!-- add drop down menus-->
                                                             <h3 style="border-bottom: 1px solid black;margin-bottom: 15px">Add Skills</h3>

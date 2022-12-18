@@ -131,7 +131,7 @@ class AuthController extends Controller {
             $compID = Selection::select('*')->where('ID', Auth::guard('user')->user()->id)->first();
             $comp = null;
             if (!is_null($compID)) {
-                $comp = Company::select('Name')->where('ID', $compID->CompanyID)->first();
+                $comp = Company::select('Name', 'Responsibilities')->where('ID', $compID->CompanyID)->first();
                 $company = Company::select('Name')->where('ID', $compID->CompanyID)->get();
             }
 			
@@ -263,7 +263,6 @@ class AuthController extends Controller {
         ]);
     }
     
-    
     /**
 	 * Deletes an entry with the same CompanyID from the selections table.
 	 *
@@ -341,6 +340,61 @@ class AuthController extends Controller {
 
         return redirect("dashboard")->withSuccess('Skill deselected.');
     }
+	
+	/**
+	 * Adds the provided company to the database with the attached required skills.
+	 *
+	 * @return dashboard view.
+	 */
+	public function postNewCompany(Request $request){
+		$name = $request->input('Company');
+		$desc = $request->input('Description');
+		
+		// Check if the company is already in the database
+		$comp = Company::where('Name', $name)->first();
+		if (!is_null($comp)) {
+			return redirect('dashboard')->withSuccess('This company is already in the database.');
+		}
+		
+		// Add the new company, with an empty responsibilities column if none was provided
+		Company::create([
+			'Name' => $name,
+			'Responsibilities' => is_null($desc) ? '' : $desc
+		]);
+		
+		$newID = Company::select('ID')->where('Name', $name)->first()->ID;
+		
+		// Add the skills for this company to the requires table
+		$skillIDs = Requires::select('SkillID')->where('CompanyID', Company::select('ID')->where('Name', $this->company_name())->first()->ID)->get();
+		foreach ($skillIDs as $ID) {
+			Requires::create([
+				'CompanyID' => $newID,
+				'SkillID' => $ID->SkillID,
+				'Priority' => 1
+			]);
+		}
+		
+		return redirect('dashboard')->withSuccess('Successfully added ' . $name . ' to the company database.');
+	}
+	
+	/**
+	 * Returns the page with the form to add a new company to the database.
+	 *
+	 * @return new_company view or dashboard redirect if no skills have been selected.
+	 */
+	public function newCompany(){
+		// If the custom company has been created, get all of the skills it requires
+		$custom = Company::select('ID')->where('Name', $this->company_name())->first();
+		if (!is_null($custom)) {
+			$skillIDs = Requires::select('SkillID')->where('CompanyID', $custom->ID)->get();
+			$skills = Skill::whereIn('ID', $skillIDs)->get();
+			
+			return view(view: 'new_company', data: ['skills' => $skills]);
+		}
+		else {
+			return redirect('dashboard')->withSuccess('You have not selected any specific skills!');
+		}
+	}
     
 	/**
 	 * Returns the profile view.
@@ -361,8 +415,7 @@ class AuthController extends Controller {
     public function postProfile(Request $request){
         $year = Student::select('Year')->where('ID', Auth::guard('user')->user()->id)->first()->Year;
         $major = Student::select('Major')->where('ID', Auth::guard('user')->user()->id)->first()->Major;
-        Student::where('ID', Auth::guard('user')->user()->id)
-       ->update([
+        Student::where('ID', Auth::guard('user')->user()->id)->update([
            'Year' => is_null($request->input('Year')) ? $year : $request->input('Year'),
            'Major' => is_null($request->input('Major')) ? $major : $request->input('Major')
         ]);
