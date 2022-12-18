@@ -274,5 +274,5 @@ GRAPH_DIR = 'C:/xampp/graphs'
 id = '2'
 cursor.execute(q.get_student_query(id))
 student = cursor.fetchall()[0]
-#create_skill_graph(19)
+#create_skill_graph('19')
 print_classes_and_skills()

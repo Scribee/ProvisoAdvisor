@@ -47,6 +47,9 @@ graph {
 	CS212 [fillcolor="#EEEEEE" style=filled]
 	CS398 [fillcolor="#EEEEEE" style=filled]
 	CS298 [fillcolor="#EEEEEE" style=filled]
+	CS470 [fillcolor="#EEEEEE" style=filled]
+	CS466 [fillcolor="#EEEEEE" style=filled]
+	GEOG100 [fillcolor="#EEEEEE" style=filled]
 	node [shape=ellipse]
 	0 [label="C++" fillcolor="#81f542" style=filled]
 	1 [label=C fillcolor="#EEEEEE" style=filled]
@@ -98,7 +101,7 @@ graph {
 	47 [label="Finite state machines" fillcolor="#EEEEEE" style=filled]
 	48 [label="Turing machines" fillcolor="#EEEEEE" style=filled]
 	49 [label="Operating systems" fillcolor="#EEEEEE" style=filled]
-	50 [label=Debugging fillcolor="#EEEEEE" style=filled]
+	50 [label=Debugging fillcolor="#81f542" style=filled]
 	51 [label="Software development experience" fillcolor="#EEEEEE" style=filled]
 	52 [label="Completed BS CS" fillcolor="#EEEEEE" style=filled]
 	53 [label="Full stack development" fillcolor="#EEEEEE" style=filled]
@@ -147,6 +150,20 @@ graph {
 	96 [label="Spring Framework" fillcolor="#EEEEEE" style=filled]
 	97 [label=AngularJS fillcolor="#EEEEEE" style=filled]
 	98 [label=".NET" fillcolor="#EEEEEE" style=filled]
+	99 [label=Leadership fillcolor="#EEEEEE" style=filled]
+	100 [label=Biology fillcolor="#EEEEEE" style=filled]
+	101 [label=Spanish fillcolor="#EEEEEE" style=filled]
+	102 [label=Chemistry fillcolor="#EEEEEE" style=filled]
+	103 [label=Physics fillcolor="#EEEEEE" style=filled]
+	104 [label=Geology fillcolor="#EEEEEE" style=filled]
+	105 [label=Geography fillcolor="#EEEEEE" style=filled]
+	106 [label="Machine Learning" fillcolor="#EEEEEE" style=filled]
+	107 [label=TensorFlow fillcolor="#EEEEEE" style=filled]
+	108 [label="Environmental Science" fillcolor="#EEEEEE" style=filled]
+	109 [label=Government fillcolor="#EEEEEE" style=filled]
+	110 [label="U.S. History" fillcolor="#EEEEEE" style=filled]
+	111 [label=Security fillcolor="#EEEEEE" style=filled]
+	112 [label=Lisp fillcolor="#EEEEEE" style=filled]
 	CS120 -- 0
 	CS121 -- 0
 	CS121 -- 1
@@ -206,10 +223,93 @@ graph {
 	CS400 -- 22
 	CS240 -- 20
 	CS270 -- 20
-	"" -- 0
 	CS398 -- 64
 	CS398 -- 59
 	CS298 -- 64
+	ENGL175 -- 23
+	ENGL175 -- 43
+	MATH330 -- 28
+	CS385 -- 33
+	CS385 -- 47
+	CS385 -- 48
+	CS383 -- 99
+	POLS101 -- 109
+	CS383 -- 89
+	CS383 -- 79
+	CS383 -- 58
+	CS383 -- 59
+	CS383 -- 56
+	CS383 -- 41
+	CS383 -- 82
+	CS112 -- 38
+	ENGL101 -- 23
+	ENGL101 -- 32
+	HIST111 -- 110
+	HIST102 -- 110
+	SPAN101 -- 101
+	SPAN102 -- 101
+	CS415 -- 100
+	CS452 -- 4
+	CS452 -- 45
+	CS452 -- 49
+	CS452 -- 60
+	CS452 -- 61
+	CS452 -- 63
+	CS452 -- 76
+	CS452 -- 82
+	CHEM111 -- 102
+	ENVS101 -- 108
+	CHEM112 -- 102
+	CS445 -- 77
+	CS445 -- 76
+	CS445 -- 74
+	CS445 -- 6
+	CS212 -- 7
+	CS212 -- 39
+	GEOG100 -- 105
+	GEOL102 -- 104
+	PHYS111 -- 103
+	PHIL103 -- 22
+	CS460 -- 17
+	CS460 -- 80
+	CS460 -- 18
+	CS460 -- 91
+	CS460 -- 85
+	CS460 -- 82
+	CS460 -- 2
+	CS460 -- 54
+	CS460 -- 111
+	CS466 -- 35
+	CS466 -- 72
+	CS466 -- 66
+	CS466 -- 40
+	CS466 -- 45
+	CS470 -- 112
+	CS470 -- 80
+	CS470 -- 106
+	CS470 -- 81
+	CS395 -- 81
+	CS395 -- 82
+	CS477 -- 106
+	CS477 -- 7
+	CS477 -- 80
+	CS477 -- 58
+	BIOL102 -- 100
+	PHYS211 -- 103
+	CS383 -- 51
+	CS360 -- 53
+	CS240 -- 62
+	CS240 -- 86
+	CS270 -- 24
+	CS383 -- 57
+	CS466 -- 71
+	CS360 -- 94
+	CS210 -- 50
+	CS120 -- 50
+	CS121 -- 50
+	CS383 -- 50
+	STAT301 -- 9
+	CS240 -- 78
 	label="\nAll skills that Molly Meadows has learned."
 	fontsize=20 overlap=scale
 }
