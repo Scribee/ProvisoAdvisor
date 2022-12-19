@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2022 at 06:06 AM
+-- Generation Time: Dec 19, 2022 at 06:37 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -612,6 +612,20 @@ INSERT INTO `students` (`ID`, `Password`, `First`, `Last`, `Major`, `Year`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `suggestions`
+--
+
+CREATE TABLE `suggestions` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(32) NOT NULL,
+  `Responsibilities` varchar(2048) NOT NULL,
+  `SkillIDs` varchar(2048) NOT NULL,
+  `User` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `taken`
 --
 
@@ -862,6 +876,12 @@ ALTER TABLE `students`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `suggestions`
+--
+ALTER TABLE `suggestions`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -889,6 +909,12 @@ ALTER TABLE `companies`
 --
 ALTER TABLE `skills`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+
+--
+-- AUTO_INCREMENT for table `suggestions`
+--
+ALTER TABLE `suggestions`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
