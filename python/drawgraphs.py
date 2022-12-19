@@ -35,7 +35,8 @@ def print_classes():
     # Directed graph to be output as a png
     e = graphviz.Digraph(filename=GRAPH_DIR + '/classes', format='png', engine='dot')
     e.attr('node', shape='square', style='rounded,filled', width='2', fixedsize='shape')
-    e.attr(rankdir='LR', pad='1', compound='true')
+    e.attr('edge', minlen='2')
+    e.attr(rankdir='LR', pad='1', compound='true', forcelabels='true')
     
     completed = get_taken('all')
     lastNode = None
@@ -98,7 +99,7 @@ def print_classes():
             # Get the prerequisite relationships to know what arrows to draw
             cursor.execute(q.GET_PREREQS + ' WHERE Class IN ' + class_list + ' AND Prereq IN ' + class_list)
             for row in cursor:
-                e.edge(row[1], row[0], label=row[2], constraint='false', labelfloat='true')
+                e.edge(row[1], row[0], xlabel=row[2] + '  ', constraint='false', dir='both' if row[2] == 'Corequisite' else 'forward')
                 
             if (student[5] <= i):
                 with a.subgraph(name='clusterYear' + str(i) + 'Credits') as b:
