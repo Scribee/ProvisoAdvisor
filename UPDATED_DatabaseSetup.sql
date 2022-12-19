@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2022 at 11:53 PM
+-- Generation Time: Dec 19, 2022 at 06:06 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -64,7 +64,7 @@ INSERT INTO `classes` (`ID`, `Subject`, `Course#`, `Title`, `Year`, `Credits`) V
 (19, 'ENGL', 317, 'Technical Writing', 3, 3),
 (20, 'ENGL', 102, 'College Writing and Rhetoric', 1, 3),
 (21, 'COMM', 101, 'Fundamentals of Public Speaking', 1, 3),
-(22, 'STAT', 301, 'Probability & Statistics', 3, 3),
+(22, 'STAT', 301, 'Probability and Statistics', 3, 3),
 (10056, 'ENGL', 101, 'Writing and Rhetoric', 1, 3),
 (10058, 'GEOL', 102, 'Historical geology', 0, 4),
 (10059, 'CS', 415, 'Computational Biology', 0, 3),
@@ -524,7 +524,7 @@ INSERT INTO `skills` (`ID`, `Name`, `Description`) VALUES
 (67, 'iOS development', ''),
 (68, 'Android development', ''),
 (69, 'Windows app development', ''),
-(70, 'Engineering statics/dynamics', ''),
+(70, 'Engineering statics and dynamics', ''),
 (71, 'Power electronics', ''),
 (72, 'Control systems', ''),
 (73, 'Seeking BS CS', ''),
