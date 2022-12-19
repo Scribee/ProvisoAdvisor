@@ -4,14 +4,14 @@ digraph {
 	c15 [label="19 19's custom selection" fillcolor="#EEEEEE"]
 	subgraph clusterElectives {
 		label=<<b>Recommended classes</b>> style=rounded
-		CS210 [label=<CS210<br/><i>Already passed!</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.38]
-		CS360 [label=<CS360<br/><i>Required course</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.38]
-		CS212 [label=<CS212<br/><i>Elective</i>> fillcolor="#EEEEEE" fixedsize=shape width=1.38]
-		CS460 [label=<CS460<br/><i>Elective</i>> fillcolor="#EEEEEE" fixedsize=shape width=1.38]
-		CS477 [label=<CS477<br/><i>Elective</i>> fillcolor="#EEEEEE" fixedsize=shape width=1.38]
-		CS383 [label=<CS383<br/><i>Required course</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.38]
-		CS120 [label=<CS120<br/><i>Already passed!</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.38]
-		CS121 [label=<CS121<br/><i>Already passed!</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.38]
+		CS210 [label=<CS210<br/><i>Already passed!</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.4]
+		CS360 [label=<CS360<br/><i>Required course</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.4]
+		CS212 [label=<CS212<br/><i>3 credit elective</i>> fillcolor="#EEEEEE" fixedsize=shape width=1.4]
+		CS460 [label=<CS460<br/><i>3 credit elective</i>> fillcolor="#EEEEEE" fixedsize=shape width=1.4]
+		CS477 [label=<CS477<br/><i>3 credit elective</i>> fillcolor="#EEEEEE" fixedsize=shape width=1.4]
+		CS383 [label=<CS383<br/><i>Required course</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.4]
+		CS120 [label=<CS120<br/><i>Already passed!</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.4]
+		CS121 [label=<CS121<br/><i>Already passed!</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.4]
 	}
 	CS210 -> 7
 	CS360 -> 16
