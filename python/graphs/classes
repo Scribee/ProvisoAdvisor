@@ -1,8 +1,9 @@
 digraph {
 	node [fixedsize=shape shape=square style="rounded,filled" width=2]
-	compound=true pad=1 rankdir=LR
-	CS120 -> CS121 [label="" constraint=false labelfloat=true]
-	MATH176 -> CS121 [label="" constraint=false labelfloat=true]
+	edge [minlen=2]
+	compound=true forcelabels=true pad=1 rankdir=LR
+	CS120 -> CS121 [constraint=false dir=forward xlabel="  "]
+	MATH176 -> CS121 [constraint=false dir=forward xlabel="  "]
 	subgraph clusterYear1 {
 		label="Year 1" style=rounded
 		fillcolor="#D8D7D2" style="filled,rounded"
@@ -16,7 +17,7 @@ digraph {
 		ENGL101 [label=<ENGL101<br/>Writing and Rhetoric<br/>> fillcolor="#EEEEEE"]
 	}
 	CS120 -> CS210 [lhead=clusterYear2 ltail=clusterYear1]
-	CS270 -> CS240 [label=Corequisite constraint=false labelfloat=true]
+	CS270 -> CS240 [constraint=false dir=both xlabel="Corequisite  "]
 	subgraph clusterYear2 {
 		label="Year 2" style=rounded
 		fillcolor="#D8D7D2" style="filled,rounded"
@@ -44,7 +45,7 @@ our recommended electives!"]
 		}
 	}
 	CS383 -> CS480 [lhead=clusterYear4 ltail=clusterYear3]
-	CS480 -> CS481 [label="" constraint=false labelfloat=true]
+	CS480 -> CS481 [constraint=false dir=forward xlabel="  "]
 	subgraph clusterYear4 {
 		label="Year 4" style=rounded
 		CS480 [label=<CS480<br/>Senior Capstone Design<br/>1<br/><br/><i>CS383</i><br/><i>ENGL317</i>> fillcolor="#EEEEEE"]
