@@ -348,9 +348,14 @@ class AuthController extends Controller {
 	 *
 	 * @return dashboard view.
 	 */
-	public function postNewCompany(Request $request){
+	public function postNewCompany(Request $request){		
 		$name = $request->input('Company');
 		$desc = $request->input('Description');
+		
+		# If the user is not an admin, add their info to the suggestions table
+		if (Auth::guard('user')->user()->id != 360) {
+			return redirect('dashboard')->withSuccess('Successfully added ' . $name . ' to the suggestions table.');
+		}
 		
 		// Check if the company is already in the database
 		$comp = Company::where('Name', $name)->first();
