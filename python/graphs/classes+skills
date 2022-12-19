@@ -1,9 +1,10 @@
 graph {
+	fontsize=20
 	node [shape=square]
-	CS120 [fillcolor="#66ded2" style=filled]
-	CS121 [fillcolor="#66ded2" style=filled]
-	CS210 [fillcolor="#66ded2" style=filled]
-	CS240 [fillcolor="#66ded2" style=filled]
+	CS120 [fillcolor="#EDCB43" style=filled]
+	CS121 [fillcolor="#EEEEEE" style=filled]
+	CS210 [fillcolor="#EEEEEE" style=filled]
+	CS240 [fillcolor="#EEEEEE" style=filled]
 	CS150 [fillcolor="#EEEEEE" style=filled]
 	MATH176 [fillcolor="#EEEEEE" style=filled]
 	MATH170 [fillcolor="#EEEEEE" style=filled]
@@ -14,7 +15,7 @@ graph {
 	CS270 [fillcolor="#EEEEEE" style=filled]
 	CS395 [fillcolor="#EEEEEE" style=filled]
 	CS360 [fillcolor="#EEEEEE" style=filled]
-	CS480 [fillcolor="#66ded2" style=filled]
+	CS480 [fillcolor="#EEEEEE" style=filled]
 	CS481 [fillcolor="#EEEEEE" style=filled]
 	CS400 [fillcolor="#EEEEEE" style=filled]
 	CS445 [fillcolor="#EEEEEE" style=filled]
@@ -51,15 +52,15 @@ graph {
 	CS466 [fillcolor="#EEEEEE" style=filled]
 	GEOG100 [fillcolor="#EEEEEE" style=filled]
 	node [shape=ellipse]
-	0 [label="C++" fillcolor="#81f542" style=filled]
-	1 [label=C fillcolor="#81f542" style=filled]
-	2 [label=Research fillcolor="#81f542" style=filled]
-	3 [label=Java fillcolor="#81f542" style=filled]
+	0 [label="C++" fillcolor="#D8D7D2" style=filled]
+	1 [label=C fillcolor="#EEEEEE" style=filled]
+	2 [label=Research fillcolor="#EEEEEE" style=filled]
+	3 [label=Java fillcolor="#EEEEEE" style=filled]
 	4 [label="Memory management" fillcolor="#EEEEEE" style=filled]
-	5 [label=Prolog fillcolor="#81f542" style=filled]
-	6 [label=YACC fillcolor="#81f542" style=filled]
-	7 [label=Python fillcolor="#81f542" style=filled]
-	8 [label=SML fillcolor="#81f542" style=filled]
+	5 [label=Prolog fillcolor="#EEEEEE" style=filled]
+	6 [label=YACC fillcolor="#EEEEEE" style=filled]
+	7 [label=Python fillcolor="#EEEEEE" style=filled]
+	8 [label=SML fillcolor="#EEEEEE" style=filled]
 	9 [label=R fillcolor="#EEEEEE" style=filled]
 	10 [label="C#" fillcolor="#EEEEEE" style=filled]
 	11 [label=Unity fillcolor="#EEEEEE" style=filled]
@@ -70,15 +71,15 @@ graph {
 	16 [label=Laravel fillcolor="#EEEEEE" style=filled]
 	17 [label=SQL fillcolor="#EEEEEE" style=filled]
 	18 [label=MySQL fillcolor="#EEEEEE" style=filled]
-	19 [label=Bash fillcolor="#81f542" style=filled]
-	20 [label=Unix fillcolor="#81f542" style=filled]
-	21 [label=Batch fillcolor="#81f542" style=filled]
+	19 [label=Bash fillcolor="#EEEEEE" style=filled]
+	20 [label=Unix fillcolor="#EEEEEE" style=filled]
+	21 [label=Batch fillcolor="#EEEEEE" style=filled]
 	22 [label=Ethics fillcolor="#EEEEEE" style=filled]
 	23 [label="Technical writing" fillcolor="#EEEEEE" style=filled]
 	24 [label=Makefile fillcolor="#EEEEEE" style=filled]
 	25 [label=Git fillcolor="#EEEEEE" style=filled]
 	26 [label=GitHub fillcolor="#EEEEEE" style=filled]
-	27 [label="Command line editors" fillcolor="#81f542" style=filled]
+	27 [label="Command line editors" fillcolor="#EEEEEE" style=filled]
 	28 [label=Calculus fillcolor="#EEEEEE" style=filled]
 	29 [label="Relational algebra" fillcolor="#EEEEEE" style=filled]
 	30 [label="Design patterns" fillcolor="#EEEEEE" style=filled]
@@ -89,19 +90,19 @@ graph {
 	35 [label="Digital logic" fillcolor="#EEEEEE" style=filled]
 	36 [label=Statistics fillcolor="#EEEEEE" style=filled]
 	37 [label=Probability fillcolor="#EEEEEE" style=filled]
-	38 [label="Object oriented programming" fillcolor="#81f542" style=filled]
+	38 [label="Object oriented programming" fillcolor="#D8D7D2" style=filled]
 	39 [label=Scripting fillcolor="#EEEEEE" style=filled]
 	40 [label=Networking fillcolor="#EEEEEE" style=filled]
 	41 [label="Unit testing" fillcolor="#EEEEEE" style=filled]
 	42 [label=JavaScript fillcolor="#EEEEEE" style=filled]
-	43 [label="Research papers" fillcolor="#81f542" style=filled]
+	43 [label="Research papers" fillcolor="#EEEEEE" style=filled]
 	44 [label="Ruby on Rails" fillcolor="#EEEEEE" style=filled]
-	45 [label=Binary fillcolor="#81f542" style=filled]
+	45 [label=Binary fillcolor="#EEEEEE" style=filled]
 	46 [label="Regular expressions" fillcolor="#EEEEEE" style=filled]
 	47 [label="Finite state machines" fillcolor="#EEEEEE" style=filled]
 	48 [label="Turing machines" fillcolor="#EEEEEE" style=filled]
-	49 [label="Operating systems" fillcolor="#81f542" style=filled]
-	50 [label=Debugging fillcolor="#81f542" style=filled]
+	49 [label="Operating systems" fillcolor="#EEEEEE" style=filled]
+	50 [label=Debugging fillcolor="#D8D7D2" style=filled]
 	51 [label="Software development experience" fillcolor="#EEEEEE" style=filled]
 	52 [label="Completed BS CS" fillcolor="#EEEEEE" style=filled]
 	53 [label="Full stack development" fillcolor="#EEEEEE" style=filled]
@@ -113,7 +114,7 @@ graph {
 	59 [label="1 year of experience" fillcolor="#EEEEEE" style=filled]
 	60 [label="OS design" fillcolor="#EEEEEE" style=filled]
 	61 [label="Embedded platforms" fillcolor="#EEEEEE" style=filled]
-	62 [label=Linux fillcolor="#81f542" style=filled]
+	62 [label=Linux fillcolor="#EEEEEE" style=filled]
 	63 [label="Working in kernel space" fillcolor="#EEEEEE" style=filled]
 	64 [label="Internship experience" fillcolor="#EEEEEE" style=filled]
 	65 [label="Microsoft office suite" fillcolor="#EEEEEE" style=filled]
@@ -121,7 +122,7 @@ graph {
 	67 [label="iOS development" fillcolor="#EEEEEE" style=filled]
 	68 [label="Android development" fillcolor="#EEEEEE" style=filled]
 	69 [label="Windows app development" fillcolor="#EEEEEE" style=filled]
-	70 [label="Engineering statics/dynamics" fillcolor="#EEEEEE" style=filled]
+	70 [label="Engineering statics and dynamics" fillcolor="#EEEEEE" style=filled]
 	71 [label="Power electronics" fillcolor="#EEEEEE" style=filled]
 	72 [label="Control systems" fillcolor="#EEEEEE" style=filled]
 	73 [label="Seeking BS CS" fillcolor="#EEEEEE" style=filled]
@@ -129,7 +130,7 @@ graph {
 	75 [label="Reverse engineering" fillcolor="#EEEEEE" style=filled]
 	76 [label="Low level debugging" fillcolor="#EEEEEE" style=filled]
 	77 [label="Compiler design" fillcolor="#EEEEEE" style=filled]
-	78 [label="Device drivers" fillcolor="#81f542" style=filled]
+	78 [label="Device drivers" fillcolor="#EEEEEE" style=filled]
 	79 [label="Basic game design" fillcolor="#EEEEEE" style=filled]
 	80 [label="Data structures" fillcolor="#EEEEEE" style=filled]
 	81 [label="Algorithm design" fillcolor="#EEEEEE" style=filled]
@@ -137,7 +138,7 @@ graph {
 	83 [label="REST architectural style" fillcolor="#EEEEEE" style=filled]
 	84 [label="Node.js" fillcolor="#EEEEEE" style=filled]
 	85 [label=MongoDB fillcolor="#EEEEEE" style=filled]
-	86 [label="Server design" fillcolor="#81f542" style=filled]
+	86 [label="Server design" fillcolor="#EEEEEE" style=filled]
 	87 [label=React fillcolor="#EEEEEE" style=filled]
 	88 [label=Clojure fillcolor="#EEEEEE" style=filled]
 	89 [label="3D graphics" fillcolor="#EEEEEE" style=filled]
@@ -164,152 +165,152 @@ graph {
 	110 [label="U.S. History" fillcolor="#EEEEEE" style=filled]
 	111 [label=Security fillcolor="#EEEEEE" style=filled]
 	112 [label=Lisp fillcolor="#EEEEEE" style=filled]
-	CS120 -- 0
-	CS121 -- 0
-	CS121 -- 1
-	ENGL317 -- 2
-	ENGL102 -- 2
-	CS480 -- 2
-	CS481 -- 2
-	CS383 -- 10
-	CS383 -- 11
-	CS383 -- 25
-	CS383 -- 26
-	CS383 -- 30
-	CS383 -- 31
-	CS150 -- 45
-	CS150 -- 35
-	CS150 -- 34
-	CS210 -- 3
-	CS210 -- 5
-	CS210 -- 6
-	CS210 -- 7
-	CS210 -- 8
-	CS360 -- 12
-	CS360 -- 13
-	CS360 -- 14
-	CS360 -- 15
-	CS360 -- 16
-	CS360 -- 17
-	CS360 -- 18
-	ENGL317 -- 23
-	COMM101 -- 32
-	STAT301 -- 36
-	STAT301 -- 37
-	MATH170 -- 28
-	MATH175 -- 28
-	CS121 -- 45
-	CS240 -- 19
-	CS270 -- 19
-	CS121 -- 27
-	CS210 -- 27
-	CS240 -- 27
-	CS270 -- 27
-	MATH176 -- 33
-	MATH176 -- 37
-	CS270 -- 39
-	CS385 -- 46
-	CS385 -- 29
-	CS240 -- 49
-	CS150 -- 47
-	CS150 -- 48
-	CS480 -- 43
-	CS481 -- 43
-	ENGL317 -- 43
-	CS240 -- 21
-	CS270 -- 40
-	CS210 -- 38
-	CS120 -- 38
-	CS400 -- 22
-	CS240 -- 20
-	CS270 -- 20
-	CS398 -- 64
-	CS398 -- 59
-	CS298 -- 64
-	ENGL175 -- 23
-	ENGL175 -- 43
-	MATH330 -- 28
-	CS385 -- 33
-	CS385 -- 47
-	CS385 -- 48
-	CS383 -- 99
-	POLS101 -- 109
-	CS383 -- 89
-	CS383 -- 79
-	CS383 -- 58
-	CS383 -- 59
-	CS383 -- 56
-	CS383 -- 41
-	CS383 -- 82
-	CS112 -- 38
-	ENGL101 -- 23
-	ENGL101 -- 32
-	HIST111 -- 110
-	HIST102 -- 110
-	SPAN101 -- 101
-	SPAN102 -- 101
-	CS415 -- 100
-	CS452 -- 4
-	CS452 -- 45
-	CS452 -- 49
-	CS452 -- 60
-	CS452 -- 61
-	CS452 -- 63
-	CS452 -- 76
-	CS452 -- 82
-	CHEM111 -- 102
-	ENVS101 -- 108
-	CHEM112 -- 102
-	CS445 -- 77
-	CS445 -- 76
-	CS445 -- 74
-	CS445 -- 6
-	CS212 -- 7
-	CS212 -- 39
-	GEOG100 -- 105
-	GEOL102 -- 104
-	PHYS111 -- 103
-	PHIL103 -- 22
-	CS460 -- 17
-	CS460 -- 80
-	CS460 -- 18
-	CS460 -- 91
-	CS460 -- 85
-	CS460 -- 82
-	CS460 -- 2
-	CS460 -- 54
-	CS460 -- 111
-	CS466 -- 35
-	CS466 -- 72
-	CS466 -- 66
-	CS466 -- 40
-	CS466 -- 45
-	CS470 -- 112
-	CS470 -- 80
-	CS470 -- 106
-	CS470 -- 81
-	CS395 -- 81
-	CS395 -- 82
-	CS477 -- 106
-	CS477 -- 7
-	CS477 -- 80
-	CS477 -- 58
-	BIOL102 -- 100
-	PHYS211 -- 103
-	CS383 -- 51
-	CS360 -- 53
-	CS240 -- 62
-	CS240 -- 86
-	CS270 -- 24
-	CS383 -- 57
-	CS466 -- 71
-	CS360 -- 94
-	CS210 -- 50
-	CS120 -- 50
-	CS121 -- 50
-	CS383 -- 50
-	STAT301 -- 9
-	CS240 -- 78
-	label="\nAll skills that 19 19 has learned."
-	fontsize=20 overlap=scale
+	CS120 -- 0 [len=3.0]
+	CS121 -- 0 [len=3.0]
+	CS121 -- 1 [len=3.0]
+	ENGL317 -- 2 [len=3.0]
+	ENGL102 -- 2 [len=3.0]
+	CS480 -- 2 [len=3.0]
+	CS481 -- 2 [len=3.0]
+	CS383 -- 10 [len=3.0]
+	CS383 -- 11 [len=3.0]
+	CS383 -- 25 [len=3.0]
+	CS383 -- 26 [len=3.0]
+	CS383 -- 30 [len=3.0]
+	CS383 -- 31 [len=3.0]
+	CS150 -- 45 [len=3.0]
+	CS150 -- 35 [len=3.0]
+	CS150 -- 34 [len=3.0]
+	CS210 -- 3 [len=3.0]
+	CS210 -- 5 [len=3.0]
+	CS210 -- 6 [len=3.0]
+	CS210 -- 7 [len=3.0]
+	CS210 -- 8 [len=3.0]
+	CS360 -- 12 [len=3.0]
+	CS360 -- 13 [len=3.0]
+	CS360 -- 14 [len=3.0]
+	CS360 -- 15 [len=3.0]
+	CS360 -- 16 [len=3.0]
+	CS360 -- 17 [len=3.0]
+	CS360 -- 18 [len=3.0]
+	ENGL317 -- 23 [len=3.0]
+	COMM101 -- 32 [len=3.0]
+	STAT301 -- 36 [len=3.0]
+	STAT301 -- 37 [len=3.0]
+	MATH170 -- 28 [len=3.0]
+	MATH175 -- 28 [len=3.0]
+	CS121 -- 45 [len=3.0]
+	CS240 -- 19 [len=3.0]
+	CS270 -- 19 [len=3.0]
+	CS121 -- 27 [len=3.0]
+	CS210 -- 27 [len=3.0]
+	CS240 -- 27 [len=3.0]
+	CS270 -- 27 [len=3.0]
+	MATH176 -- 33 [len=3.0]
+	MATH176 -- 37 [len=3.0]
+	CS270 -- 39 [len=3.0]
+	CS385 -- 46 [len=3.0]
+	CS385 -- 29 [len=3.0]
+	CS240 -- 49 [len=3.0]
+	CS150 -- 47 [len=3.0]
+	CS150 -- 48 [len=3.0]
+	CS480 -- 43 [len=3.0]
+	CS481 -- 43 [len=3.0]
+	ENGL317 -- 43 [len=3.0]
+	CS240 -- 21 [len=3.0]
+	CS270 -- 40 [len=3.0]
+	CS210 -- 38 [len=3.0]
+	CS120 -- 38 [len=3.0]
+	CS400 -- 22 [len=3.0]
+	CS240 -- 20 [len=3.0]
+	CS270 -- 20 [len=3.0]
+	CS398 -- 64 [len=3.0]
+	CS398 -- 59 [len=3.0]
+	CS298 -- 64 [len=3.0]
+	ENGL175 -- 23 [len=3.0]
+	ENGL175 -- 43 [len=3.0]
+	MATH330 -- 28 [len=3.0]
+	CS385 -- 33 [len=3.0]
+	CS385 -- 47 [len=3.0]
+	CS385 -- 48 [len=3.0]
+	CS383 -- 99 [len=3.0]
+	POLS101 -- 109 [len=3.0]
+	CS383 -- 89 [len=3.0]
+	CS383 -- 79 [len=3.0]
+	CS383 -- 58 [len=3.0]
+	CS383 -- 59 [len=3.0]
+	CS383 -- 56 [len=3.0]
+	CS383 -- 41 [len=3.0]
+	CS383 -- 82 [len=3.0]
+	CS112 -- 38 [len=3.0]
+	ENGL101 -- 23 [len=3.0]
+	ENGL101 -- 32 [len=3.0]
+	HIST111 -- 110 [len=3.0]
+	HIST102 -- 110 [len=3.0]
+	SPAN101 -- 101 [len=3.0]
+	SPAN102 -- 101 [len=3.0]
+	CS415 -- 100 [len=3.0]
+	CS452 -- 4 [len=3.0]
+	CS452 -- 45 [len=3.0]
+	CS452 -- 49 [len=3.0]
+	CS452 -- 60 [len=3.0]
+	CS452 -- 61 [len=3.0]
+	CS452 -- 63 [len=3.0]
+	CS452 -- 76 [len=3.0]
+	CS452 -- 82 [len=3.0]
+	CHEM111 -- 102 [len=3.0]
+	ENVS101 -- 108 [len=3.0]
+	CHEM112 -- 102 [len=3.0]
+	CS445 -- 77 [len=3.0]
+	CS445 -- 76 [len=3.0]
+	CS445 -- 74 [len=3.0]
+	CS445 -- 6 [len=3.0]
+	CS212 -- 7 [len=3.0]
+	CS212 -- 39 [len=3.0]
+	GEOG100 -- 105 [len=3.0]
+	GEOL102 -- 104 [len=3.0]
+	PHYS111 -- 103 [len=3.0]
+	PHIL103 -- 22 [len=3.0]
+	CS460 -- 17 [len=3.0]
+	CS460 -- 80 [len=3.0]
+	CS460 -- 18 [len=3.0]
+	CS460 -- 91 [len=3.0]
+	CS460 -- 85 [len=3.0]
+	CS460 -- 82 [len=3.0]
+	CS460 -- 2 [len=3.0]
+	CS460 -- 54 [len=3.0]
+	CS460 -- 111 [len=3.0]
+	CS466 -- 35 [len=3.0]
+	CS466 -- 72 [len=3.0]
+	CS466 -- 66 [len=3.0]
+	CS466 -- 40 [len=3.0]
+	CS466 -- 45 [len=3.0]
+	CS470 -- 112 [len=3.0]
+	CS470 -- 80 [len=3.0]
+	CS470 -- 106 [len=3.0]
+	CS470 -- 81 [len=3.0]
+	CS395 -- 81 [len=3.0]
+	CS395 -- 82 [len=3.0]
+	CS477 -- 106 [len=3.0]
+	CS477 -- 7 [len=3.0]
+	CS477 -- 80 [len=3.0]
+	CS477 -- 58 [len=3.0]
+	BIOL102 -- 100 [len=3.0]
+	PHYS211 -- 103 [len=3.0]
+	CS383 -- 51 [len=3.0]
+	CS360 -- 53 [len=3.0]
+	CS240 -- 62 [len=3.0]
+	CS240 -- 86 [len=3.0]
+	CS270 -- 24 [len=3.0]
+	CS383 -- 57 [len=3.0]
+	CS466 -- 71 [len=3.0]
+	CS360 -- 94 [len=3.0]
+	CS210 -- 50 [len=3.0]
+	CS120 -- 50 [len=3.0]
+	CS121 -- 50 [len=3.0]
+	CS383 -- 50 [len=3.0]
+	STAT301 -- 9 [len=3.0]
+	CS240 -- 78 [len=3.0]
+	label="\nAll skills that Molly Meadows has learned."
+	overlap=compress
 }

@@ -46,7 +46,7 @@ def print_classes():
     for i in range(1, 5):
         # Make a new subgraph for each year
         with e.subgraph(name='clusterYear' + str(i)) as a:
-            a.attr(label='Year ' + str(i), style='rounded')
+            a.attr(label='<<b>Year ' + str(i) + '</b>>', style='rounded')
             if (student[5] > i):
                 a.attr(style='filled,rounded', fillcolor=colors.SECONDARY)
  
@@ -137,29 +137,26 @@ def print_recommendations():
         
         # Make a subgraph for the recommended classes
         with e.subgraph(name='clusterElectives') as b:
-            b.attr(label='Recommended electives', style='rounded')
+            b.attr(label='<<b>Recommended classes</b>>', style='rounded')
             
             completed = get_taken('all')
             cursor.execute(q.get_recommended_classes(id))
             for row in cursor:
-                if (completed != None or row[0] not in completed):
-                    b.node(row[0], row[0], fillcolor=colors.LIGHT)
+                if (row[0] in completed):
+                    b.node(row[0], '<' + row[0] + '<br/><i>Already passed!</i>>', fillcolor=colors.LIGHT2, fixedsize='shape', width='1.38')
+                elif (row[1] != 0):
+                    b.node(row[0], '<' + row[0] + '<br/><i>Required course</i>>', fillcolor=colors.LIGHT2, fixedsize='shape', width='1.38')
+                else:
+                    b.node(row[0], '<' + row[0] + '<br/><i>Elective</i>>', fillcolor=colors.LIGHT, fixedsize='shape', width='1.38')
                 
-        # Get relationships between companies and skills
-        '''for comp in companies:
-            cursor.execute(q.get_requires(str(comp[0])))
-            for row in cursor:
-                e.edge(str(row[0]), 'c' + str(comp[0]))
-                '''
-                
-        cursor.execute(q.GET_TEACHES + ' WHERE Class IN (' + q.get_recommended_classes(id) + ') AND SkillID IN (SELECT S.ID AS SkillID FROM (' + q.get_selected_skills(id) + ') AS S)')
+        cursor.execute(q.GET_TEACHES + ' WHERE Class IN (' + 'SELECT Class FROM (' + q.get_recommended_classes(id) + ') AS C) AND SkillID IN (SELECT S.ID AS SkillID FROM (' + q.get_selected_skills(id) + ') AS S)')
         available = [] # keep track of which skills are actually taught at U of I
         for row in cursor:
             available.append(row[1])
             e.edge(row[0], str(row[1]))
             
         with e.subgraph(name='clusterSkills') as c:
-            c.attr(label='Requirements', style='rounded')
+            c.attr(label='<<b>Requirements</b>>', style='rounded')
             
             first = True # add an edge from the subgraph to the company using the first node
             cursor.execute(q.get_selected_skills(id))
@@ -243,6 +240,7 @@ def print_all_skills():
 def print_classes_and_skills():
     # Make undirected graph to output as a pdf
     h = graphviz.Graph(filename='graphs/classes+skills', format='pdf', engine='neato')
+    h.attr(fontsize='20')
 
     completed = get_taken('all')
     learned = get_skills()
@@ -269,12 +267,12 @@ def print_classes_and_skills():
     # Create edges from the teaches table
     cursor.execute(q.GET_TEACHES)
     for row in cursor:
-        h.edge(row[0], str(row[1]))
+        h.edge(row[0], str(row[1]), len='3.0')
         
     # Label the graph
     global student
     h.attr(label=r'\nAll skills that ' + student[2] + ' ' + student[3] + ' has learned.')
-    h.attr(fontsize='20', overlap='scale')
+    h.attr(overlap='compress')
 
     h.view()
     

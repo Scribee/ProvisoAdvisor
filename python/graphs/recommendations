@@ -1,65 +1,40 @@
 digraph {
 	node [shape=square style="rounded,filled"]
 	compound=true overlap=scale pad=1 rankdir=LR
-	c2 [label=Siemens fillcolor="#EEEEEE"]
+	c15 [label="19 19's custom selection" fillcolor="#EEEEEE"]
 	subgraph clusterElectives {
-		label="Recommended electives" style=rounded
-		CS120 [label=CS120 fillcolor="#EEEEEE"]
-		CS121 [label=CS121 fillcolor="#EEEEEE"]
-		CS383 [label=CS383 fillcolor="#EEEEEE"]
-		CS210 [label=CS210 fillcolor="#EEEEEE"]
-		CS360 [label=CS360 fillcolor="#EEEEEE"]
-		CS270 [label=CS270 fillcolor="#EEEEEE"]
-		CS212 [label=CS212 fillcolor="#EEEEEE"]
-		CS466 [label=CS466 fillcolor="#EEEEEE"]
-		CS477 [label=CS477 fillcolor="#EEEEEE"]
+		label=<<b>Recommended classes</b>> style=rounded
+		CS210 [label=<CS210<br/><i>Already passed!</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.38]
+		CS360 [label=<CS360<br/><i>Required course</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.38]
+		CS212 [label=<CS212<br/><i>Elective</i>> fillcolor="#EEEEEE" fixedsize=shape width=1.38]
+		CS460 [label=<CS460<br/><i>Elective</i>> fillcolor="#EEEEEE" fixedsize=shape width=1.38]
+		CS477 [label=<CS477<br/><i>Elective</i>> fillcolor="#EEEEEE" fixedsize=shape width=1.38]
+		CS383 [label=<CS383<br/><i>Required course</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.38]
+		CS120 [label=<CS120<br/><i>Already passed!</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.38]
+		CS121 [label=<CS121<br/><i>Already passed!</i>> fillcolor="#DDDDDD" fixedsize=shape width=1.38]
 	}
-	CS120 -> 0
-	CS121 -> 0
-	CS121 -> 1
-	CS383 -> 10
-	CS210 -> 3
 	CS210 -> 7
-	CS360 -> 15
-	CS270 -> 40
+	CS360 -> 16
+	CS360 -> 17
 	CS212 -> 7
-	CS466 -> 72
-	CS466 -> 66
-	CS466 -> 40
+	CS460 -> 17
 	CS477 -> 7
-	CS466 -> 71
-	66 -> c2 [ltail=clusterSkills]
+	CS383 -> 57
+	CS210 -> 50
+	CS120 -> 50
+	CS121 -> 50
+	CS383 -> 50
+	7 -> c15 [ltail=clusterSkills]
 	subgraph clusterSkills {
-		label=Requirements style=rounded
-		52 [label="Completed
-BS
-CS" fillcolor="#D8D7D2" fixedsize=shape width=1.2]
-		65 [label="Microsoft
-office
-suite" fillcolor="#D8D7D2" fixedsize=shape width=1.2]
-		66 [label="Ladder
-logic" fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
-		10 [label="C#" fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
-		1 [label=C fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
-		0 [label="C++" fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
-		3 [label=Java fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
+		label=<<b>Requirements</b>> style=rounded
+		87 [label=React fillcolor="#D8D7D2" fixedsize=shape width=1.2]
 		7 [label=Python fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
-		67 [label="iOS
-development" fillcolor="#D8D7D2" fixedsize=shape width=1.2]
-		68 [label="Android
-development" fillcolor="#D8D7D2" fixedsize=shape width=1.2]
-		42 [label=JavaScript fillcolor="#D8D7D2" fixedsize=shape width=1.2]
-		15 [label=PHP fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
-		40 [label=Networking fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
-		69 [label="Windows
-app
-development" fillcolor="#D8D7D2" fixedsize=shape width=1.2]
-		70 [label="Engineering
-statics/dynamics" fillcolor="#D8D7D2" fixedsize=shape width=1.2]
-		71 [label="Power
-electronics" fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
-		72 [label="Control
-systems" fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
+		84 [label="Node.js" fillcolor="#D8D7D2" fixedsize=shape width=1.2]
+		17 [label=SQL fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
+		57 [label="Agile
+development" fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
+		50 [label=Debugging fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
+		16 [label=Laravel fillcolor="#EDCB43" fixedsize=shape group=skills width=1.2]
 	}
 	label="\nRecommended classes for 19 19."
 	fontsize=20

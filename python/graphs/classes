@@ -5,7 +5,7 @@ digraph {
 	CS120 -> CS121 [constraint=false dir=forward xlabel="  "]
 	MATH176 -> CS121 [constraint=false dir=forward xlabel="  "]
 	subgraph clusterYear1 {
-		label="Year 1" style=rounded
+		label=<<b>Year 1</b>> style=rounded
 		fillcolor="#D8D7D2" style="filled,rounded"
 		CS120 [label=<CS120<br/>Computer Science 1<br/>> fillcolor="#EDCB43"]
 		CS121 [label=<CS121<br/>Computer Science 2<br/><br/><i>CS120</i><br/><i>MATH176</i>> fillcolor="#EEEEEE"]
@@ -19,7 +19,7 @@ digraph {
 	CS120 -> CS210 [lhead=clusterYear2 ltail=clusterYear1]
 	CS270 -> CS240 [constraint=false dir=both xlabel="Corequisite  "]
 	subgraph clusterYear2 {
-		label="Year 2" style=rounded
+		label=<<b>Year 2</b>> style=rounded
 		fillcolor="#D8D7D2" style="filled,rounded"
 		CS210 [label=<CS210<br/>Programming<br/>Languages<br/><br/><i>CS121</i>> fillcolor="#EEEEEE"]
 		CS240 [label=<CS240<br/>Computer Operating<br/>Systems<br/><br/><i>CS270</i><br/><i>CS121</i><br/><i>CS150</i>> fillcolor="#EEEEEE"]
@@ -28,7 +28,7 @@ digraph {
 	}
 	CS210 -> CS383 [lhead=clusterYear3 ltail=clusterYear2]
 	subgraph clusterYear3 {
-		label="Year 3" style=rounded
+		label=<<b>Year 3</b>> style=rounded
 		CS383 [label=<CS383<br/>Software Engineering<br/><br/><i>CS210</i><br/><i>CS240</i><br/><i>CS270</i>> fillcolor="#EEEEEE"]
 		CS385 [label=<CS385<br/>Theory of<br/>Computation<br/>> fillcolor="#EEEEEE"]
 		CS395 [label=<CS395<br/>Analysis of<br/>Algorithms<br/><br/><i>MATH175</i><br/><i>CS121</i>> fillcolor="#EEEEEE"]
@@ -47,7 +47,7 @@ our recommended electives!"]
 	CS383 -> CS480 [lhead=clusterYear4 ltail=clusterYear3]
 	CS480 -> CS481 [constraint=false dir=forward xlabel="  "]
 	subgraph clusterYear4 {
-		label="Year 4" style=rounded
+		label=<<b>Year 4</b>> style=rounded
 		CS480 [label=<CS480<br/>Senior Capstone Design<br/>1<br/><br/><i>CS383</i><br/><i>ENGL317</i>> fillcolor="#EEEEEE"]
 		CS481 [label=<CS481<br/>Senior Capstone Design<br/>2<br/><br/><i>CS480</i>> fillcolor="#EEEEEE"]
 		CS400 [label=<CS400<br/>Contemporary Issues in<br/>Computer Science<br/>> fillcolor="#EEEEEE"]
