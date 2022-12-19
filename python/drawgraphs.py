@@ -115,7 +115,7 @@ def print_classes():
     e.attr(label=r'\nClass diagram for ' + student[2] + ' ' + student[3] + '.')
     e.attr(fontsize='20')
     
-    e.view()
+    #e.view()
 
     return open(e.render(), 'rb').read()
 
@@ -177,7 +177,7 @@ def print_recommendations():
     e.attr(label=r'\nRecommended classes for ' + student[2] + ' ' + student[3] + '.')
     e.attr(fontsize='20')
     
-    e.view()
+    #e.view()
 
     return open(e.render(), 'rb').read()
 
@@ -336,5 +336,5 @@ id = '2'
 cursor.execute(q.get_student_query(id))
 student = cursor.fetchall()[0]
 #create_skill_graph('19')
-create_class_graph('2')
+#create_class_graph('2')
 #print_classes_and_skills()
