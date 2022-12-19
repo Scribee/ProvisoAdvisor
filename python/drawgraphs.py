@@ -33,40 +33,88 @@ def print_classes():
         os.remove(GRAPH_DIR + '/classes.png')
         
     # Directed graph to be output as a png
-    e = graphviz.Digraph(filename=GRAPH_DIR + '/classes', format='png')
-    e.attr('node', shape='egg')
-    e.attr(rankdir='LR')
+    e = graphviz.Digraph(filename=GRAPH_DIR + '/classes', format='png', engine='dot')
+    e.attr('node', shape='square', style='rounded,filled', width='2', fixedsize='shape')
+    e.attr(rankdir='LR', pad='1', compound='true')
     
     completed = get_taken('all')
+    lastNode = None
+    global student
 
     # Query the data for each year individually so they can be grouped into subgraphs
-    for i in range(0, 5):
+    for i in range(1, 5):
         # Make a new subgraph for each year
         with e.subgraph(name='clusterYear' + str(i)) as a:
-            a.attr(style='filled', label='Year ' + str(i), fillcolor=colors.LIGHT2 + ':' + colors.LIGHT)
-                        
+            a.attr(label='Year ' + str(i), style='rounded')
+            if (student[5] > i):
+                a.attr(style='filled,rounded', fillcolor=colors.SECONDARY)
+ 
+            # Get a list of this years prerequisites to add relevant ones to each node's label
+            cursor.execute(q.get_detailed_prereqs(str(i)))
+            prereqs = cursor.fetchall()
+
             # Get the class list and make a node for each class
             cursor.execute(q.GET_CLASSES + ' WHERE Year=' + str(i))
             if (cursor == None) :
                 continue
             
+            first = True
+            classes = []
+            credit = 0
             for row in cursor:
                 class_name = row[1] + str(row[2])
+                classes.append(class_name)
+                credit += row[6]
+                
+                # Check if this is the first node in the cluster
+                if (first):
+                    # Make an edge between the last cluster and this one
+                    if (lastNode != None):
+                        e.edge(lastNode, class_name, ltail='clusterYear' + str(i - 1), lhead='clusterYear' + str(i))
+                    lastNode = class_name
+                    first = False
+                
+                class_title = row[3]
+                # Replace the last space with a newline character if the title is longer than the node
+                if (len(class_title) > 30):
+                    class_title = '<br/>'.join(class_title.rsplit(' ', 2))
+                    class_title = ' '.join(class_title.rsplit('<br/>', 1))
+                elif (len(class_title) > 20):
+                    class_title = '<br/>'.join(class_title.rsplit(' ', 1))
+                    
+                # Add italic prerequisite list below the class title
+                class_title += '<br/>'
+                for r in prereqs:
+                    if (r[0] == class_name):
+                        class_title += '<br/><i>' + r[1] + '</i>'
+                
                 # If the class has been taken, color the node
                 if (completed != None and class_name in completed):
-                    a.node(class_name, class_name + '\n' + row[3], style='filled', fillcolor=colors.PRIMARY)
+                    a.node(class_name, label='<' + class_name + '<br/>' + class_title + '>', fillcolor=colors.PRIMARY)
                 else:
-                    a.node(class_name, class_name + '\n' + row[3])        
-
-    # Get the prerequisite relationships to know what arrows to draw
-    cursor.execute(q.GET_PREREQS)
-    for row in cursor:
-        e.edge(row[1], row[0], label=row[2])
+                    a.node(class_name, label='<' + class_name + '<br/>' + class_title + '>', fillcolor=colors.LIGHT)
+    
+            class_list = str(classes).replace('[', '(').replace(']', ')')
+            # Get the prerequisite relationships to know what arrows to draw
+            cursor.execute(q.GET_PREREQS + ' WHERE Class IN ' + class_list + ' AND Prereq IN ' + class_list)
+            for row in cursor:
+                e.edge(row[1], row[0], label=row[2], constraint='false', labelfloat='true')
+                
+            if (student[5] <= i):
+                with a.subgraph(name='clusterYear' + str(i) + 'Credits') as b:
+                    b.attr(label='Year ' + str(i) + ' credits:', style='filled', fillcolor=colors.LIGHT)
+                    b.attr('node', shape='rect', style='rounded,filled', fixedsize='false', fillcolor=colors.SECONDARY)
+                    
+                    creditLabel = str(credit) + ' total credits.'
+                    creditLabel += '\nConsider taking ' + str(30 - credit) + ' credits of\nour recommended electives!'
+                    
+                    b.node('credits' + str(i), label=creditLabel)
 
     # Label the graph
-    global student
     e.attr(label=r'\nClass diagram for ' + student[2] + ' ' + student[3] + '.')
     e.attr(fontsize='20')
+    
+    e.view()
 
     return open(e.render(), 'rb').read()
 
@@ -77,48 +125,58 @@ def print_recommendations():
         
     # Undrected graph to be output as a png
     e = graphviz.Digraph(filename=GRAPH_DIR + '/recommendations', format='png', engine='dot')
-    e.attr('node', shape='square', style='filled')
-    e.attr(overlap='scale')
+    e.attr('node', shape='square', style='rounded,filled')
+    e.attr(overlap='scale', rankdir='LR', pad='1', compound='true')
     
     cursor.execute(q.get_selection(id))
     if (cursor != None):
-        companies = cursor.fetchall()
+        company = cursor.fetchone()
         
-        with e.subgraph(name="clusterCompanies") as a:
-            for row in companies:
-                a.node('c' + str(row[0]), row[1], fillcolor=colors.PRIMARY)
+        e.node('c' + str(company[0]), company[1], fillcolor=colors.LIGHT)
         
         # Make a subgraph for the recommended classes
         with e.subgraph(name='clusterElectives') as b:
-            b.attr(style='filled', label='Recommended electives')
+            b.attr(label='Recommended electives', style='rounded')
             
             completed = get_taken('all')
             cursor.execute(q.get_recommended_classes(id))
             for row in cursor:
                 if (completed != None or row[0] not in completed):
-                    b.node(row[0], row[0], fillcolor=colors.TERTIARY)
-                    
-        with e.subgraph(name='clusterSkills') as c:
-            c.attr(style='filled', label='Desired skills')
-            
-            cursor.execute(q.get_selected_skills(id))
-            for row in cursor:
-                c.node(str(row[0]), row[1], fillcolor=colors.SECONDARY)
+                    b.node(row[0], row[0], fillcolor=colors.LIGHT)
                 
         # Get relationships between companies and skills
-        for comp in companies:
+        '''for comp in companies:
             cursor.execute(q.get_requires(str(comp[0])))
             for row in cursor:
                 e.edge(str(row[0]), 'c' + str(comp[0]))
+                '''
                 
         cursor.execute(q.GET_TEACHES + ' WHERE Class IN (' + q.get_recommended_classes(id) + ') AND SkillID IN (SELECT S.ID AS SkillID FROM (' + q.get_selected_skills(id) + ') AS S)')
+        available = [] # keep track of which skills are actually taught at U of I
         for row in cursor:
-            e.edge(str(row[1]), row[0])
+            available.append(row[1])
+            e.edge(row[0], str(row[1]))
+            
+        with e.subgraph(name='clusterSkills') as c:
+            c.attr(label='Requirements', style='rounded')
+            
+            first = True # add an edge from the subgraph to the company using the first node
+            cursor.execute(q.get_selected_skills(id))
+            for row in cursor:
+                if (row[0] not in available):
+                    c.node(str(row[0]), row[1].replace(' ', '\n', 3), fillcolor=colors.SECONDARY, width='1.2', fixedsize='shape')
+                else:
+                    c.node(str(row[0]), row[1].replace(' ', '\n', 3), fillcolor=colors.PRIMARY, group='skills', width='1.2', fixedsize='shape')
+                    if (first):
+                        e.edge(str(row[0]), 'c' + str(company[0]), ltail='clusterSkills')
+                        first = False
     
     # Label the graph
     global student
     e.attr(label=r'\nRecommended classes for ' + student[2] + ' ' + student[3] + '.')
     e.attr(fontsize='20')
+    
+    e.view()
 
     return open(e.render(), 'rb').read()
 
@@ -147,6 +205,8 @@ def print_skills():
     # Label the graph
     f.attr(label=r'\nSkills diagram for ' + student[2] + ' ' + student[3] + '.')
     f.attr(fontsize='20')
+    
+    #f.view()
 
     return open(f.render(), 'rb').read()
 
@@ -268,11 +328,12 @@ def update_student(user):
     cursor.execute(q.get_student_query(id))
     student = cursor.fetchall()[0]
     
-GRAPH_DIR = 'C:/xampp/graphs'
+GRAPH_DIR = 'graphs'
 
 # Initialize id and student
 id = '2'
 cursor.execute(q.get_student_query(id))
 student = cursor.fetchall()[0]
 #create_skill_graph('19')
-print_classes_and_skills()
+create_class_graph('2')
+#print_classes_and_skills()

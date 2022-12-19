@@ -1,90 +1,63 @@
 digraph {
-	node [shape=egg]
-	rankdir=LR
-	subgraph clusterYear0 {
-		fillcolor="#DDDDDD:#EEEEEE" label="Year 0" style=filled
-	}
+	node [fixedsize=shape shape=square style="rounded,filled" width=2]
+	compound=true pad=1 rankdir=LR
+	CS120 -> CS121 [label="" constraint=false labelfloat=true]
+	MATH176 -> CS121 [label="" constraint=false labelfloat=true]
 	subgraph clusterYear1 {
-		fillcolor="#DDDDDD:#EEEEEE" label="Year 1" style=filled
-		CS120 [label="CS120
-Computer Science 1" fillcolor="#66ded2" style=filled]
-		CS121 [label="CS121
-Computer Science 2"]
-		CS150 [label="CS150
-Computer Organization and Architecture"]
-		MATH176 [label="MATH176
-Discrete Mathematics"]
-		MATH170 [label="MATH170
-Calculus 1"]
-		ENGL102 [label="ENGL102
-College Writing and Rhetoric"]
-		COMM101 [label="COMM101
-Fundamentals of Public Speaking"]
+		label="Year 1" style=rounded
+		fillcolor="#D8D7D2" style="filled,rounded"
+		CS120 [label=<CS120<br/>Computer Science 1<br/>> fillcolor="#EDCB43"]
+		CS121 [label=<CS121<br/>Computer Science 2<br/><br/><i>CS120</i><br/><i>MATH176</i>> fillcolor="#EEEEEE"]
+		CS150 [label=<CS150<br/>Computer Organization<br/>and Architecture<br/>> fillcolor="#EEEEEE"]
+		MATH176 [label=<MATH176<br/>Discrete Mathematics<br/>> fillcolor="#EEEEEE"]
+		MATH170 [label=<MATH170<br/>Calculus 1<br/>> fillcolor="#EEEEEE"]
+		ENGL102 [label=<ENGL102<br/>College Writing and<br/>Rhetoric<br/>> fillcolor="#EEEEEE"]
+		COMM101 [label=<COMM101<br/>Fundamentals of<br/>Public Speaking<br/>> fillcolor="#EEEEEE"]
+		ENGL101 [label=<ENGL101<br/>Writing and Rhetoric<br/>> fillcolor="#EEEEEE"]
 	}
+	CS120 -> CS210 [lhead=clusterYear2 ltail=clusterYear1]
+	CS270 -> CS240 [label=Corequisite constraint=false labelfloat=true]
 	subgraph clusterYear2 {
-		fillcolor="#DDDDDD:#EEEEEE" label="Year 2" style=filled
-		CS210 [label="CS210
-Programming Languages"]
-		CS240 [label="CS240
-Computer Operating Systems"]
-		MATH175 [label="MATH175
-Calculus 2"]
-		CS270 [label="CS270
-System Software"]
+		label="Year 2" style=rounded
+		fillcolor="#D8D7D2" style="filled,rounded"
+		CS210 [label=<CS210<br/>Programming<br/>Languages<br/><br/><i>CS121</i>> fillcolor="#EEEEEE"]
+		CS240 [label=<CS240<br/>Computer Operating<br/>Systems<br/><br/><i>CS270</i><br/><i>CS121</i><br/><i>CS150</i>> fillcolor="#EEEEEE"]
+		MATH175 [label=<MATH175<br/>Calculus 2<br/><br/><i>MATH170</i>> fillcolor="#EEEEEE"]
+		CS270 [label=<CS270<br/>System Software<br/><br/><i>CS121</i>> fillcolor="#EEEEEE"]
 	}
+	CS210 -> CS383 [lhead=clusterYear3 ltail=clusterYear2]
 	subgraph clusterYear3 {
-		fillcolor="#DDDDDD:#EEEEEE" label="Year 3" style=filled
-		CS383 [label="CS383
-Software Engineering"]
-		CS385 [label="CS385
-Theory of Computation"]
-		CS395 [label="CS395
-Analysis of Algorithms"]
-		CS360 [label="CS360
-Database Systems"]
-		MATH330 [label="MATH330
-Linear Algebra"]
-		ENGL317 [label="ENGL317
-Technical Writing"]
-		STAT301 [label="STAT301
-Probability & Statistics"]
+		label="Year 3" style=rounded
+		CS383 [label=<CS383<br/>Software Engineering<br/><br/><i>CS210</i><br/><i>CS240</i><br/><i>CS270</i>> fillcolor="#EEEEEE"]
+		CS385 [label=<CS385<br/>Theory of<br/>Computation<br/>> fillcolor="#EEEEEE"]
+		CS395 [label=<CS395<br/>Analysis of<br/>Algorithms<br/><br/><i>MATH175</i><br/><i>CS121</i>> fillcolor="#EEEEEE"]
+		CS360 [label=<CS360<br/>Database Systems<br/><br/><i>CS240</i><br/><i>CS270</i>> fillcolor="#EEEEEE"]
+		MATH330 [label=<MATH330<br/>Linear Algebra<br/><br/><i>MATH170</i>> fillcolor="#EEEEEE"]
+		ENGL317 [label=<ENGL317<br/>Technical Writing<br/><br/><i>ENGL102</i>> fillcolor="#EEEEEE"]
+		STAT301 [label=<STAT301<br/>Probability and<br/>Statistics<br/><br/><i>MATH175</i>> fillcolor="#EEEEEE"]
+		subgraph clusterYear3Credits {
+			fillcolor="#EEEEEE" label="Year 3 credits:" style=filled
+			node [fillcolor="#D8D7D2" fixedsize=false shape=rect style="rounded,filled"]
+			credits3 [label="23 total credits.
+Consider taking 7 credits of
+our recommended electives!"]
+		}
 	}
+	CS383 -> CS480 [lhead=clusterYear4 ltail=clusterYear3]
+	CS480 -> CS481 [label="" constraint=false labelfloat=true]
 	subgraph clusterYear4 {
-		fillcolor="#DDDDDD:#EEEEEE" label="Year 4" style=filled
-		CS404 [label="CS404
-Special Projects"]
-		CS480 [label="CS480
-Senior Capstone Design 1"]
-		CS481 [label="CS481
-Senior Capstone Design 2"]
-		CS400 [label="CS400
-Contemporary Issues in Computer Science"]
-		CS445 [label="CS445
-Compiler Design"]
+		label="Year 4" style=rounded
+		CS480 [label=<CS480<br/>Senior Capstone Design<br/>1<br/><br/><i>CS383</i><br/><i>ENGL317</i>> fillcolor="#EEEEEE"]
+		CS481 [label=<CS481<br/>Senior Capstone Design<br/>2<br/><br/><i>CS480</i>> fillcolor="#EEEEEE"]
+		CS400 [label=<CS400<br/>Contemporary Issues in<br/>Computer Science<br/>> fillcolor="#EEEEEE"]
+		subgraph clusterYear4Credits {
+			fillcolor="#EEEEEE" label="Year 4 credits:" style=filled
+			node [fillcolor="#D8D7D2" fixedsize=false shape=rect style="rounded,filled"]
+			credits4 [label="7 total credits.
+Consider taking 23 credits of
+our recommended electives!"]
+		}
 	}
-	CS120 -> CS121 [label=""]
-	MATH176 -> CS121 [label=""]
-	MATH170 -> MATH175 [label="C or better"]
-	CS121 -> CS270 [label=""]
-	CS270 -> CS240 [label=Corequisite]
-	CS121 -> CS240 [label=""]
-	CS150 -> CS240 [label=""]
-	CS121 -> CS210 [label=""]
-	MATH175 -> STAT301 [label=""]
-	CS210 -> CS383 [label=""]
-	CS240 -> CS383 [label=""]
-	CS270 -> CS383 [label=""]
-	MATH170 -> MATH330 [label="MATH175 recommended"]
-	MATH175 -> CS395 [label=""]
-	CS121 -> CS395 [label=""]
-	CS240 -> CS360 [label=""]
-	CS270 -> CS360 [label=""]
-	ENGL102 -> ENGL317 [label="Junior standing"]
-	CS383 -> CS480 [label="Senior standing"]
-	ENGL317 -> CS480 [label="Senior standing"]
-	CS210 -> CS445 [label=""]
-	CS385 -> CS445 [label=""]
-	CS480 -> CS481 [label=""]
 	label="\nClass diagram for Molly Meadows."
 	fontsize=20
 }

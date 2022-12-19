@@ -1,7 +1,7 @@
 # File to define constants and color pallette for the project
 
-PRIMARY = '#66ded2'
-SECONDARY = '#81f542'
-TERTIARY = '#ddf542'
+PRIMARY = '#EDCB43'
+SECONDARY = '#D8D7D2'
+TERTIARY = '#939082'
 LIGHT = '#EEEEEE'
 LIGHT2 = '#DDDDDD'
