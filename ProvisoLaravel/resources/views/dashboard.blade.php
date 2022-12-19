@@ -42,7 +42,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <ul class = "">
-                                    <li style='display:inline;'><img src="images/profile.png" style='width: 20px; height: 20px' alt="#"/></li>
+                                    <li style='display:inline;'><img src="images/profileIcon.png" style='width: 20px; height: 20px' alt="#"/></li>
                                     <li style='display:inline; padding:15px'><a href="{{ route('profile') }}">{{ Auth::guard('user')->user()->name }}</a></li>
                                 </ul>
                             </div>
