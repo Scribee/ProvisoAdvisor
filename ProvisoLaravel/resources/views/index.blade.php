@@ -250,21 +250,21 @@
 												<div class="col-md-4">
 													<div class="project">
 														<div class="project_img">
-															<figure><img src="images/Login.png" alt="#"/></figure>
+															<figure><img src="images/loginPage.png" alt="#"/></figure>
 														</div>     
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="project">
 														<div class="project_img">
-															<figure><img src="images/register.png" alt="#"/></figure>
+															<figure><img src="images/registration.png" alt="#"/></figure>
 														</div>
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="project">
 														<div class="project_img">
-															<figure><img src="images/addClass.png" alt="#"/></figure>
+															<figure><img src="images/prof.png" alt="#"/></figure>
 														</div>
 													</div>
 												</div>
@@ -279,21 +279,21 @@
 												<div class="col-md-4">
 													<div class="project">
 														<div class="project_img">
-															<figure><img src="images/addComp.png" alt="#"/></figure>
+															<figure><img src="images/AddClassDiv.png" alt="#"/></figure>
 														</div>
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="project">
 														<div class="project_img">
-															<figure><img src="images/Skills.png" alt="#"/></figure>
+															<figure><img src="images/company.png" alt="#"/></figure>
 														</div>
 													</div>
 												</div>
 												<div class="col-md-4">
 													<div class="project">
 														<div class="project_img">
-															<figure><img src="images/Schedule.png" alt="#"/></figure>
+															<figure><img src="images/selectSkill.png" alt="#"/></figure>
 														</div>
 													</div>
 												</div>
