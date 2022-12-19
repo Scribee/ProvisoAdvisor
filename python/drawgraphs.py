@@ -143,11 +143,11 @@ def print_recommendations():
             cursor.execute(q.get_recommended_classes(id))
             for row in cursor:
                 if (row[0] in completed):
-                    b.node(row[0], '<' + row[0] + '<br/><i>Already passed!</i>>', fillcolor=colors.LIGHT2, fixedsize='shape', width='1.38')
+                    b.node(row[0], '<' + row[0] + '<br/><i>Already passed!</i>>', fillcolor=colors.LIGHT2, fixedsize='shape', width='1.4')
                 elif (row[1] != 0):
-                    b.node(row[0], '<' + row[0] + '<br/><i>Required course</i>>', fillcolor=colors.LIGHT2, fixedsize='shape', width='1.38')
+                    b.node(row[0], '<' + row[0] + '<br/><i>Required course</i>>', fillcolor=colors.LIGHT2, fixedsize='shape', width='1.4')
                 else:
-                    b.node(row[0], '<' + row[0] + '<br/><i>Elective</i>>', fillcolor=colors.LIGHT, fixedsize='shape', width='1.38')
+                    b.node(row[0], '<' + row[0] + '<br/><i>Elective</i>>', fillcolor=colors.LIGHT, fixedsize='shape', width='1.4')
                 
         cursor.execute(q.GET_TEACHES + ' WHERE Class IN (' + 'SELECT Class FROM (' + q.get_recommended_classes(id) + ') AS C) AND SkillID IN (SELECT S.ID AS SkillID FROM (' + q.get_selected_skills(id) + ') AS S)')
         available = [] # keep track of which skills are actually taught at U of I
