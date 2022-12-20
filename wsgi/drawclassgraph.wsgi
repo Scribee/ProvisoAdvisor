@@ -9,8 +9,8 @@ import drawgraphs
 
 # Called by mod-wsgi when the appropriate HTTP request is sent
 def application(environ, start_response):
+    '''
     status = '200 OK'
-
     if not environ['mod_wsgi.process_group']:
         output = b'EMBEDDED MODE'
     else:
@@ -42,4 +42,3 @@ def application(environ, start_response):
     f = drawgraphs.create_class_graph(id)
         
     return [f]
-    '''
