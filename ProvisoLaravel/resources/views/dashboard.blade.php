@@ -476,8 +476,8 @@
         <script src="js/custom.js"></script>
         <script type='text/javascript'>
 			$('button.class_graph').click(function () {
-				$('div.class_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#class_modal"><img src="/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/></button>');
-				$('div.skill_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#skill_modal"><img src="/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/></button>');
+				$('div.class_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#class_modal"><img src="wsgi/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/></button>');
+				$('div.skill_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#skill_modal"><img src="wsgi/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/></button>');
 				//$('div.modal_tip').html('<p>Click either graph to open it in a larger window.</p>');
 			});
         </script>
