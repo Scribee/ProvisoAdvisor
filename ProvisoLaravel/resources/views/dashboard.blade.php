@@ -169,7 +169,7 @@
                                                                             <input type="checkbox" name="KeyToDelete" value="{{ $take->Class }}">
                                                                         </td>
                                                                         <td>
-																			<input type="submit" name="submitDeleteBtn">
+																			<input type="submit" name="submitDeleteBtn" value="Submit">
 																		</td>
                                                                     </tr>                                                                   
                                                                     @endforeach
@@ -269,7 +269,7 @@
                                                                         <td>
                                                                             <input type="checkbox" name="KeyToDelete" value="{{ $comp->CompanyID }}"/>
                                                                         </td>
-                                                                        <td><input type="submit" name="submitDeleteBtn"/></td>
+                                                                        <td><input type="submit" name="submitDeleteBtn" value="Submit"/></td>
                                                                     </tr>
                                                                 </table>
                                                             </form>
@@ -359,7 +359,7 @@
                                                                         <td>
                                                                             <input type="checkbox" name="KeyToDelete" value="{{ $s->SkillID }}"/>
                                                                         </td>
-                                                                        <td><input type="submit" name="submitDeleteBtn"/></td>
+                                                                        <td><input type="submit" name="submitDeleteBtn" value="Submit"/></td>
                                                                     </tr>
                                                                     @endforeach
                                                                 </table>
@@ -423,28 +423,9 @@
                 </div>
             </div>
         </div>
-		<!--Class Modal-->
-		<div class="modal fade" id="class_modal" tabindex="-1" role="dialog" aria-labelledby="class_modal_label" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="class_modal_label">Four year plan</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<img src="wsgi/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--Skill Modal-->
+		<!--Graph Modal-->
 		<div class="modal fade" id="skill_modal" tabindex="-1" role="dialog" aria-labelledby="skill_modal_label" aria-hidden="true">
-			<div class="modal-dialog" role="document">
+			<div class="modal-dialog" style="max-width: 1300px; margin: auto" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="skill_modal_label">Desired skills</h5>
@@ -452,8 +433,13 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">
-						<img src="wsgi/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/>
+					<div class="modal-body row w-100" style="margin: auto; padding: 0">
+						<div class="col-md-5" style="padding: 0">
+							<img src="wsgi/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/>
+						</div>
+						<div class="col-md-7" style="padding: 0">
+							<img src="wsgi/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression." style="margin-top: 22px; margin-left: -60px; width: 110%"/>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -476,9 +462,8 @@
         <script src="js/custom.js"></script>
         <script type='text/javascript'>
 			$('button.class_graph').click(function () {
-				$('div.class_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#class_modal"><img src="wsgi/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/></button>');
-				$('div.skill_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#skill_modal"><img src="wsgi/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/></button>');
-				//$('div.modal_tip').html('<p>Click either graph to open it in a larger window.</p>');
+				$('div.class_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-secondary w-50" data-toggle="modal" data-target="#skill_modal"><img src="wsgi/classGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing basic CS class progression."/></button>');
+				$('div.skill_graph').html('<p>Click the graph to open it in a larger window.</p><button type="button" class="btn btn-secondary w-50" data-toggle="modal" data-target="#skill_modal"><img src="wsgi/skillGraph?ID={{ Auth::guard('user')->user()->id }}" alt="Graph showing recommended classes to learn the skills required by the selected company."/></button>');
 			});
         </script>
     </body>

@@ -20,11 +20,17 @@ digraph {
 	CS270 -> CS240 [constraint=false dir=both xlabel="Corequisite  "]
 	subgraph clusterYear2 {
 		label=<<b>Year 2</b>> style=rounded
-		fillcolor="#D8D7D2" style="filled,rounded"
 		CS210 [label=<CS210<br/>Programming<br/>Languages<br/><br/><i>CS121</i>> fillcolor="#EEEEEE"]
 		CS240 [label=<CS240<br/>Computer Operating<br/>Systems<br/><br/><i>CS270</i><br/><i>CS121</i><br/><i>CS150</i>> fillcolor="#EEEEEE"]
 		MATH175 [label=<MATH175<br/>Calculus 2<br/><br/><i>MATH170</i>> fillcolor="#EEEEEE"]
 		CS270 [label=<CS270<br/>System Software<br/><br/><i>CS121</i>> fillcolor="#EEEEEE"]
+		subgraph clusterYear2Credits {
+			fillcolor="#EEEEEE" label="Year 2 credits:" style=filled
+			node [fillcolor="#D8D7D2" fixedsize=false shape=rect style="rounded,filled"]
+			credits2 [label="12 total credits.
+Consider taking 18 credits of
+our recommended electives!"]
+		}
 	}
 	CS210 -> CS383 [lhead=clusterYear3 ltail=clusterYear2]
 	subgraph clusterYear3 {
@@ -59,6 +65,6 @@ Consider taking 23 credits of
 our recommended electives!"]
 		}
 	}
-	label="\nClass diagram for Molly Meadows."
+	label="\nClass diagram for test test."
 	fontsize=20
 }
